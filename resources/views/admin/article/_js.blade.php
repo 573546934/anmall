@@ -1,0 +1,168 @@
+<style>
+    #layui-upload-box li{
+        width: 120px;
+        height: 100px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        margin-right: 10px;
+        border:1px solid #ddd;
+    }
+    #layui-upload-box li img{
+        width: 100%;
+    }
+    #layui-upload-box li p{
+        width: 100%;
+        height: 22px;
+        font-size: 12px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        line-height: 22px;
+        text-align: center;
+        color: #fff;
+        background-color: #333;
+        opacity: 0.6;
+    }
+    #layui-upload-box li i{
+        display: block;
+        width: 20px;
+        height:20px;
+        position: absolute;
+        text-align: center;
+        top: 2px;
+        right:2px;
+        z-index:999;
+        cursor: pointer;
+    }
+    #layui-upload-box2 li{
+        width: 120px;
+        height: 100px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        margin-right: 10px;
+        border:1px solid #ddd;
+    }
+    #layui-upload-box2  li img{
+        width: 100%;
+    }
+    #layui-upload-box2 li p{
+        width: 100%;
+        height: 22px;
+        font-size: 12px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        line-height: 22px;
+        text-align: center;
+        color: #fff;
+        background-color: #333;
+        opacity: 0.6;
+    }
+    #layui-upload-box2 li i{
+        display: block;
+        width: 20px;
+        height:20px;
+        position: absolute;
+        text-align: center;
+        top: 2px;
+        right:2px;
+        z-index:999;
+        cursor: pointer;
+    }
+    .layui-upload-img {
+        width: 92px;
+        height: 92px;
+        margin: 0 10px 10px 0;
+    }
+    .imgDiv {
+        display: inline-block;
+        position: relative;
+    }
+
+    .imgDiv .delete {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 15px;
+        height: 15px;
+    }
+</style>
+<script>
+    layui.use(['upload'],function () {
+        var upload = layui.upload
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#uploadPic'
+            ,url: '{{ route("uploadImg") }}'
+            ,multiple: false
+            ,data:{"_token":"{{ csrf_token() }}"}
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                /*obj.preview(function(index, file, result){
+                 $('#layui-upload-box').append('<li><img src="'+result+'" /><p>待上传</p></li>')
+                 });*/
+                obj.preview(function(index, file, result){
+                    $('#layui-upload-box').html('<li><img src="'+result+'" /><p>上传中</p></li>')
+                });
+
+            }
+            ,done: function(res){
+                if(res.code == 0){
+                    $("#thumb").val(res.url);
+                    $('#layui-upload-box li p').text('上传成功');
+                    return layer.msg(res.msg);
+                }
+                return layer.msg(res.msg);
+            }
+        });
+        //多图片上传
+        upload.render({
+            elem: '#uploadPics2'
+            ,url: '{{ route("uploadImgs") }}'
+            ,multiple: true
+            ,data:{"_token":"{{ csrf_token() }}","type":"map"}
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                /* obj.preview(function(index, file, result){
+                     $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                 });*/
+            }
+            ,done: function(res){
+                //上传完毕
+                if(res.code == 0){
+                    //缩略图
+                    $('#demo3').append(
+                        '<div class="imgDiv" id="img'+res.id+'">'+
+                        '<img src="'+ res.url +'" alt="" val="' + res.id+ '" class="layui-upload-img">'+
+                        '<img src="'+'{{asset('images/timg.jpg')}}'+'" class="delete" onclick="deleteImg('+res.id+')" />'+
+                        '<input type="hidden" name="map[]"  value="' + res.id + '">'+
+                        '</div>'
+                    )
+                    return layer.msg(res.msg);
+                }
+                return layer.msg(res.msg);
+            }
+        });
+    })
+    //删除图片
+    function deleteImg(id)
+    {
+        $.get("{{asset('deleteimg')}}"+'/'+id,function(res){
+            if(res.code==0){
+                //删除成功
+                $("#img"+id).remove()
+            }
+        });
+    }
+</script>
+{{--
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+    ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
+    });
+</script>--}}
