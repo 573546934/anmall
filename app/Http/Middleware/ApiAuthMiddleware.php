@@ -26,10 +26,12 @@ class ApiAuthMiddleware
         $m = Redis::get('member_token_cache:wechat:'.$member_token);
         if (!$m || empty($m)){
             $result = array(
-                'message' => "无权限"
+                'message' => "登录超时!请重新登录"
             );
             return response($result,404);
         }
+        $mid_params = ['mid_params'=>$m];
+        $request->attributes->add($mid_params);//添加参数 用户id //获取$mid = $request->get('mid_params');//中间件产生的参数
         return $next($request);
     }
 }

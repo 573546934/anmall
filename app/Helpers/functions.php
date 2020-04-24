@@ -31,58 +31,6 @@ function getIpAd()
     $str = 'ip:'.$ip.'地址:'.$res->data->region.$res->data->city;
     return $str;
 }
-
-//根据用户 判断订单权限
-function getOrderWhere($user,$model)
-{
-    if($user->company_id > 0){
-        $company_id = $user->company_id;
-        $company = \App\Models\Companys::find($company_id);
-        if($company->is_store === 1){  //外卖
-            $model = $model->where('company_id',$company_id);
-        }else{  //行程
-            if($user->company_id > 0 && $user->guide_id > 0){
-                //合作公司导游账号
-                $guide_id = $user->guide_id;
-                $model = $model->where(function ($query) use ($guide_id,$company_id) {
-                    $query->where('guide_id',$guide_id);
-//                        ->orWhere('company_id', $company_id);
-                });
-            }else{
-                //合作公司管理员
-                $guideArr = [];
-                $guides = \App\Models\Guide::where('company',$company_id)->select('id')->get();
-                if($guides){
-                    foreach ($guides as $v){
-                        $guideArr[] = $v->id;
-                    }
-                }
-                $model = $model->where(function ($query) use ($guideArr,$company_id) {
-                    $query->whereIn('guide_id',$guideArr);
-//                        ->orWhere('company_id', $company_id);
-                });
-            }
-        }
-    }
-    return $model;
-}
-//weboa 人员区分 1 平台  2 行程  3 外卖 4 司机
-function webOAUser($user)
-{
-    if($user->company_id > 0){  //外卖或者行程
-        $company = \App\Models\Companys::find($user->company_id);
-        if($company->is_store === 1){  //供应匹配
-            session(['userType' => 3]);
-            return 3;
-        }else{  //导游匹配
-            session(['userType' => 2]);
-            return 2;
-        }
-    }else{  //平台
-        session(['userType' => 1]);
-        return 1;
-    }
-}
 //三维数组转换二维数组
 function arrayToArr($array){
     $arr = [];
