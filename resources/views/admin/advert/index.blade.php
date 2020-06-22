@@ -1,6 +1,17 @@
 @extends('admin.base')
 
 @section('content')
+    <style>
+        .layui-table-cell{
+            height:50px;
+            /*white-space: normal;*/
+            word-wrap: break-word;
+            word-break: break-all;
+            /* height:35px;
+             line-height: 35px;*/
+            font-size: 12px;
+        }
+    </style>
     <div class="layui-card">
         <div class="layui-card-header layuiadmin-card-header-auto">
             <div class="layui-btn-group">
@@ -42,7 +53,7 @@
                 @{{ d.position.name }}
             </script>
             <script type="text/html" id="thumb">
-                <a href="@{{d.thumb}}" target="_blank" title="点击查看"><img src="@{{d.thumb}}" alt="" width="28" height="28"></a>
+                <a href="@{{d.img.url}}" target="_blank" title="点击查看"><img src="@{{d.img.url}}" alt="" height="45"></a>
             </script>
         </div>
     </div>
@@ -58,15 +69,15 @@
                 //用户表格初始化
                 var dataTable = table.render({
                     elem: '#dataTable'
-                    ,height: 500
+
                     ,url: "{{ route('admin.advert.data') }}" //数据接口
                     ,page: true //开启分页
                     ,cols: [[ //表头
                         {checkbox: true,fixed: true}
+                        ,{field: 'thumb', title: '图片',toolbar:'#thumb',width:100}
                         ,{field: 'id', title: 'ID', sort: true,width:80}
                         ,{field: 'position', title: '广告位置',toolbar:'#position'}
                         ,{field: 'title', title: '广告位标题'}
-                        ,{field: 'thumb', title: '图片',toolbar:'#thumb'}
                         ,{field: 'link', title: '链接',width:200}
                         ,{field: 'sort', title: '排序'}
                         ,{field: 'created_at', title: '创建时间'}
@@ -105,7 +116,7 @@
                     }
                     if (ids.length>0){
                         layer.confirm('确认删除吗？', function(index){
-                            $.post("{{ route('admin.category.destroy') }}",{_method:'delete',ids:ids},function (result) {
+                            $.post("{{ route('admin.advert.destroy') }}",{_method:'delete',ids:ids},function (result) {
                                 if (result.code==0){
                                     dataTable.reload()
                                 }

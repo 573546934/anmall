@@ -22,82 +22,9 @@
                                 <div carousel-item>
 
                                     <ul class="layui-row layui-col-space10">
-
                                         <li class="layui-col-xs3">
 
-                                            <a lay-href="home/homepage1.html">
-
-                                                <i class="layui-icon layui-icon-console"></i>
-
-                                                <cite>主页一</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="home/homepage2.html">
-
-                                                <i class="layui-icon layui-icon-chart"></i>
-
-                                                <cite>主页二</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="component/layer/list.html">
-
-                                                <i class="layui-icon layui-icon-template-1"></i>
-
-                                                <cite>弹层</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a layadmin-event="im">
-
-                                                <i class="layui-icon layui-icon-chat"></i>
-
-                                                <cite>聊天</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="component/progress/index.html">
-
-                                                <i class="layui-icon layui-icon-find-fill"></i>
-
-                                                <cite>进度条</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="app/workorder/list.html">
-
-                                                <i class="layui-icon layui-icon-survey"></i>
-
-                                                <cite>工单</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="user/user/list.html">
+                                            <a lay-href="/admin/member">
 
                                                 <i class="layui-icon layui-icon-user"></i>
 
@@ -109,11 +36,59 @@
 
                                         <li class="layui-col-xs3">
 
-                                            <a lay-href="set/system/website.html">
+                                            <a lay-href="/admin/article">
 
-                                                <i class="layui-icon layui-icon-set"></i>
+                                                <i class="layui-icon layui-icon-list"></i>
 
-                                                <cite>设置</cite>
+                                                <cite>项目</cite>
+
+                                            </a>
+
+                                        </li>
+
+                                        <li class="layui-col-xs3">
+
+                                            <a lay-href="/admin/news">
+
+                                                <i class="layui-icon layui-icon-read"></i>
+
+                                                <cite>头条</cite>
+
+                                            </a>
+
+                                        </li>
+
+                                        <li class="layui-col-xs3">
+
+                                            <a lay-href="/admin/live">
+
+                                                <i class="layui-icon layui-icon-video"></i>
+
+                                                <cite>直播</cite>
+
+                                            </a>
+
+                                        </li>
+
+                                        <li class="layui-col-xs3">
+
+                                            <a lay-href="/admin/advert">
+
+                                                <i class="layui-icon layui-icon-picture"></i>
+
+                                                <cite>小程序广告</cite>
+
+                                            </a>
+
+                                        </li>
+
+                                        <li class="layui-col-xs3">
+
+                                            <a lay-href="/admin/partner">
+
+                                                <i class="layui-icon layui-icon-group"></i>
+
+                                                <cite>合伙人</cite>
 
                                             </a>
 
@@ -121,105 +96,6 @@
 
                                     </ul>
 
-                                    <ul class="layui-row layui-col-space10">
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs3">
-
-                                            <a lay-href="set/user/info.html">
-
-                                                <i class="layui-icon layui-icon-set"></i>
-
-                                                <cite>我的资料</cite>
-
-                                            </a>
-
-                                        </li>
-
-                                    </ul>
 
 
 
@@ -253,23 +129,11 @@
 
                                         <li class="layui-col-xs6">
 
-                                            <a lay-href="app/content/comment.html" class="layadmin-backlog-body">
+                                            <a lay-href="/admin/partner" class="layadmin-backlog-body">
 
-                                                <h3>待审评论</h3>
+                                                <h3>待审合伙人</h3>
 
-                                                <p><cite>66</cite></p>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs6">
-
-                                            <a lay-href="app/forum/list.html" class="layadmin-backlog-body">
-
-                                                <h3>待审帖子</h3>
-
-                                                <p><cite>12</cite></p>
+                                                <p><cite>{{$partner}}</cite></p>
 
                                             </a>
 
@@ -277,31 +141,20 @@
 
                                         <li class="layui-col-xs6">
 
-                                            <a lay-href="template/goodslist.html" class="layadmin-backlog-body">
+                                            <a lay-href="/admin/article" class="layadmin-backlog-body">
 
-                                                <h3>待审商品</h3>
+                                                <h3>待审项目</h3>
 
-                                                <p><cite>99</cite></p>
-
-                                            </a>
-
-                                        </li>
-
-                                        <li class="layui-col-xs6">
-
-                                            <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
-
-                                                <h3>待发货</h3>
-
-                                                <p><cite>20</cite></p>
+                                                <p><cite>{{$article}}</cite></p>
 
                                             </a>
 
                                         </li>
+
 
                                     </ul>
 
-                                    <ul class="layui-row layui-col-space10">
+                                    {{--<ul class="layui-row layui-col-space10">
 
                                         <li class="layui-col-xs6">
 
@@ -315,7 +168,7 @@
 
                                         </li>
 
-                                    </ul>
+                                    </ul>--}}
 
                                 </div>
 
@@ -359,7 +212,7 @@
 
                     <div class="layui-card">
 
-                        <div class="layui-tab layui-tab-brief layadmin-latestData">
+                        {{--<div class="layui-tab layui-tab-brief layadmin-latestData">
 
                             <ul class="layui-tab-title">
 
@@ -385,7 +238,7 @@
 
                             </div>
 
-                        </div>
+                        </div>--}}
 
                     </div>
 
@@ -427,7 +280,6 @@
 
                                     v1.0.0
 
-                                    <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 15px;">更新日志</a>
 
                                 </script>
 
@@ -443,7 +295,7 @@
 
                                 <script type="text/html" template>
 
-                                    layui-v2.3.0
+                                    layui-v2.3.0&laravel-v5.6
 
                                 </script>
 
@@ -453,27 +305,9 @@
 
                         <tr>
 
-                            <td>主要特色</td>
+                            <td>小程序名称</td>
 
-                            <td>零门槛 / 响应式 / 清爽 / 极简</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>获取渠道</td>
-
-                            <td style="padding-bottom: 0;">
-
-                                <div class="layui-btn-container">
-
-                                    <a href="http://www.layui.com/admin/" target="_blank" class="layui-btn layui-btn-danger">获取授权</a>
-
-                                    <a href="http://fly.layui.com/download/layuiAdmin/" target="_blank" class="layui-btn">立即下载</a>
-
-                                </div>
-
-                            </td>
+                            <td>艾米mall</td>
 
                         </tr>
 
@@ -489,25 +323,10 @@
 
             <div class="layui-card">
 
-                <div class="layui-card-header">效果报告</div>
+                <div class="layui-card-header">小程序</div>
 
                 <div class="layui-card-body layadmin-takerates">
-
-                    <div class="layui-progress" lay-showPercent="yes">
-
-                        <h3>转化率（日同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长" lay-offset="-15"></span>）</h3>
-
-                        <div class="layui-progress-bar" lay-percent="65%"></div>
-
-                    </div>
-
-                    <div class="layui-progress" lay-showPercent="yes">
-
-                        <h3>签到率（日同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降" lay-offset="-15"></span>）</h3>
-
-                        <div class="layui-progress-bar" lay-percent="32%"></div>
-
-                    </div>
+                    <img src="" alt="">
 
                 </div>
 
@@ -515,7 +334,7 @@
 
 
 
-            <div class="layui-card">
+            {{--<div class="layui-card">
 
                 <div class="layui-card-header">实时监控</div>
 
@@ -533,17 +352,17 @@
 
                         <h3>内存占用率</h3>
 
-                        <div class="layui-progress-bar layui-bg-red" lay-percent="90%"></div>
+                        <div class="layui-progress-bar layui-bg-red" lay-percent="70%"></div>
 
                     </div>
 
                 </div>
 
-            </div>
+            </div>--}}
 
 
 
-            <div class="layui-card">
+           {{-- <div class="layui-card">
 
                 <div class="layui-card-header">产品动态</div>
 
@@ -591,7 +410,7 @@
 
                 </div>
 
-            </div>
+            </div>--}}
 
         </div>
 

@@ -90,9 +90,46 @@
     }
 </style>
 <script>
-    layui.use(['upload'],function () {
+    layui.use(['upload','form','laydate'],function () {
         var upload = layui.upload
-
+        var form = layui.form;
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date1' //指定元素
+        });
+        laydate.render({
+            elem: '#date2' //指定元素
+        });
+        form.on('select(college)', function (data) {
+            var type=$("#test1 option:selected").text();
+            if(type=="特殊资产"){
+                /*$('#dz').hide()
+                $('#nodz').hide()
+                $('#init1').hide()
+                $('#init2').hide()*/
+                $('#bl').show()
+            }else{
+               /* $('#dz').show()
+                $('#nodz').show()
+                $('#init1').show()
+                $('#init2').show()*/
+                $('#bl').hide()
+            }
+        });
+        @if(isset($article)&&$article->category->name == '特殊资产')
+           {{-- $('#dz').hide()
+            $('#nodz').hide()
+            $('#init1').hide()
+            $('#init2').hide()--}}
+            $('#bl').show()
+        @else
+            /*$('#dz').show()
+            $('#nodz').show()
+            $('#init1').show()
+            $('#init2').show()*/
+            $('#bl').hide()
+        @endif
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#uploadPic'
@@ -113,6 +150,31 @@
                 if(res.code == 0){
                     $("#thumb").val(res.url);
                     $('#layui-upload-box li p').text('上传成功');
+                    return layer.msg(res.msg);
+                }
+                return layer.msg(res.msg);
+            }
+        });
+        //推荐图片上传
+        var uploadInst = upload.render({
+            elem: '#uploadPic3'
+            ,url: '{{ route("uploadImg") }}'
+            ,multiple: false
+            ,data:{"_token":"{{ csrf_token() }}"}
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                /*obj.preview(function(index, file, result){
+                 $('#layui-upload-box').append('<li><img src="'+result+'" /><p>待上传</p></li>')
+                 });*/
+                obj.preview(function(index, file, result){
+                    $('#layui-upload-box2').html('<li><img src="'+result+'" /><p>上传中</p></li>')
+                });
+
+            }
+            ,done: function(res){
+                if(res.code == 0){
+                    $("#recommend_img").val(res.url);
+                    $('#layui-upload-box2 li p').text('上传成功');
                     return layer.msg(res.msg);
                 }
                 return layer.msg(res.msg);
@@ -158,11 +220,26 @@
         });
     }
 </script>
-{{--
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
     var ue = UE.getEditor('container');
     ue.ready(function() {
         ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
     });
-</script>--}}
+    var ue = UE.getEditor('graphic');
+    ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
+    });
+    var ue = UE.getEditor('analysis');
+    ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
+    });
+    var ue = UE.getEditor('process');
+    ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
+    });
+    var ue = UE.getEditor('problem');
+    ue.ready(function() {
+        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
+    });
+</script>

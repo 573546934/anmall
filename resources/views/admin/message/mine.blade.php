@@ -35,7 +35,7 @@
                 //用户表格初始化
                 var dataTable = table.render({
                     elem: '#dataTable'
-                    ,height: 500
+
                     ,url: "{{ route('admin.message.mine') }}" //数据接口
                     ,page: true //开启分页
                     ,cols: [[ //表头

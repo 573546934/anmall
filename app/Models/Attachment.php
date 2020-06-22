@@ -10,7 +10,7 @@ use OSS\OssClient;
 class Attachment extends Model
 {
     //文件资源表
-    protected $table = 'attachment';
+    protected $table = 'attachments';
     protected $fillable = ['for_id','name','save_name','save_path','size',
         'type','ext','enable'];
     //新增保存数据
@@ -38,6 +38,12 @@ class Attachment extends Model
              return false;
          }
     }
+    //保存多图关联信息
+    public static function addMap($ids,$for_id,$mark='init')
+    {
+        static :: whereIn('id',$ids)->update(['enable'=>1,'mark'=>$mark,'for_id'=>$for_id]);
+    }
+
     //删除多图
     public static function deleteImages($ids)
     {

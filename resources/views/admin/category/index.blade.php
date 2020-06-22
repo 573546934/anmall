@@ -25,6 +25,13 @@
                     @endcan
                 </div>
             </script>
+            <script type="text/html" id="is_index">
+                @{{# if(d.is_index == 1){  }}
+                    <span style="color: #009688">展示</span>
+                @{{# }else{ }}
+                <span style="color: #e2e2e2">不展示</span>
+                @{{# } }}
+            </script>
         </div>
     </div>
 @endsection
@@ -39,7 +46,7 @@
                 //用户表格初始化
                 var dataTable = table.render({
                     elem: '#dataTable'
-                    ,height: 500
+
                     ,url: "{{ route('admin.category.data') }}" //数据接口
                     ,page: true //开启分页
                     ,cols: [[ //表头
@@ -47,9 +54,11 @@
                         ,{field: 'id', title: 'ID', sort: true,width:80}
                         ,{field: 'name', title: '分类名称'}
                         ,{field: 'sort', title: '排序'}
+                        ,{field: 'is_index', title: '是否首页展示', toolbar: '#is_index'}
+                        ,{field: 'index_name', title: '首页展示名称'}
                         ,{field: 'created_at', title: '创建时间'}
                         ,{field: 'updated_at', title: '更新时间'}
-                        ,{fixed: 'right', width: 320, align:'center', toolbar: '#options'}
+                        ,{fixed: 'right', width: 220, align:'center', toolbar: '#options'}
                     ]]
                 });
 

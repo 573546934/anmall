@@ -196,7 +196,7 @@
 <body>
 
 <div class="page-container">
-    <h1>通用后台系统登录</h1>
+    <h1>艾米后台系统登录</h1>
     <form action="{{route('admin.login')}}"  method="post">
         {{csrf_field()}}
         <input type="text" name="username" class="username" placeholder="Username">
@@ -207,15 +207,15 @@
         <button type="submit">Sign me in</button>
         <div class="error"><span>+</span></div>
     </form>
-    <div class="connect">
+    {{--<div class="connect">
         <p>Or connect with:</p>
         <p>
             <a class="facebook" href=""></a>
             <a class="twitter" href=""></a>
         </p>
-    </div>
+    </div>--}}
 </div>
-<div align="center">Collect from <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></div>
+{{--<div align="center">Collect from <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></div>--}}
 <!-- Javascript -->
 <script src="{{asset('assets/js/jquery-1.8.2.min.js')}}"></script>
 <script src="{{asset('assets/js/supersized.3.2.7.min.js')}}"></script>

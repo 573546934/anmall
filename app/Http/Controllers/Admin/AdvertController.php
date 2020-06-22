@@ -29,7 +29,11 @@ class AdvertController extends Controller
         if ($request->get('title')){
             $model = $model->where('title','like','%'.$request->get('title').'%');
         }
-        $res = $model->orderBy('sort','desc')->orderBy('id','desc')->with('position')->paginate($request->get('limit',30))->toArray();
+        $res = $model
+            ->orderBy('sort','desc')
+            ->orderBy('id','desc')
+            ->with('position','img')
+            ->paginate($request->get('limit',30))->toArray();
         $data = [
             'code' => 0,
             'msg'   => '正在请求中...',
@@ -62,7 +66,6 @@ class AdvertController extends Controller
         $this->validate($request,[
             'title'  => 'required|string',
             'sort'  => 'required|numeric',
-            'thumb' => 'required|string',
             'position_id' => 'required|numeric'
         ]);
         if (Advert::create($request->all())){
@@ -90,7 +93,7 @@ class AdvertController extends Controller
      */
     public function edit($id)
     {
-        $advert = Advert::findOrFail($id);
+        $advert = Advert::with('img')->findOrFail($id);
         //所有广告位置
         $positions = Position::orderBy('sort','desc')->get();
         foreach ($positions as $position){

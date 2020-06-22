@@ -99,7 +99,9 @@ class CategoryController extends Controller
             'parent_id' => 'required|numeric'
         ]);
         $category = Category::findOrFail($id);
-        if ($category->update($request->all())){
+        $data = $request->all();
+        $data['is_index'] = $request->get('is_index',0);
+        if ($category->update($data)){
             return redirect(route('admin.category'))->with(['status'=>'更新成功']);
         }
         return redirect(route('admin.category'))->withErrors(['status'=>'系统错误']);

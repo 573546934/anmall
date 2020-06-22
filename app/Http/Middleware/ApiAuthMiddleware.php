@@ -16,7 +16,7 @@ class ApiAuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $member_token =$request->header('member-token');
+        /*$member_token =$request->header('member-token');
         if (empty($member_token)){
             $result = array(
                 'message' => "无权限"
@@ -30,7 +30,8 @@ class ApiAuthMiddleware
             );
             return response($result,404);
         }
-        $mid_params = ['mid_params'=>$m];
+        $mid_params = ['mid_params'=>$m];*/
+        $mid_params = ['mid_params'=>1];
         $request->attributes->add($mid_params);//添加参数 用户id //获取$mid = $request->get('mid_params');//中间件产生的参数
         return $next($request);
     }

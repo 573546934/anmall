@@ -2,6 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8"/>
     <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具"/>
     <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图"/>
@@ -14,7 +15,9 @@
             overflow: hidden;
         }
     </style>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<!--    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=PiBeTaGoeZb4c5zBM7gMLPMXKHnCBIlX&s=1"></script>
+<!--    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=lK1mZnp2zkU3g534QZ5tMn78I3WnDwzrHOlGn&s=1"></script>-->
 </head>
 
 <body onload="initMap();">
@@ -106,7 +109,8 @@
         function mapListenerHandler() {
             var zoom = map.getZoom(),
                 center = map.getCenter(),
-                marker = window.marker.getPoint();
+                marker = window.marker.getPosition();
+                //marker = window.marker.getPoint();
             containerIframe.src = containerIframe.src.
                 replace(new RegExp('([?#&])center=([^?#&]+)', 'i'), '$1center=' + center.lng + ',' + center.lat).
                 replace(new RegExp('([?#&])markers=([^?#&]+)', 'i'), '$1markers=' + marker.lng + ',' + marker.lat).

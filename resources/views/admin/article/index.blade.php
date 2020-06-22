@@ -14,14 +14,6 @@
     </style>
     <div class="layui-card">
         <div class="layui-card-header layuiadmin-card-header-auto">
-            <div class="layui-btn-group ">
-                @can('zixun.article.destroy')
-                    <button class="layui-btn layui-btn-sm layui-btn-danger" id="listDelete">删 除</button>
-                @endcan
-                @can('zixun.article.create')
-                    <a class="layui-btn layui-btn-sm" href="{{ route('admin.article.create') }}">添 加</a>
-                @endcan
-            </div>
             <div class="layui-form" >
                 <div class="layui-input-inline">
                     <select name="category_id" lay-verify="required" id="category_id">
@@ -51,6 +43,16 @@
             </div>
         </div>
         <div class="layui-card-body">
+            <div class="layui-btn-group ">
+                <button class="layui-btn layui-btn-sm  layui-btn-normal" id="listBy">勾选显示审核</button>
+
+                @can('zixun.article.destroy')
+                    <button class="layui-btn layui-btn-sm layui-btn-danger" id="listDelete">勾选删除</button>
+                @endcan
+                @can('zixun.article.create')
+                    <a class="layui-btn layui-btn-sm" href="{{ route('admin.article.create') }}">添 加</a>
+                @endcan
+            </div>
             <table id="dataTable" lay-filter="dataTable"></table>
             <script type="text/html" id="options">
                 <div class="layui-btn-group">
@@ -77,13 +79,35 @@
             <script type="text/html" id="category">
                 @{{ d.category.name }}
             </script>
+            <script type="text/html" id="name">
+                @{{# if(d.member != null){  }}
+                @{{ d.member.name }}
+                @{{# } }}
+            </script>
+             <script type="text/html" id="loca">
+                 @{{# if(d.country != null){  }}
+                    @{{ d.country }} &nbsp;
+                 @{{# } }}
+                 @{{# if(d.city != null){  }}
+                    @{{ d.city }}
+                 @{{# } }}
+            </script>
             <script type="text/html" id="s">
                 @{{# if(d.examine_status == '0'){ }}
-                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm ">待审核</button>
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm " lay-event="examine">待审核</button>
                 @{{# }else if(d.examine_status == '1'){ }}
-                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-normal ">已通过</button>
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-normal " lay-event="examine">已通过</button>
                 @{{# }else if(d.examine_status == -1){ }}
-                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-danger ">未通过</button>
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-danger " lay-event="examine">未通过</button>
+                @{{# } }}
+            </script>
+            <script type="text/html" id="ss">
+                @{{# if(d.status == '-1' && d.mid > 0){ }}
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-warm " lay-event="examines">待审核</button>
+                @{{# }else if(d.status == '1'){ }}
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-normal " lay-event="examines">已通过</button>
+                @{{# }else if(d.status == -1){ }}
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-radius layui-btn-danger " lay-event="examines">未通过</button>
                 @{{# } }}
             </script>
         </div>
@@ -100,7 +124,7 @@
                 //用户表格初始化
                 var dataTable = table.render({
                     elem: '#dataTable'
-                    ,height: 500
+
                     ,url: "{{ route('admin.article.data') }}" //数据接口
                     ,page: true //开启分页
                     ,cols: [[ //表头
@@ -109,24 +133,15 @@
                         ,{field: 'id', title: 'ID', sort: true,width:70}
                         ,{field: 'category', title: '分类',toolbar:'#category'}
                         ,{field: 'title', title: '项目名称'}
-                        /*,{field: 'business_district', title: '所在商圈'}
-                        ,{field: 'format', title: '项目业态'}
-                        ,{field: 'total_area', title: '项目总面积'}
-                        ,{field: 'price_range', title: '付款方式'}
-                        ,{field: 'address', title: '项目地址'}*/
-                        //,{field: 'tags', title: '标签',toolbar:'#tags',width:300}
-                        //,{field: 'click', title: '点击量'}
-                        ,{field: 'attributes', title: '资产属性'}
-                        ,{field: 'location', title: '区位'}
-                        //,{field: 'project', title: '项目'}
-                        ,{field: 'area', title: '面积'}
-                        ,{field: 'offer', title: '报价'}
-                        ,{field: 'point', title: '卖点'}
-                        ,{field: 'debt', title: '债务'}
+                        ,{field: 'location', title: '区位',toolbar:'#loca'}
+                        ,{field: 'area', title: '项目面积'}
+                        ,{field: 'format', title: '项目用途'}
+                        ,{field: 'address', title: '项目地址'}
                         ,{field: 'phone', title: '联系方式'}
-
+                        ,{field: 'name', title: '完成人员',toolbar:'#name'}
                         ,{field: 'created_at', title: '创建时间'}
-                        ,{field: 'examine_status', title: '审核状态',toolbar:'#s', width: 90}
+                        ,{field: 'status', title: '完成审核',toolbar:'#ss', width: 90}
+                        ,{field: 'examine_status', title: '显示审核',toolbar:'#s', width: 90}
                         //,{field: 'updated_at', title: '更新时间'}
                         ,{fixed: 'right', width: 130, align:'center', toolbar: '#options'}
                     ]]
@@ -148,6 +163,56 @@
                         });
                     } else if(layEvent === 'edit'){
                         location.href = '/admin/article/'+data.id+'/edit';
+                    }else if(layEvent === 'update'){
+                        location.href = '/admin/article/'+data.id+'/edit';
+                    }else if(layEvent === 'examine'){
+                        layer.confirm('确认审核？', {
+                            icon:7,
+                            offset: '150px',
+                            btn: ['通过','不通过','取消'] //按钮
+                        }, function(){
+                            $.post("{{ route('admin.article.by') }}",{_method:'put',ids:[data.id]},function (result) {
+                                if(result.code == 0){
+                                    dataTable.reload()
+                                    layer.msg(result.msg,{icon:6})
+                                }else{
+                                    layer.msg(result.msg,{icon:5})
+                                }
+                            });
+                        },function () {
+                            $.post("{{ route('admin.article.refuse') }}",{_method:'put',ids:[data.id]},function (result) {
+                                if(result.code == 0){
+                                    dataTable.reload()
+                                    layer.msg(result.msg,{icon:6})
+                                }else{
+                                    layer.msg(result.msg,{icon:5})
+                                }
+                            });
+                        });
+                    }else if(layEvent === 'examines'){
+                        layer.confirm('确认审核？', {
+                            icon:7,
+                            offset: '150px',
+                            btn: ['通过','不通过','取消'] //按钮
+                        }, function(){
+                            $.post("{{ route('admin.article.bys') }}",{_method:'put',ids:[data.id]},function (result) {
+                                if(result.code == 0){
+                                    dataTable.reload()
+                                    layer.msg(result.msg,{icon:6})
+                                }else{
+                                    layer.msg(result.msg,{icon:5})
+                                }
+                            });
+                        },function () {
+                            $.post("{{ route('admin.article.refuses') }}",{_method:'put',ids:[data.id]},function (result) {
+                                if(result.code == 0){
+                                    dataTable.reload()
+                                    layer.msg(result.msg,{icon:6})
+                                }else{
+                                    layer.msg(result.msg,{icon:5})
+                                }
+                            });
+                        });
                     }
                 });
 
@@ -187,6 +252,44 @@
                                 layer.msg(result.msg)
                             });
                         })
+                    }else {
+                        layer.msg('请选择删除项')
+                    }
+                })
+                //按钮批量通过
+                $("#listBy").click(function () {
+                    var ids = []
+                    var hasCheck = table.checkStatus('dataTable')
+                    var hasCheckData = hasCheck.data
+                    if (hasCheckData.length>0){
+                        $.each(hasCheckData,function (index,element) {
+                            ids.push(element.id)
+                        })
+                    }
+                    if (ids.length>0){
+                        layer.confirm('确认审核？', {
+                            icon:7,
+                            offset: '150px',
+                            btn: ['通过','不通过','取消'] //按钮
+                        }, function(){
+                            $.post("{{ route('admin.article.by') }}",{_method:'put',ids:ids},function (result) {
+                                if(result.code == 0){
+                                    dataTable.reload()
+                                    layer.msg(result.msg,{icon:6})
+                                }else{
+                                    layer.msg(result.msg,{icon:5})
+                                }
+                            });
+                        },function () {
+                            $.post("{{ route('admin.article.refuse') }}",{_method:'put',ids:ids},function (result) {
+                                if(result.code == 0){
+                                    dataTable.reload()
+                                    layer.msg(result.msg,{icon:6})
+                                }else{
+                                    layer.msg(result.msg,{icon:5})
+                                }
+                            });
+                        });
                     }else {
                         layer.msg('请选择删除项')
                     }

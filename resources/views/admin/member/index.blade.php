@@ -36,6 +36,19 @@
             <script type="text/html" id="avatar">
                 <a href="@{{d.avatar}}" target="_blank" title="点击查看"><img src="@{{d.avatar}}" alt="" width="28" height="28"></a>
             </script>
+            <script type="text/html" id="guide">
+                @{{# if(d.guide != null){  }}
+                @{{ d.guide.name }}
+                @{{# } }}
+            </script>
+            <script type="text/html" id="friend">
+                @{{# if(d.friend != null){  }}
+                @{{ d.friend.name }}
+                @{{# } }}
+            </script>
+            <script type="text/html" id="friends">
+                @{{ d.friends_count }}
+            </script>
         </div>
     </div>
 @endsection
@@ -50,16 +63,22 @@
                 //用户表格初始化
                 var dataTable = table.render({
                     elem: '#dataTable'
-                    ,height: 500
+
                     ,url: "{{ route('admin.member.data') }}" //数据接口
                     ,where:{model:"member"}
                     ,page: true //开启分页
                     ,cols: [[ //表头
                         {checkbox: true,fixed: true}
+                        ,{field: 'avatar', title: '头像',toolbar:'#avatar',width:80}
                         ,{field: 'id', title: 'ID', sort: true,width:80}
-                        ,{field: 'name', title: '昵称'}
+                        ,{field: 'name', title: '姓名'}
                         ,{field: 'phone', title: '手机'}
-                        ,{field: 'avatar', title: '头像',toolbar:'#avatar',width:100}
+                        ,{field: 'sex', title: '性别'}
+                        ,{field: 'city', title: '常驻城市'}
+                        ,{field: 'identity_name', title: '用户权限'}
+                       // ,{field: 'guide', title: '团队', toolbar: '#guide'}
+                        ,{field: 'friend', title: '推荐人', toolbar: '#friend'}
+                        ,{field: 'friend', title: '团队人数', toolbar: '#friends'}
                         ,{field: 'created_at', title: '创建时间'}
                         ,{field: 'updated_at', title: '更新时间'}
                         ,{fixed: 'right', width: 120, align:'center', toolbar: '#options'}

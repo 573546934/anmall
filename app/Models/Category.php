@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name','sort','parent_id'];
+    protected $fillable = ['name','sort','parent_id','is_index','index_name'];
+
+    public static function getCategorys()
+    {
+        return static :: where('parent_id',0)->orderBy('sort','desc')->select('name','id')->get();
+    }
 
     //子分类
     public function childs()

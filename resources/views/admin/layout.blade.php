@@ -4,7 +4,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{env('APP_NAME')}}</title>
+    <title>艾米mall后台管理</title>
+    <link rel="icon" href="/images/logo.ico" type="image/x-icon">
+    <!--收藏夹显示图标-->
+    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -25,7 +28,7 @@
                     </a>
                 </li>
                 <li class="layui-nav-item layui-hide-xs" lay-unselect>
-                    <a href="http://www.layui.com/admin/" target="_blank" title="前台">
+                    <a href="" target="_blank" title="前台">
                         <i class="layui-icon layui-icon-website"></i>
                     </a>
                 </li>
@@ -68,8 +71,7 @@
                         <cite>{{$userName}}</cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a lay-href="set/user/info.html">基本资料</a></dd>
-                        <dd><a lay-href="set/user/password.html">修改密码</a></dd>
+                        <dd><a lay-href="/admin/user/{{$userId}}/edit">修改密码</a></dd>
                         <hr>
                         <dd  style="text-align: center;"><a href="{{route('admin.logout')}}">退出</a></dd>
                     </dl>
@@ -88,7 +90,7 @@
         <div class="layui-side layui-side-menu">
             <div class="layui-side-scroll">
                 <div class="layui-logo" lay-href="{{route('admin.index')}}">
-                    <span>Anmall后台管理系统</span>
+                    <span><img style=" border-radius: 25px;" src="/images/logo.png" height="45px" alt="">&nbsp;&nbsp;艾米mall&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </div>
 
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
@@ -101,12 +103,12 @@
                             <dd data-name="console" class="layui-this">
                                 <a lay-href="{{route('admin.index')}}">控制台</a>
                             </dd>
-                            <dd data-name="console">
+                           {{-- <dd data-name="console">
                                 <a lay-href="{{route('admin.index1')}}">主页一</a>
                             </dd>
                             <dd data-name="console">
                                 <a lay-href="{{route('admin.index2')}}">主页二</a>
-                            </dd>
+                            </dd>--}}
                         </dl>
                     </li>
                     @foreach($menus as $menu)

@@ -14,7 +14,7 @@
 <div class="layui-form-item">
     <label for="" class="layui-form-label">广告标题</label>
     <div class="layui-input-inline">
-        <input type="text" name="title" value="{{ $advert->title ?? old('name') }}" lay-verify="required" placeholder="请输入标题" class="layui-input" >
+        <input type="text" name="title" value="{{ $advert->title ?? old('title') }}" lay-verify="required" placeholder="请输入标题" class="layui-input" >
     </div>
 </div>
 <div class="layui-form-item">
@@ -24,11 +24,11 @@
             <button type="button" class="layui-btn" id="uploadPic"><i class="layui-icon">&#xe67c;</i>图片上传</button>
             <div class="layui-upload-list" >
                 <ul id="layui-upload-box" class="layui-clear">
-                    @if(isset($advert->thumb))
-                        <li><img src="{{ $advert->thumb }}" /><p>上传成功</p></li>
+                    @if(isset($advert->img))
+                        <li><img src="{{ $advert->img->url}}" /><p>上传成功</p></li>
                     @endif
                 </ul>
-                <input type="hidden" name="thumb" id="thumb" value="{{ $advert->thumb??'' }}">
+                <input type="hidden" name="thumb" id="thumb" value="{{ $advert->thumb??0 }}">
             </div>
         </div>
     </div>
@@ -41,15 +41,24 @@
 </div>
 <div class="layui-form-item">
     <label for="" class="layui-form-label">链接</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
         <input type="text" name="link" value="{{ $advert->link ?? '' }}" placeholder="请输入链接地址" class="layui-input" >
     </div>
     <div class="layui-form-mid"><span class="layui-word-aux">格式：http://xxxxx</span></div>
 </div>
 <div class="layui-form-item">
     <label for="" class="layui-form-label">描述</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
         <textarea name="description" placeholder="请输入描述" class="layui-textarea">{{$advert->description??old('description')}}</textarea>
+    </div>
+</div>
+@include('UEditor::head');
+<div class="layui-form-item">
+    <label for="" class="layui-form-label">内容</label>
+    <div class="layui-input-block">
+        <script id="container" name="content" type="text/plain">
+            {!! $advert->content??old('content') !!}
+        </script>
     </div>
 </div>
 

@@ -1,11 +1,10 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\DictionaryLang;
-use App\Models\Order;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-class WechatPublicController extends Controller{
+class WechatPublicController extends Controller {
 	//获取Token
 	public function getToken(){
 		$token = Cache::get('wechat_public_cache:token');

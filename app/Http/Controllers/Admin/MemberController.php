@@ -28,7 +28,13 @@ class MemberController extends Controller
         if ($request->get('phone')){
             $model = $model->where('phone','like','%'.$request->get('phone').'%');
         }
-        $res = $model->orderBy('created_at','desc')->paginate($request->get('limit',30))->toArray();
+        $res = $model->with('guide','friend')
+            ->withCount('friends')
+            ->orderBy('created_at','desc')
+            ->paginate($request->get('limit',30))->toArray();
+        if (!empty($res['data'])){
+            $res['data'] = Member::datasFormat($res['data']);
+        }
         $data = [
             'code' => 0,
             'msg'   => '正在请求中...',
@@ -83,10 +89,7 @@ class MemberController extends Controller
     public function update(MemberUpdateRequest $request, $id)
     {
         $member = Member::findOrFail($id);
-        $data = $request->except('password');
-        if ($request->get('password')){
-            $data['password'] = bcrypt($request->get('password'));
-        }
+        $data = $request->only('guide_id','name','phone');
         if ($member->update($data)){
             return redirect()->to(route('admin.member'))->with(['status'=>'更新用户成功']);
         }

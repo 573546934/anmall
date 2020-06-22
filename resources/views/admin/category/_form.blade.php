@@ -22,6 +22,18 @@
     </div>
 </div>
 <div class="layui-form-item">
+    <label class="layui-form-label">是否首页展示</label>
+    <div class="layui-input-block">
+        <input type="checkbox" name="is_index" value="1" lay-skin="switch" lay-text="展示|关闭" @if(isset($category)&&$category->is_index == 1) checked @endif>
+    </div>
+</div>
+<div class="layui-form-item">
+    <label for="" class="layui-form-label">首页显示名称</label>
+    <div class="layui-input-block">
+        <input type="text" name="index_name" value="{{ $category->index_name ?? old('index_name') }}"  placeholder="请输入首页展示名称" class="layui-input" >
+    </div>
+</div>
+<div class="layui-form-item">
     <label for="" class="layui-form-label">排序</label>
     <div class="layui-input-block">
         <input type="text" name="sort" value="{{ $category->sort ?? 0 }}" lay-verify="required|number" placeholder="请输入数字" class="layui-input" >

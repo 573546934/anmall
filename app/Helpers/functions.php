@@ -1,11 +1,33 @@
 <?php
 
 /*全局函数方法*/
-
-function addLog($data = [])
+//判断是否为三级内否则不继承团队id
+function getGuideId($friend_id,$guideId)
 {
-    \App\Models\Log::create($data);
+    if ($friend_id > 0 && $guideId > 0){
+        $member = \App\Models\Member::find($friend_id);
+        if($member->id == $guideId || $member->friend_id == $guideId){
+            return $guideId;
+        }
+    }
+    return 0;
 }
+
+//api处理结果返回
+function apiResult($status,$msg='',$data=[])
+{
+    if ($status){
+        if (!empty($data)){
+            $result['data'] = $data;
+        }
+        $result['message'] = $msg.'成功';
+        return response($result);
+    }else{
+        $result['message'] = $msg.'失败';
+        return response($result,400);
+    }
+}
+
 function getIp(){
     if(!empty($_SERVER["HTTP_CLIENT_IP"])){
         $cip = $_SERVER["HTTP_CLIENT_IP"];
@@ -239,6 +261,147 @@ function bindImages($data,$name='thumb')
             if (!empty($v[$name])){
                 $data['data'][$k][$name]['url'] = getImage($v[$name]);
             }
+        }
+    }
+    return $data;
+}
+//时间转换为字符
+function dateToStr($dateStr)
+{
+    //发布时间
+    $time = strtotime($dateStr);
+    //当前时间
+    $now = time();
+    //时间差
+    $difference = $now-$time;
+    //默认显示时间
+    $date = date('Y年m月d日');
+    if ($difference < 60*5){
+        $date = '刚刚';
+    }elseif($difference > 60*5 && $difference < 60*60){
+        $date = floor($difference/60).'分钟前';
+    }elseif($difference >= 60*60 && $difference < 60*60*24){
+        //多少小时
+        $date = floor($difference/3600).'小时前';
+    }elseif($difference >= 60*60*24 && $difference < 60*60*24*7){
+        //多少天
+        $date = floor($difference/(3600*24)).'天前';
+    }/*elseif($difference >= 60*60*7 && $difference < 60*60*24*30){
+        //多少天
+        $date = floor($difference/(3600*24*7)).'周前';
+    }elseif($difference >= 60*60*24*30 && $difference < 60*60*24*30*6){
+        //多少月
+        $date = floor($difference/(3600*24*30)).'月前';
+    }*/
+    return $date;
+}
+
+//数据格式化
+function formatList($data){
+    if (!empty($data)){
+        //项目默认主图
+        $imgid = \App\Models\Advert::where('title','like','%项目默认%')->value('thumb');
+        $img = \App\Models\Attachment::where('id',$imgid)->select('id','url')->first();
+        //默认电话
+        $ad = \App\Models\Advert::getList('商务合作');
+        foreach ($data as $k => $v){
+            $data[$k]->area = $v->area . '㎡';
+            if (isset($v->price) && $v->price == 0) {
+                $data[$k]->price = '面议';
+            }
+            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name != '大宗租赁') {
+                $data[$k]->price = $v->price / 10000 .'万';
+            }
+            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name == '大宗租赁'){
+                $data[$k]->price = $v->price .'元/平米·天';
+            }
+            if (isset($v->collateral_type) && !empty($v->collateral_type)){
+                $s = mb_strlen($v->collateral_type,'utf8') > 3 ? '..' : '';
+                $data[$k]->collateral_type = mb_substr($v->collateral_type , 0 , 3) . $s;
+            }
+            if (!$v->thumb > 0){
+                unset($data[$k]['img']);
+                $data[$k]->img = $img;
+            }
+            if (empty($v->phone)){
+                if (isset($ad[0]->description)){
+                    $data[$k]->phone = $ad[0]->description;
+                }
+            }
+            //佣金处理
+            if (isset($v->commission) && $v->commission == 0) {
+                $data[$k]->commission = '面议';
+            }
+            if (isset($v->commission) && $v->commission > 0) {
+                $data[$k]->commission = $v->commission.'%';
+            }
+        }
+    }
+    return $data;
+}
+function formatHome($data){
+    if (!empty($data)){
+        //项目默认主图
+        $imgid = \App\Models\Advert::where('title','like','%项目默认%')->value('thumb');
+        $img = \App\Models\Attachment::where('id',$imgid)->select('id','url')->first();
+        //默认电话
+        $ad = \App\Models\Advert::getList('商务合作');
+        foreach ($data as $k => $v){
+            $data[$k]->area = $v->area /*. '㎡'*/;
+            if (isset($v->price) && $v->price == 0) {
+                $data[$k]->price = '面议';
+            }
+            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name != '大宗租赁') {
+                $data[$k]->price = $v->price / 10000 /*.'万'*/;
+            }
+            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name == '大宗租赁'){
+                $data[$k]->price = $v->price .'元/平米·天';
+            }
+            if (isset($v->collateral_type) && !empty($v->collateral_type)){
+                $s = mb_strlen($v->collateral_type,'utf8') > 3 ? '..' : '';
+                $data[$k]->collateral_type = mb_substr($v->collateral_type , 0 , 3) . $s;
+            }
+            if (!$v->thumb > 0){
+                unset($data[$k]['img']);
+                $data[$k]->img = $img;
+            }
+            if (empty($v->phone)){
+                if (isset($ad[0]->description)){
+                    $data[$k]->phone = $ad[0]->description;
+                }
+            }
+            //佣金处理
+            if (isset($v->commission) && $v->commission == 0) {
+                $data[$k]->commission = '面议';
+            }
+            if (isset($v->commission) && $v->commission > 0) {
+                $data[$k]->commission = $v->commission.'%';
+            }
+        }
+    }
+    return $data;
+}
+function formatOne($data){
+    if (!empty($data)){
+        //项目默认主图
+        $imgid = \App\Models\Advert::where('title','like','%项目默认%')->value('thumb');
+        $img = \App\Models\Attachment::where('id',$imgid)->select('id','url')->first();
+        if (isset($data->price) && $data->price > 0 && isset($data->category) && $data->category->name != '大宗租赁'){
+            $data->price = $data->price / 10000 .'万';
+        }
+        if (isset($data->price) && $data->price > 0 && isset($data->category) && $data->category->name == '大宗租赁'){
+            $data->price = $data->price.'元/平米·天';
+        }
+        if (!$data->thumb > 0){
+            unset($data->img);
+            $data->img = $img;
+        }
+        //佣金处理
+        if (isset($data->commission) && $data->price == 0) {
+            $data->commission = '面议';
+        }
+        if (isset($data->price) && $data->price == 0) {
+            $data->price = '面议';
         }
     }
     return $data;

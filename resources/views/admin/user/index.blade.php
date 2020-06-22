@@ -48,7 +48,7 @@
             //用户表格初始化
             var dataTable = table.render({
                 elem: '#dataTable'
-                ,height: 500
+
                 ,url: "{{ route('admin.data') }}" //数据接口
                 ,where:{model:"user"}
                 ,page: true //开启分页

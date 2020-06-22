@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Article;
 use App\Models\Icon;
+use App\Models\Partner;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
@@ -28,7 +30,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('admin.index.index');
+        //待审核项目
+        $article = Article::where('examine_status',0)->count();
+        $partner = Partner::where('status',0)->count();
+        return view('admin.index.index',compact('article','partner'));
     }
     public function index1()
     {

@@ -19,7 +19,7 @@ class ApiMiddleware
             $result = array(
                 'message' => "接口不存在"
             );
-            return response($result,404);
+            return response($result,401);
         }
         return $next($request);
     }
