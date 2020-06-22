@@ -1,0 +1,30 @@
+/* pages/index/brandDetail.wxss */
+.project-block{
+	background: #F3F4F4;
+}
+.line{
+	width: 50rpx;
+	height: 3rpx;
+	background: #000;
+}
+.list-banner {
+    width: 260rpx;
+    height: 168rpx;
+    border-radius: 8rpx;
+    vertical-align: middle;
+}
+
+.list-main {
+    width: calc(100% - 290rpx);
+}
+
+.price {
+    color: #D3AF01;
+}
+.label{
+    font-size: 22rpx;
+    padding: 5rpx 15rpx;
+    border-radius: 2rpx;
+    color: #A2A2B1;
+    background: #F5F9FA;
+}

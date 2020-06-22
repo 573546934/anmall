@@ -1,0 +1,66 @@
+<!--pages/mine/profile.wxml-->
+<view class="profile-block p-t-20 p-l-20 p-r-20">
+    <view class="content-box p-l-20">
+        <view class="avatar-block col flex align-items-center p-r-40 p-t-10 p-b-10">
+            <view class="col-left fs-32 color-333">
+                头像
+            </view>
+            <view class="col-right flex-1 flex justify-content-end">
+                <image class="avatar" src="{{member.avatar||'/images/icons/icon_morentouxiang@2x.png'}}"></image>
+            </view>
+        </view>
+        <view class="nickname-block col flex align-items-center p-r-40 p-t-40 p-b-40">
+            <view class="col-left fs-32 color-333">
+                用户名
+            </view>
+            <view class="col-right color-999 fs-32 flex-1 flex justify-content-end">
+                {{member.nickname||'匿名用户'}}
+            </view>
+        </view>
+        <view class="nickname-block col flex align-items-center p-r-40 p-t-40 p-b-40">
+            <view class="col-left fs-32 color-333">
+                用户ID
+            </view>
+            <view class="col-right color-999 fs-32 flex-1 flex justify-content-end">
+                {{member.id||''}}
+            </view>
+        </view>
+        <view class="form col flex align-items-center p-r-40 p-t-40 p-b-40" wx:for="{{form}}" wx:key="index">
+            <view class="col-left fs-32 color-333">
+                {{item.label}} <text class="require">*</text>
+            </view>
+            <view class="col-right fs-32 flex-1 flex justify-content-end">
+                <block wx:if="{{item.type == 'text' || item.type == 'number'}}">
+                    <input value="{{item.value}}" type="{{item.type}}" bindblur="syncInput" id="{{index}}" class="color-333 flex-1 text-right" placeholder="请输入" placeholder-class="color-999" />
+                </block>
+                <block wx:if="{{item.type == 'gps'}}">
+                    <view class="location flex flex-1 justify-content-end align-items-center" catchtap="tapLocation">
+                        <block wx:if="{{!item.value}}">
+                            <image class="location-icon m-r-10" src="/images/icons/gps-location.png"></image>
+                            <view class="text fs-32 color-999">定位</view>
+                        </block>
+                        <block wx:else>
+                            <view class="text fs-32 color-333">{{item.value}}</view>
+                        </block>
+                    </view>
+                </block>
+                <block wx:if="{{item.type == 'radio'}}">
+                    <view class="gender flex-1 flex align-items-center justify-content-end fs-32 color-999">
+                        <view class="male flex align-items-center m-r-20" catchtap="tapGender" id="1">
+                            <image class="radio-icon m-r-10" src="/images/icons/{{item.value===1?'selected':'unselected'}}.png"></image>
+                            <view class="text">男</view>
+                        </view>
+                        <view class="fe-male flex align-items-center" catchtap="tapGender" id="2">
+                            <image class="radio-icon m-r-10" src="/images/icons/{{item.value===2?'selected':'unselected'}}.png"></image>
+                            <view class="text">女</view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="button p-l-40 p-r-40 p-t-40 p-b-40">
+        <button class="auth" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!member.avatar || !member.nickname }}">保存</button>
+        <view class="btn btn-publish btn-save" catchtap="updateProfile" wx:else>保存</view>
+    </view>
+</view>

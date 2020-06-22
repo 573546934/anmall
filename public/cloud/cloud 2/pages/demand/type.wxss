@@ -1,0 +1,12 @@
+/* pages/demand/type.wxss */
+.type-block{
+	width: 100vw;
+	height: 100vh;
+	background: #F3F4F4;
+}
+.item{
+	height: 96rpx;
+}
+.nav-icon{
+	color: #c7c7c7;
+}

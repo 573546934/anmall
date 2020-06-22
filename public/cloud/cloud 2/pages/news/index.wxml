@@ -1,0 +1,39 @@
+<!--pages/news/index.wxml-->
+<view class="news flex flex-column">
+    <view class="search-block p-l-30 p-t-20 p-b-20 p-r-30">
+        <search params="newsList" placeholder="搜索关键词" />
+    </view>
+    <view class="tabs-area border-box relative">
+        <view class="mask absolute" wx:if="{{disabled}}"></view>
+        <tab id="tabs" tab-data="{{tabs}}" color="#04A7A9" scale=".5" tabCur="{{tab}}" size="92" bindchange="tabChange" />
+    </view>
+    <swiper class="swiper flex-1" duration="200" bindchange="tabChange" current="{{tab}}">
+        <swiper-item wx:for="{{tabs}}" wx:key="index">
+            <scroll class="scroll-view" id="scroll{{index}}" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!item.list.length && item.last_page}}" emptyText="暂无任何数据" needBttm="{{item.list.length >= 4}}">
+                <view class="list p-l-30 p-r-30 p-t-30">
+                    <navigator hover-class="none" url="./detail?id={{list.id}}" wx:for="{{item.list}}" wx:for-item="list" wx:for-key="l_index" wx:key="l_index">
+                        <view class="item flex m-b-40" wx:if="{{list.img && list.img.url}}">
+                            <image class="item-banner m-r-20" src="{{host + list.img.url}}" mode="aspectFill"></image>
+                            <view class="item-main flex flex-column p-t-10 p-b-10">
+                                <view class="title fs-28 color-333 ellipsis2">{{list.title}}</view>
+                                <view class="flex-1 flex">
+                                    <view class="price-view-count space-between flex color-666 fs-24 align-self-end full-block">
+                                        <view class="auth">{{list.author}}</view>
+                                        <view class="time">{{list.created_at}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="item m-b-40" wx:else>
+                            <view class="title fs-32 fw-5 color-333 ellipsis2 m-b-20">{{list.title}}</view>
+                            <view class="auth-time align-self-end flex align-items-center space-between color-666 fs-24">
+                                <view class="auth">{{list.author}}</view>
+                                <view class="time">{{list.created_at}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </scroll>
+        </swiper-item>
+    </swiper>
+</view>

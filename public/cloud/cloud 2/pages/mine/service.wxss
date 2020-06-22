@@ -1,0 +1,25 @@
+/* pages/mine/service.wxss */
+page {
+    background: #F3F4F4;
+}
+
+.avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+
+.intro {
+    padding: 70rpx 115rpx 70rpx;
+}
+
+.call {
+    width: 630rpx;
+    height: 88rpx;
+    background: rgba(4, 167, 169, 1);
+    border-radius: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 170rpx auto 0;
+}

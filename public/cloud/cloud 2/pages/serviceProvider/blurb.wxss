@@ -1,0 +1,34 @@
+/* pages/authen/serviceProvider/blurb.wxss */
+.wrap{
+    padding: 0 30rpx;
+}
+.wrap .title{
+    color: #333;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-top: 40rpx;
+}
+.formGroup textarea{
+    border-radius: 10rpx;
+    background:#f8f8f8;
+    font-size: 26rpx;
+    line-height: 48rpx;
+    padding:50rpx 26rpx;
+    width: 100%;
+    height: 640rpx;
+    margin-bottom: 120rpx;
+    margin-top: 40rpx;
+}
+.submit .btn{
+    width: 630rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 300rpx;
+    background: #04a7a9;
+    display: block;
+    padding: 0;
+    margin-bottom: 90rpx;
+}

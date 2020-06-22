@@ -1,0 +1,9 @@
+/* pages/index/services.wxss */
+.demands-block{
+	width: 100vw;
+	height: 100vh;
+	background: #F3F4F4;
+}
+.search-filter-block{
+	z-index: 1;
+}

@@ -1,0 +1,59 @@
+<!-- <view class="partner-block p-t-40 p-l-30 p-r-30">
+	<view id="buy" catchtap="toSubmitForm" class="is-institution m-t-40 relative">
+		<image class="bg-banner buy" src="/images/sell.png"></image>
+		<view class="contetn flex align-items-center absolute">
+			<view class="type flex-1 color-fff">
+				<view class="cn">买卖</view>
+			</view>
+		</view>
+	</view>
+	<view id="rent" catchtap="toSubmitForm" class="is-person m-t-60 relative">
+		<image class="bg-banner rent" src="/images/rent.png"></image>
+		<view class="contetn flex align-items-center absolute">
+			<view class="type flex-1 color-fff">
+				<view class="cn">租赁</view>
+			</view>
+		</view>
+	</view>
+</view> -->
+
+<view class="wrapper">
+  <image class="header-img" src="https://zhaogu.arnny.net/uploads/ueditor/php/upload/image/20200614/1592130177653140.png"></image>
+  <view style="margin-top:-40rpx">
+  
+    <view class="item-wrap"  wx:key="" catchtap="toSubmitForm" id="{{item}}">
+      <view class="item-content">
+        <view class="item-left">
+          <image class="item-img" src="/images/fbmm.png"></image>
+          <view class="item-mes">
+            <view class="item-name">发布买卖</view>
+            <view class="item-en">马上发布，快速方便~</view>
+            <view class="btn-wrap">
+              <view class="btn-common btn1" catchtap="toSubmit" data-flag="{{'sell'}}">转让</view>
+              <view class="btn-common btn2" catchtap="toSubmit" data-flag="{{'buy'}}">求购</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="item-wrap"  wx:key="" catchtap="toSubmitForm" id="{{item}}">
+      <view class="item-content">
+        <view class="item-left">
+          <image class="item-img" src="/images/fbzl.png"></image>
+          <view class="item-mes">
+            <view class="item-name">发布租赁</view>
+            <view class="item-en">马上发布，快速方便~</view>
+            <view class="btn-wrap">
+              <view class="btn-common btn1" catchtap="toSubmit" data-flag="{{'rent'}}">出租</view>
+              <view class="btn-common btn2" catchtap="toSubmit" data-flag="{{'tenant'}}">求租</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+

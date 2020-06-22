@@ -1,0 +1,7 @@
+{
+  "disableScroll":true,
+  "navigationBarTitleText": "项目",
+  "usingComponents":{
+    "scroll":"/components/scroll/index"
+  }
+}

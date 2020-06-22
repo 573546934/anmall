@@ -1,0 +1,94 @@
+/* pages/authen/serviceProvider/mainBusiness.wxss */
+.wrap{
+    padding: 0 30rpx;
+}
+.wrap .title{
+    color: #333;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-top: 40rpx;
+}
+.wrap .title text{
+    font-size: 26rpx;
+    color: #999;
+    font-weight: normal;
+}
+.submit .btn{
+    width: 630rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 300rpx;
+    background: #04a7a9;
+    display: block;
+    padding: 0;
+    margin-bottom: 90rpx;
+    margin-top: 40rpx;
+}
+
+.ckeckedItem .checkedClass{
+    font-size: 30rpx;
+    color: #333;
+    height: 125rpx;
+    line-height: 125rpx;
+}
+.ckeckedItem .checkedClass text{
+    font-size: 26rpx;
+    color: #999;
+}
+.ckeckedItem  label{
+    margin-right: 20rpx;
+    color:#3e4144;
+    display:inline-block;
+    width: 210rpx;
+     height: 60rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    background: #f8f8f8;
+    position: relative;
+    margin-bottom: 20rpx;
+  padding: 0;
+
+}
+.ckeckedItem  label:nth-of-type(3n){
+    margin-right: 0;
+}
+.ckeckedItem  text{
+    display: block;
+    width: 210rpx;
+    height: 60rpx;
+    line-height: 70rpx;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+    background: transparent;
+  padding: 0;
+
+
+}
+
+checkbox .wx-checkbox-input {
+  width: 210rpx;
+  border: 0;
+  height: 60rpx;
+  background: #f8f8f8;
+  padding: 0;
+}
+ 
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #04a7a9;
+  border: 0;
+}
+ 
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 210rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 0;
+  color: #fff;
+  background: transparent;
+}

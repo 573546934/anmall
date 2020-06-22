@@ -1,0 +1,219 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": false,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.11.1",
+	"appid": "wxf44e6f10ce42b451",
+	"projectname": "cloud",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/project/detail",
+					"pathName": "pages/project/detail",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/news/index",
+					"pathName": "pages/news/index",
+					"query": "id=51",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/service",
+					"pathName": "pages/mine/service",
+					"query": "id=51",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/mine/profile",
+					"pathName": "pages/mine/profile",
+					"query": "id=13",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/index",
+					"pathName": "pages/mine/index",
+					"query": "id=13",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/project/list",
+					"pathName": "pages/project/list",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/login",
+					"pathName": "pages/mine/login",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/search",
+					"pathName": "pages/index/search",
+					"query": "params=newsList",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/community/index",
+					"pathName": "pages/community/live",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/nameCard",
+					"pathName": "pages/mine/nameCard",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/propertyOwner/index",
+					"pathName": "pages/propertyOwner/index",
+					"query": "id=11",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/type",
+					"pathName": "pages/mine/type",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/demand/push",
+					"pathName": "pages/demand/push",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "公司信息",
+					"pathName": "pages/serviceProvider/companyMsg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/community/partner",
+					"pathName": "pages/community/partner",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "业务描述",
+					"pathName": "pages/serviceProvider/serviceDesc",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提交",
+					"pathName": "pages/serviceProvider/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "主营业务",
+					"pathName": "pages/serviceProvider/mainBusiness",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公司简介",
+					"pathName": "pages/serviceProvider/blurb",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "联系人信息",
+					"pathName": "pages/serviceProvider/contactMsg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/city",
+					"pathName": "pages/index/city",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/brand",
+					"pathName": "pages/index/brand",
+					"query": "id=2",
+					"scene": null
+				}
+			]
+		}
+	}
+}

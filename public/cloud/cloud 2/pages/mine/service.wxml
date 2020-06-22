@@ -1,0 +1,12 @@
+<!--pages/mine/service.wxml-->
+<view class="service-block">
+    <view class="service-info bg-fff flex flex-column align-items-center justify-contnet-center">
+        <image class="avatar" src="{{data.img?(host+data.img.url):'/images/icons/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="name color-333 fs-32 m-t-20">{{data.name}}</view>
+        <view class="type color-04A7A9 fs-28 m-b-30">{{data.position}}</view>
+        <view class="intro fs-28 color-999">
+            <text decode space="nbsp">{{data.introduction}}</text>
+        </view>
+    </view>
+    <view class="call color-fff fs-32 fw-6" catchtap="makePhoneCall">立即咨询</view>
+</view>

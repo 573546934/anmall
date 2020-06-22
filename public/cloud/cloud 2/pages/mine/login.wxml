@@ -1,0 +1,17 @@
+<!--pages/mine/login.wxml-->
+<image class="auth-bg" mode="widthFix" src="/images/auth-bg.png"></image>
+<view class="auth-block text-center">
+	<view class="title">请先登录</view>
+	<view class="tips">登录后即可查看更多海外项目</view>
+	<button class="auth" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{select}}">微信授权登录</button>
+	<button class="auth" catchtap="tapBtn" data-flag="auth" wx:else>微信授权登录</button>
+	<button class="cancel" catchtap="tapBtn" data-flag="cancel">暂不登录</button>
+	<view class="assigment fs-28 flex align-items-center justify-content-center m-t-30">
+		<image class="slected-icon m-r-20" catchtap="toggleSelect" mode="aspectFill" src="/images/icons/{{select?'':'un'}}selected.png"></image>
+		<view class="assigment-text" catchtap="toggleSelect">阅读并同意</view>
+		<view class="protocol">《用户使用协议》</view>
+		<view class="protocol">《隐私协议》</view>
+	</view>
+	<view class="holder p-t-40 p-b-40"></view>
+	<view class="ipx-holder" wx:if="{{isIPX}}"></view>
+</view>

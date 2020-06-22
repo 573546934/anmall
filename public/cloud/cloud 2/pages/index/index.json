@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+  	"search":"/components/search/search",
+  	"scroll":"/components/scroll/index"
+  }
+}

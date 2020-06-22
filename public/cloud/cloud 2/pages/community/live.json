@@ -1,0 +1,8 @@
+{
+  "disableScroll":true,
+  "usingComponents":{
+    "scroll":"/components/scroll/index",
+    "tab":"/components/tab/index",
+    "search":"/components/search/search"
+  }
+}

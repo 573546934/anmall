@@ -1,0 +1,39 @@
+<!--pages/community/live.wxml-->
+<view class="lives flex flex-column">
+    <view class="tabs-search-block">
+        <view class="search-block p-l-30 p-t-20 p-b-20 p-r-30">
+            <search placeholder="搜索关键词" />
+        </view>
+        <view class="tabs-area border-box relative">
+            <view class="mask absolute" wx:if="{{disabled}}"></view>
+            <tab id="tabs" tab-data="{{tabs}}" color="#04A7A9" scale=".3" tabCur="{{tab}}" size="92" bindchange="tabChange" />
+        </view>
+    </view>
+    <swiper class="swiper flex-1" duration="200" bindchange="tabChange" current="{{tab}}">
+        <swiper-item wx:for="{{tabs}}" wx:key="index">
+            <scroll class="scroll-view" id="scroll{{index}}" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!item.list.length && item.last_page}}" emptyText="暂无任何数据" needBttm="{{item.list.length >= 6}}">
+                <view class="list p-l-30 p-r-30 p-t-30">
+                    <navigator hover-class="none" url="./liveDetail" class="item flex m-b-30 content-box" wx:for="{{item.list}}" wx:for="{{item.list}}" wx:for-item="list" wx:for-key="l_index" wx:key="l_index">
+                        <view class="banner-block relative">
+                            <image class="banner" src="{{host + list.img.url}}" mode="aspectFill"></image>
+                            <image class="status-icon absolute" src="/images/icons/living-icon.png" wx:if="{{item.status == 1}}"></image>
+                        </view>
+                        <view class="item-main flex flex-column">
+                            <view class="title fs-32 fw-5 color-333 ellipsis">{{list.title}}</view>
+                            <view class="auth-time ellipsis color-666 fs-20 m-t-5" wx:if="{{list.author || list.live_time}}">
+                                <text class="auth m-r-10">讲师:{{list.author || ''}}</text>
+                                <text class="time">{{list.live_time||''}}</text>
+                            </view>
+                            <view class="flex-1 flex">
+                                <view class="price-view-count flex fs-22 fs-24 align-self-end full-block">
+                                    <view class="status m-r-10 color-04A7A9">{{list.status||'已结束'}}</view>
+                                    <view class="viewed color-666">230人已浏览</view>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </scroll>
+        </swiper-item>
+    </swiper>
+</view>

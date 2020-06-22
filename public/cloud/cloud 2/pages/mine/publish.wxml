@@ -1,0 +1,31 @@
+<!--pages/mine/publish.wxml-->
+<view class="publish-block p-l-30 p-r-30">
+    <view class="form-block">
+        <block wx:for="{{form}}" wx:key="index">
+            <view data-index="{{index}}" catchtap="focusIt" class="form-item flex align-items-center p-t-40 p-b-40" wx:if="{{item.flag == 'deal_price' || item.flag == 'deal_type'}}">
+                <view class="col-label fs-32 color-333">
+                    {{item.label}} <text class="require" wx:if="{{item.require}}">*</text>
+                </view>
+                <view class="col-value flex-1 flex align-items-center fs-32 color-333">
+                    <input value="{{item.value}}" type="{{item.flag == 'deal_price'?'digit':''}}" data-index="{{index}}" bindinput="syncInput" focus="{{item.focus}}" class="full-block text-right" placeholder-class="color-999" placeholder="请输入" />
+                </view>
+            </view>
+            <picker mode="{{item.flag == 'deal_date'?'date':'selector'}}" range="{{item.flag == 'id'?projects:null}}" data-index="{{index}}" bindchange="pickChange" range-key="{{item.flag == 'id'?'title':null}}" class="full-block" wx:else>
+                <view class="form-item flex align-items-center p-t-40 p-b-40">
+                    <view class="col-label fs-32 color-333">
+                        {{item.label}} <text class="require" wx:if="{{item.require}}">*</text>
+                    </view>
+                    <view class="col-value flex-1 flex align-items-center fs-32 {{item.value?'color-333':'color-999'}}">
+                        <input disabled value="{{ item.value?(item.flag == 'id'?projects[item.value].title:item.value):'请选择'}}" class="flex-1 text-right ellipsis"></input>
+                        <view class="iconfont icon-right color-c7c7c7 m-l-10 fs-28"></view>
+                    </view>
+                </view>
+            </picker>
+        </block>
+    </view>
+    <view class="tips m-t-30 fs-20 color-04A7A9">温馨提示：佣金额度以线下居间协议为准，待核实之后佣金会发放到您预留的银行账户内，核实时间约为5-10个工作日，请您关注账户信息</view>
+    <view class="submit p-l-30 p-r-30">
+        <view class="btn btn-publish btn-save fs-32 fw-6 color-fff" catchtap="submit">提交</view>
+    </view>
+    <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+</view>

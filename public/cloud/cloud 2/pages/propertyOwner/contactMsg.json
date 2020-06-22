@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "联系人信息",
+    "usingComponents":{
+    	"miniprogram-picker": "/components/miniprogram-picker/index"
+    }
+}

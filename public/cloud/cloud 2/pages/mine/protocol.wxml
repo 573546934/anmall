@@ -1,0 +1,10 @@
+<!--pages/mine/protocol.wxml-->
+<view class="protocol p-l-30 p-r-30">
+	<view class="title text-center fs-32 fw-6 color-333 p-b-30 p-t-30">{{data.title}}</view>
+	<view class="content fs-28 color-999">
+		<text decode space="nbsp">
+			{{data.description}}
+		</text>
+	</view>
+	<view class="ipx-holder" wx:if="{{isIPX}}"></view>
+</view>

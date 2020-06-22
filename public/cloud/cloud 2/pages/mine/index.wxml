@@ -1,0 +1,58 @@
+<!--pages/mine/index.wxml-->
+<view class="avatar-block bg-fff flex align-items-center" data-url="./profile" catchtap="naigateIt">
+    <image class="avatar" src="{{member.avatar||'/images/icons/icon_morentouxiang@2x.png'}}"></image>
+    <view class="main flex-1">
+        <view class="name-auth flex align-items-center">
+            <view class="name fs-36 color-3E4144">{{member.nickname||'匿名用户'}}</view>
+            <view class="auth-label m-l-20 {{member.type > 1?'authed':'unauth'}} flex align-items-center">
+                <view class="text">{{member.type > 1?'已实名认证':'待实名认证'}}</view>
+            </view>
+        </view>
+        <view class="phone fs-28 color-999">{{member.phone || ''}}</view>
+        <view class="type fs-26 color-999">{{member.identity_name||''}}</view>
+    </view>
+    <view class="iconfont icon-right color-999 m-l-40"></view>
+</view>
+<block wx:if="{{member.type == 3}}">
+    <view class="for-manager p-l-30 p-r-30">
+        <view class="rights-block content-box p-t-30 p-b-30 p-l-30 p-r-30 m-t-20">
+            <view class="title fs-32 color-333 fw-5 m-b-40">我的权益</view>
+            <view class="rights flex">
+                <view class="right flex-1 flex flex-column align-items-center justify-content-center" data-url="{{item.nav}}" catchtap="naigateIt" wx:for="{{rights}}" wx:key="index">
+                    <view class="right-icon-block flex align-items-center justify-content-center">
+                        <image class="icon" src="{{item.icon}}" mode="widthFix"></image>
+                    </view>
+                    <view class="text fs-24 color-3E4144 m-t-10">{{item.label}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="rights-block content-box p-t-30 p-b-30 p-l-30 p-r-30 m-t-20">
+            <view class="title fs-32 color-333 fw-5 m-b-40">我的项目</view>
+            <view class="rights flex">
+                <view class="right flex-1 flex flex-column align-items-center justify-content-center" data-url="{{item.nav}}" catchtap="naigateIt" wx:for="{{myProjects}}" wx:key="index">
+                    <view class="right-icon-block flex align-items-center justify-content-center">
+                        <image class="icon" src="{{item.icon}}" mode="widthFix"></image>
+                    </view>
+                    <view class="text fs-24 color-3E4144 m-t-10">{{item.label}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
+<view class="extra-services-area p-t-20 p-l-30 p-r-30">
+    <view class="content-box shadow-box services p-l-30 p-r-30">
+        <block wx:for="{{extraServices}}" wx:key="index">
+            <view data-url="{{item.nav}}" data-auth="{{item.auth}}" catchtap="naigateIt" class="service border-box flex align-items-center space-between p-t-40 p-b-40 {{index < extraServices.length-1?'split-line':''}}" wx:if="{{member.type == item.flag || !item.flag}}">
+                <view class="text-icon flex align-items-center">
+                    <view class="icon-block m-r-20 flex align-items-center justify-content-center">
+                        <image class="icon" mode="widthFix" src="{{item.icon}}"></image>
+                    </view>
+                    <view class="text fs-32 color-333">{{item.label}}</view>
+                </view>
+                <view class="iconfont icon-right fs-26 color-c7c7c7 nav-icon"></view>
+            </view>
+        </block>
+    </view>
+</view>
+<view class="holder p-t-40 p-b-40"></view>
+<view class="ipx-holder" wx:if="{{isIPX}}"></view>

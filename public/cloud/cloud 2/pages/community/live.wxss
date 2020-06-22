@@ -1,0 +1,40 @@
+/* pages/community/live.wxss */
+.lives {
+    width: 100vw;
+    height: 100vh;
+}
+
+.swiper {
+    background: #f9f9f9;
+}
+
+.item {
+    padding: 50rpx 30rpx;
+}
+
+.banner-block {
+    width: 210rpx;
+    height: 160rpx;
+    margin-right: 50rpx;
+}
+
+.m-t-5 {
+    margin-top: 5rpx;
+}
+
+.banner {
+    width: calc(100%);
+    height: calc(100%);
+    vertical-align: middle;
+    border-radius: 8rpx;
+}
+.status-icon{
+	width: 20rpx;
+	height: 20rpx;
+	vertical-align: middle;
+	left: 10rpx;
+	top: 8rpx;
+}
+.item-main {
+    width: calc(100% - 260rpx);
+}

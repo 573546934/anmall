@@ -1,0 +1,14 @@
+<!--pages/demand/type.wxml-->
+<view class="type-block p-t-40 p-l-30 p-r-30">
+	<view class="title color-333 fw-5 fs-36 m-b-40">选择发布需求类型</view>
+	<view class="main-block">
+		<view catchtap="toSubmit" data-flag="{{type=='buy'?'buy':'rent'}}" class="item content-box flex align-items-center space-between p-l-40 p-r-40">
+			<view class="text fs-32 color-333 fw-5">{{type=='buy'?'想买':'出租'}}</view>
+			<view class="nav-icon fs-24 iconfont icon-right"></view>
+		</view>
+		<view catchtap="toSubmit" data-flag="{{type=='buy'?'sell':'tenant'}}" class="item content-box flex align-items-center space-between p-l-40 p-r-40 m-t-20">
+			<view class="text fs-32 color-333 fw-5">{{type=='buy'?'想卖':'求租'}}</view>
+			<view class="nav-icon fs-24 iconfont icon-right"></view>
+		</view>
+	</view>
+</view>

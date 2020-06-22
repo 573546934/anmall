@@ -1,0 +1,221 @@
+<!--pages/mine/certification.wxml-->
+<!-- <view class="container flex flex-column">
+    <view class="tabs-area-title flex flex-column bg-fff">
+        <view class="title fs-32 color-333 p-t-30">请选择申请类型</view>
+        <view class="tabs-area border-box flex-1">
+            <tab id="tabs" tab-data="{{tabs}}" color="#04A7A9" scale=".6" tabCur="{{tab}}" size="92" bindchange="tabChange" />
+        </view>
+    </view>
+    <swiper class="swiper flex-1" duration="200" bindchange="tabChange" current="{{tab}}">
+        <swiper-item wx:for="{{tabs}}" wx:key="index">
+            <scroll-view scroll-y="{{true}}">
+                <image mode="widthFix" class="manager-banner" src="{{item.banner}}"></image>
+                <view class="manager-block" wx:if="{{item.value == 'manager'}}">
+                    <view class="manager-main p-l-20 p-r-20">
+                        <view class="manager-content content-box">
+                            <view class="manager-steps flex align-items-center">
+                                <view class="step flex-1 flex flex-column align-items-center justify-content-center" wx:for="{{item.steps}}" wx:for-item="step" wx:key="index">
+                                    <image class="step-icon m-b-20" src="{{step.icon}}"></image>
+                                    <view class="titles text-center fw-6">
+                                        <view class="title fs-28 color-f1832a">{{step.title}}</view>
+                                        <view class="sub-title fs-24 color-74777b">{{step.sub_title}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="rules-area">
+                                <view class="title-area flex align-items-center justify-content-center">
+                                    <image class="rule-title-img" src="/images/icons/manager-rule.png"></image>
+                                </view>
+                                <view class="rules-content color-C0AC90">
+                                    <view class="rule p-b-30 m-t-30" wx:for="{{item.rules}}" wx:key="index">
+                                        <text decode="{{true}}">{{item.text}}</text>
+                                    </view>
+                                </view>
+                                <view class="agreement flex align-items-center justify-content-center">
+                                    <image class="agreement-icon" src="/images/icons/{{item.selected?'selected':'unselected'}}.png" catchtap="toggleSelect"></image>
+                                    <view class="agreement-text fs-28">同意《XXX协议》</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="button-area p-t-40 p-b-40 p-l-40 p-r-40">
+                        <view class="btn btn-publish btn-save" catchtap="toBeManager">成为经纪人</view>
+                    </view>
+                </view>
+                <view class="owner-block" wx:if="{{item.value == 'owner'}}">
+                    <view class="owner-main p-l-20 p-r-20">
+                        <view class="rights content-box flex space-around flex-wrap p-l-20 p-r-20 p-t-40 p-b-30">
+                            <view style="width:{{index < 2?'calc(50%)':'auto'}}" class="{{index < 2?'m-t-10':'m-b-10'}} p-b-40 right flex flex-column align-items-center justify-content-center" wx:for="{{item.rights}}" wx:key="index">
+                                <image class="right-icon" src="{{item.icon}}"></image>
+                                <view class="right-text fs-28 fw-5 m-t-10 color-3E4144">第{{index+1}}权益</view>
+                            </view>
+                        </view>
+                        <view class="form-area m-t-20 content-box p-t-40 p-l-40">
+                            <view class="title-area fw-5 fs-32 color-333">第一步：完善企业信息</view>
+                            <view class="forms">
+                                <view class="form-item row fs-32 p-t-40 p-b-40 p-l-10 p-r-40 flex align-items-center color-333" wx:for="{{item.forms}}" wx:key="index">
+                                    <view class="col-left">{{item.label}}<text class="require color-EC0000" wx:if="{{item.require}}">*</text></view>
+                                    <view class="is-picker flex-1 flex align-items-center" wx:if="{{item.is_picker}}">
+                                        <picker id="{{index}}" mode="region" class="flex-1">
+                                            <view class="pick-text text-right {{item.value?'':'color-999'}}">{{item.value||'请选择'}}</view>
+                                        </picker>
+                                        <image class="more-icon m-l-10" src="/images/icons/navigator-arrow.png"></image>
+                                    </view>
+                                    <input id="{{index}}" class="col-right text-right flex-1" type="text" wx:else placeholder="请输入" placeholder-class="color-999" />
+                                </view>
+                            </view>
+                        </view>
+                        <view class="upload-logo-area m-t-20">
+                            <view class="upload-logo content-box p-l-40 p-r-40 p-t-40">
+                                <view class="title-area fs-32 color-333 fw-5">第二步：上传企业logo</view>
+                                <view class="tips-area fs-28 color-999 m-t-20">仅限jpg,png,jpeg,gif格式，文件大小不超过2M</view>
+                                <view class="upload-logo flex p-t-40 p-b-40">
+                                    <view class="logo-img"></view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="type-area m-t-20 content-box">
+                            <view class="title-area fs-32 color-333 fw-5">资产类型（选填）</view>
+                            <view class="types flex flex-wrap space-between m-t-20">
+                                <view class="type-item flex align-items-center" wx:for="{{item.types}}" wx:key="index">
+                                    <image class="agreement-icon" src="/images/icons/{{item.selected?'selected':'unselected'}}.png" catchtap="toggleSelect"></image>
+                                    <view class="type-label fs-32 color-333">{{item.label}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="labels-area m-t-20 content-box p-t-40 p-l-40 p-r-40 p-b-40">
+                            <view class="title-area fs-32 color-333 fw-5 m-b-40">资产标签（选填）</view>
+                            <view class="input-label-area flex flex-wrap space-between">
+                                <view class="input-label-box {{item.add?'justify-content-center':''}} flex align-items-center border-box p-t-20 p-b-20 p-l-40 p-r-40 m-b-20 fs-28 color-333" wx:for="{{item.labels}}" wx:key="index">
+                                    <input type="text" class="flex-1" value="{{item.label}}" placeholder="请输入……" placeholder-class="color-999" wx:if="{{!item.add}}" />
+                                    <view class="add-more fs-28 color-999" wx:else>+添加</view>
+                                </view>
+                            </view>
+                            <view class="tips fs-28 color-999">不多于6个汉字，如：国资背景，基金牌照，百强开发商…</view>
+                        </view>
+                        <view class="company-short-intro-area m-t-20 content-box p-t-40 p-b-40 p-r-40 p-l-40">
+                            <view class="title-area fs-32 color-333 fw-5 m-b-20">企业简介（选填）</view>
+                            <textarea class="company-short-intro fs-28 color-333" value="{{item.company_short_intro}}" placeholder="请描述项目的债务情况，包括但不限于借款金额、借款期限、还款情况~" placeholder-class="fs-28 color-999"></textarea>
+                        </view>
+                        <view class="project-case-area m-t-20  content-box">
+                            <view class="title-area fs-32 color-333 fw-5 m-b-20">项目案例（选填）</view>
+                            <view class="tips fs-28 color-999">此处可填写：项目收并购案例、合作企业等</view>
+                            <view class="cases-block">
+                                <view class="cases m-t-40" wx:for="{{item.cases}}" wx:key="index">
+                                    <view class="input-row border-box p-t-10 p-b-10 p-l-30 p-r-30 m-b-20">
+                                        <input type="text" class=" title fs-28 color-333" placeholder="标题" placeholder-class="fs-28 color-999" value="{{item.title}}" />
+                                    </view>
+                                    <view class="upload-area flex align-items-center justify-content-center m-b-20">
+                                        <view class="upload-ppt-btn flex flex-column justify-content-center align-items-center">
+                                            <image class="add-icon m-b-20" src="/images/icons/unselected.png"></image>
+                                            <view class="upload-ppt-text fs-28 color-333">点击上传</view>
+                                        </view>
+                                    </view>
+                                    <textarea class="company-short-intro fs-28 color-333" value="{{item.desc}}" placeholder="请添加项目描述~" placeholder-class="fs-28 color-999"></textarea>
+                                </view>
+                                <view class="add-more-case m-t-20 fs-32 color-333 flex align-items-center justify-content-center">+新增案例</view>
+                            </view>
+                        </view>
+                        <view class="owner-agreement p-t-20 p-b-40 flex align-items-center justify-content-center">
+                            <image class="agreement-icon" src="/images/icons/{{item.selected?'selected':'unselected'}}.png" catchtap="toggleSelect"></image>
+                            <view class="agreement-text fs-28">同意《XXX协议》</view>
+                        </view>
+                        <view class="button-area p-b-40 p-l-40 p-r-40">
+                            <view class="btn btn-publish btn-save m-b-40" catchtap="submitOwnerForm">提交申请人信息</view>
+                            <view class="p-t-20"></view>
+                        </view>
+                    </view>
+                </view>
+                <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view> -->
+<view class="form-block p-l-30 p-r-30">
+    <view class="forms">
+        <block wx:for="{{form}}" wx:key="index">
+            <view class="form-item-block" data-index="{{index}}" catchtap="focusFun" wx:if="{{item.type == 'text' || item.type == 'idcard'}}">
+                <view class="form-item fs-32 p-l-10 p-r-10 p-t-40 p-b-40 flex align-items-center">
+                    <view class="col-label text color-333">
+                        {{item.label}}<text wx:if="{{item.require}}" class="require">*</text>
+                    </view>
+                    <view class="col-value flex-1 text-right">
+                        <input type="{{item.type}}" focus="{{item.focus}}" class="color-333" value="{{item.value}}" bindinput="syncInput" data-index="{{index}}" placeholder="请输入" placeholder-class="color-999" />
+                    </view>
+                </view>
+                <view class="split"></view>
+            </view>
+            <navigator hover-class="none" url="{{item.nav}}&action={{action}}" class="form-item-block" wx:if="{{item.type == 'nav'}}">
+                <view class="form-item fs-32 nav p-l-10 p-r-10 p-t-40 p-b-40 flex align-items-center">
+                    <view class="col-label color-333">
+                        {{item.label}}<text wx:if="{{item.require}}" class="require">*</text>
+                    </view>
+                    <view class="col-value flex-1 flex align-items-center">
+                        <view class="flex-1 text-right {{item.value?'color-333':'color-999'}}">{{item.value?'已上传':'请选择'}}</view>
+                        <view class="iconfont icon-right color-c7c7c7 fs-30 m-l-10"></view>
+                    </view>
+                </view>
+                <view class="split"></view>
+            </navigator>
+            <view catchtap="uploadFun" data-index="{{index}}" class="form-item-block" wx:if="{{item.type == 'avatar'}}">
+                <view class="form-item fs-32 nav p-l-10 p-r-10 p-t-40 p-b-40 flex align-items-center">
+                    <view class="col-label color-333">
+                        {{item.label}}<text wx:if="{{item.require}}" class="require">*</text>
+                    </view>
+                    <view class="col-value flex-1 flex align-items-center">
+                        <view class="flex-1 text-right {{item.value?'color-333':'color-999'}}">{{item.value?'已上传':'请选择'}}</view>
+                        <view class="iconfont icon-right color-c7c7c7 fs-30 m-l-10"></view>
+                    </view>
+                </view>
+                <view class="split"></view>
+            </view>
+            <view class="form-item-block" wx:if="{{item.type == 'radio'}}">
+                <view class="form-item fs-32 radio p-l-10 p-r-10 p-t-40 p-b-40 flex align-items-center">
+                    <view class="col-label color-333">
+                        {{item.label}}<text wx:if="{{item.require}}" class="require">*</text>
+                    </view>
+                    <view class="col-value color-999 flex-1 flex align-items-center justify-content-end">
+                        <view class="male flex align-items-center m-r-30" data-index="{{index}}" catchtap="tapGender" data-id="1">
+                            <image class="radio-icon m-r-10" src="/images/icons/{{item.value===1?'selected':'unselected'}}.png"></image>
+                            <view class="text">男</view>
+                        </view>
+                        <view class="fe-male flex align-items-center" data-index="{{index}}" catchtap="tapGender" data-id="2">
+                            <image class="radio-icon m-r-10" src="/images/icons/{{item.value===2?'selected':'unselected'}}.png"></image>
+                            <view class="text">女</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="split"></view>
+            </view>
+            <view class="form-item-block" wx:if="{{item.type == 'upload'}}">
+                <view class="form-item p-t-40 fs-32 p-b-10">
+                    <view class="col-label  color-333 m-b-30">
+                        {{item.label}}<text wx:if="{{item.require}}" class="require">*</text>
+                    </view>
+                    <view class="col-tips color-999 m-b-30" wx:if="{{item.tips}}">{{item.tips}}</view>
+                    <view class="col-upload flex flex-column align-items-center justify-content-center" catchtap="uploadFun" data-index="{{index}}">
+                        <block wx:if="{{!item.value}}">
+                            <image class="default full-block" mode="widthFix" src="/images/icons/id-top.png"></image>
+                        </block>
+                        <block wx:else>
+                            <image class="full-block" mode="widthFix" src="{{host + item.value.url}}"></image>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="form-item-block" wx:if="{{item.type == 'assignment'}}">
+                <view class="form-item flex align-items-center justify-content-center fs-32 p-b-40 p-t-10">
+                    <view class="p-l-30 p-t-30 p-b-30 p-r-10" data-index="{{index}}" catchtap="toggleFun">
+                        <image class="radio-icon" src="/images/icons/{{item.value?'selected':'unselected'}}.png"></image>
+                    </view>
+                    <navigator hover-class="none" url="/pages/mine/protocol?title=隐私政策" class="fs-28 color-126FDD">{{item.label}}</navigator>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="submit p-l-30 p-b-40 p-r-30">
+        <view class="btn btn-publish btn-save fs-32 fw-6 color-fff" catchtap="submit">提交</view>
+        <view class="p-t30 p-b-30"></view>
+    </view>
+    <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+</view>

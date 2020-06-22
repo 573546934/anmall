@@ -1,0 +1,52 @@
+<!--pages/authen/management/contactMsg.wxml-->
+<view class="wrap">
+    <view class="title">联系人信息</view>
+    <form catchsubmit="formSubmit" class="formGroup">
+        <view class="itemInput">
+            <label>真实姓名<text>*</text></label>
+            <input placeholder="请输入"></input>
+        </view>
+        <view class="itemInput">
+            <label>性别<text>*</text></label>
+            <radio-group name="sex">
+                <label><radio color="#04a7a9" value="nan"/>男</label>
+                <label><radio color="#04a7a9" value="nv"/>女</label>
+            </radio-group>
+        </view>
+        <view class="itemInput">
+            <label>联系电话<text>*</text></label>
+            <input placeholder="请输入"></input>
+        </view>
+        <view class="itemInput">
+            <label>所在城市</label>
+            <input placeholder="请输入"></input>
+        </view>
+        <view class="itemInput">
+            <label>公司简称</label>
+            <picker bindchange="companyChange" value="{{index}}" range="{{array}}">
+                <view class="picker">
+                {{default}}<text class="iconfont icon-right"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="itemInput">
+            <label>您的职务</label>
+            <input placeholder="请输入"></input>
+        </view>
+        <view class="uploadImg">
+            <text class="uploadT">上传名片</text>
+            <text class="uploadTip">仅限jpg,png,jpeg,gif格式，文件大小不超过2M</text>
+            <view class="upImg">
+                <view class="addimg" hidden="{{isAdd}}"><image src="{{imgSrc}}"></image></view>
+                <view class="clickUpload" hidden="{{!isAdd}}" bindtap="uploadImg">
+                    <image src="/images/icons/addImg.png"></image>
+                    <text>点击上传图片</text>
+                </view>
+            </view>
+        </view>
+        
+       <view class="submit">
+        <button class="btn">提交</button>
+    </view>
+    </form>
+</view>

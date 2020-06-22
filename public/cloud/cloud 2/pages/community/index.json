@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "云+社区",
+    "disableScroll":true,
+    "usingComponents":
+    {
+    	"search":"/components/search/search",
+    	"scroll":"/components/scroll/index"
+    }
+}

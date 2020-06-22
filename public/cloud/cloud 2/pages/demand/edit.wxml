@@ -1,0 +1,37 @@
+<!--pages/demand/form.wxml-->
+<view class="form-block p-t-40 p-l-30 p-r-30 p-b-40">
+    <view class="title fs-32 fw-5 color-333">请填写您的信息</view>
+    <view class="forms">
+        <view class="form-item flex fs-32 p-t-40 p-b-40" catchtap="tapFormItem" data-item="{{item}}" data-index="{{index}}" wx:for="{{form}}" wx:key="index">
+            <view class="col-label flex align-items-center">
+                <view class="text color-333">{{item.flag == 'price'?(flag == 'buy' || flag == 'tenant'?'预算':'报价'):item.label}}</view>
+                <view class="require" wx:if="{{item.require}}">*</view>
+            </view>
+            <view class="col-value flex align-items-center text-right flex-1">
+                <input value="{{item.value}}" bindinput="syncInput" data-index="{{index}}" class="flex-1" focus="{{item.focus}}" type="{{item.type}}" placeholder-class="color-999" placeholder="请输入" wx:if="{{item.type != 'action'}}" />
+                <block wx:else>
+                    <picker class="full-block" range="{{city.value}}" range-key="name" data-index="{{index}}" bindchange="selectCity">
+                        <view class="picker full-block flex align-items-center">
+                            <view class="value flex-1 {{item.value?'color-333':'color-999'}}">{{item.value||'请选择'}}</view>
+                            <view class="iconfont icon-right fs-28 m-l-10 color-c7c7c7"></view>
+                        </view>
+                    </picker>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="type-block m-t-40" wx:if="{{assets_type}}">
+        <view class="title fs-32 fw-5 color-333">选择物业类型</view>
+        <view class="types flex flex-wrap p-t-20 p-l-10 p-r-10">
+            <view class="type-item {{item.select?'active':''}} m-t-20 {{(index+1)%3 == 0?'':'m-r-20'}}" wx:for="{{assets_type.value}}" wx:key="index" data-index="{{index}}" catchtap="selectAssetsType">{{item.name}}</view>
+        </view>
+    </view>
+    <view class="type-block m-t-40">
+        <view class="title fs-32 fw-5 color-333 m-b-40">其他需求</view>
+        <textarea value="{{other}}" bindinput="syncInput" class="textarea fs-28 border-box p-t-40 p-b-20 p-l-20 p-r-20" placeholder="请输入" />
+        </view>
+	<view class="submit-block p-l-30 p-r-30 p-b-40">
+		<view class="btn flex align-items-center justify-content-center color-fff" catchtap="submit">提交</view>
+	</view>
+	<view class="ipx-holder" wx:if="{{isIPX}}"></view>
+</view>

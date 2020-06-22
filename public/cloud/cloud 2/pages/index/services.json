@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "服务商列表",
+    "disableScroll": true,
+    "usingComponents":
+    {
+        "search": "/components/search/search",
+        "scroll": "/components/scroll/index"
+    }
+}

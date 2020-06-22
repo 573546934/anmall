@@ -1,0 +1,26 @@
+<!--pages/mine/project.wxml-->
+<view class="project-block">
+    <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!list.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{list.length >= 6}}">
+        <view class="list-block p-t-20" wx:for="{{list}}" wx:key="p_index" wx:for-item="project" wx:for-index="p_index">
+            <navigator hover-class="none" url="/pages/project/detail?id={{project.id}}" class="list-item p-t-20 p-b-20 p-l-30 p-r-30 bg-fff flex">
+                <image class="list-banner m-r-30" src="{{host + project.img.url}}" mode="aspectFill"></image>
+                <view class="list-main">
+                    <view class="title fs-32 color-333 ellipsis">{{project.title}}</view>
+                    <view class="desc fs-22 color-666 ellipsis {{project.description?'':'visibility-hide'}}">{{project.description || 'holder'}}</view>
+                    <view class="labels flex flex-wrap align-items-center m-t-20">
+                        <block wx:if="{{project.tags.length}}">
+                            <view class="label label-apartment m-r-10" wx:for="{{project.tags}}" wx:for-item="tag" wx:for-index="t_index" wx:key="t_index">{{tag.name}}</view>
+                        </block>
+                        <block wx:else>
+                            <view class="label visibility-hide holder">holder</view>
+                        </block>
+                    </view>
+                    <view class="price-cate-location flex align-items-center space-between m-t-10">
+                        <text class="price-lable fs-22 color-999">总价¥ <text class="fs-32 price">{{project.price}}</text></text>
+                        <text class="fs-22 color-999">佣金<text class="color-04A7A9">:{{project.commission}}</text></text>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </scroll>
+</view>

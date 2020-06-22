@@ -1,0 +1,52 @@
+<movable-area style="height:{{isHome?'100vh':(setHeight?setHeight:'100%')}};background:{{!isHome?bgStyle:(bgFlag && bgStyle == 'default'?defaultBanner:bgStyle) + ' no-repeat'}};{{bgFlag && bgStyle?'background-size: 1300rpx 730rpx;':''}};{{bgFlag && bgStyle?'background-position: center top;':''}}">
+    <movable-view class="scroll" style="height: calc({{isHome?'100vh':(setHeight?setHeight:'100%')}} + {{!disabledPullDown?refreshSize:0}}rpx)" bind:change="change" bind:touchend="touchend" direction="vertical" out-of-bounds="{{true}}" y='{{move}}'>
+        <scroll-view class="scroll__view" scroll-y="{{!noData}}" bindscroll="scroll" scroll-into-view="{{intoView}}" lower-threshold="0" enable-back-to-top scroll-with-animation bindscrolltolower="more">
+            <view id="top-anchor"></view>
+            <block wx:if="{{!disabledPullDown}}">
+                <view style="height: 40rpx" wx:if="{{isIPX && hasTop}}"></view>
+                <view class="mask" catchtouchmove="stopScroll" wx:if="{{refreshStatus >= 3}}"></view>
+                <view id="refresh" class="scroll__refresh {{successShow ? 'scroll__refresh--hidden' : ''}}" style="height: {{refreshSize}}rpx;padding: {{(refreshSize - 20) / 2}}rpx 0;">
+                    <view class="scroll__loading">
+						<view wx:if="{{refreshStatus == 1 || refreshStatus == 2}}" class="{{refreshStatus == 2 ? 'rotate' : ''}} arrow"></view>
+						<view wx:if="{{refreshStatus == 3}}" class="loading">
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+							<view class="loading__item"></view>
+						</view>
+						<view class="text" wx:if="{{refreshStatus == 1}}">下拉刷新</view>
+						<view class="text" wx:elif="{{refreshStatus == 2}}">松开更新</view>
+						<view class="text" wx:elif="{{refreshStatus == 3}}">加载中</view>
+					</view>
+                </view>
+                <!-- <view id="success" class="scroll__success {{successShow ? 'scroll__success--show' : ''}} {{successTran ? 'scroll__success--tran' : ''}}" style="top: {{refreshSize - 60}}rpx;">
+                    <view>{{refreshText}}</view>
+                </view> -->
+            </block>
+            <slot></slot>
+            <block wx:if="{{noData}}">
+                <view class="empty">
+                    <image lazy-load src="{{emptyUrl}}" class="empty-img" mode="widthFix"></image>
+                    <view>{{emptyText}}</view>
+                </view>
+            </block>
+            <block wx:if="{{needBttm && !noData}}">
+                <view class="scroll__bottom" style="visibility: {{loadmoreVisbi?'inset':'hidden'}}">
+                    <view class="line"></view>
+                    <view class="loadmore" wx:if="{{!noMoreData}}">正在加载</view>
+                    <view class="nomore-data" wx:else>暂无更多数据</view>
+                    <view class="line"></view>
+                </view>
+            </block>
+            <view style="{{padd?padd:'height:30rpx'}};background:transparent" wx:if="{{isIPX && !firstPage}}"></view>
+        </scroll-view>
+    </movable-view>
+</movable-area>

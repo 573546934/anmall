@@ -1,0 +1,59 @@
+/* pages/authen/serviceProvider/serviceDesc.wxss */
+.wrap{
+    padding: 0 30rpx;
+}
+.wrap .title{
+    color: #333;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-top: 40rpx;
+    margin-bottom: 40rpx;
+}
+
+.submit .btn{
+    width: 630rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 300rpx;
+    background: #04a7a9;
+    display: block;
+    padding: 0;
+    margin-bottom: 90rpx;
+    margin-top: 120rpx;
+}
+
+.caseDesc{
+    display: block;
+    font-size: 26rpx;
+    color: #999;
+    margin-top: 30rpx;
+    margin-bottom: 44rpx;
+}
+
+
+
+
+.inputitem{
+    margin-bottom: 40rpx;
+}
+.inputitem input{
+    font-size: 30rpx;
+    background: #f8f8f8;
+    height: 84rpx;
+    line-height: 84rpx;
+    text-align: center;
+}
+
+.addDesc{
+    width: 100%;
+    height:88rpx;
+    line-height: 88rpx;
+    border: 1px solid #04a7a9;
+    color: #04a7a9;
+    font-size: 30rpx;
+    text-align: center;
+    border-radius: 15rpx;
+}

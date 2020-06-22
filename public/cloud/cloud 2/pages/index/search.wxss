@@ -1,0 +1,56 @@
+/* pages/index/search.wxss */
+.serach{
+	height: 100vh;
+	width: 100vw;
+}
+/*news*/
+.item-banner{
+	width: 240rpx;
+	height: 160rpx;
+	border-radius: 8rpx;
+	vertical-align: middle;
+}
+.tabs-area .mask{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0);
+    z-index: 1;
+}
+.item-main{
+	width: calc(100% - 260rpx);
+}
+/*news*/
+/*project*/
+/*services*/
+.list-banner {
+    width: 260rpx;
+    height: 168rpx;
+    border-radius: 8rpx;
+    vertical-align: middle;
+}
+
+.list-main {
+    width: calc(100% - 290rpx);
+}
+
+.price {
+    color: #D3AF01;
+}
+.label{
+    font-size: 22rpx;
+    padding: 5rpx 15rpx;
+    border-radius: 2rpx;
+    color: #A2A2B1;
+    background: #F5F9FA;
+}
+/*project*/
+.banner{
+	width: 160rpx;
+	height: 160rpx;
+	vertical-align: middle;
+}
+.main-block{
+	width: calc(100% - 200rpx);
+}

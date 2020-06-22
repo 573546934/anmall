@@ -1,0 +1,37 @@
+/* pages/index/brand.wxss */
+.brands-block{
+	width: 100vw;
+	height: 100vh;
+	background: #F3F4F4;
+}
+.brand-item {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.08);
+    border-radius: 12rpx;
+    padding: 40rpx;
+}
+
+.brand-img {
+    width: 160rpx;
+    height: 160rpx;
+    vertical-align: middle;
+    box-shadow: 0rpx 0rpx 8rpx 0rpx rgba(0, 0, 0, 0.08);
+    border-radius: 8rpx;
+}
+.main-block{
+	width: calc(100% - 200rpx);
+}
+.label {
+    font-size: 22rpx;
+    padding: 5rpx 15rpx;
+    border-radius: 4rpx;
+}
+
+.label-apartment {
+    background: #E6F6F6;
+    color: #21ACAF;
+}
+.label-other{
+	background: #FFF1F2;
+    color: #FF4C62;
+}

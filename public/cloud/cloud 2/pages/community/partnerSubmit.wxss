@@ -1,0 +1,27 @@
+/* pages/community/partnerSubmit.wxss */
+.label {
+    width: 180rpx;
+}
+
+.require {
+    color: #EC0000;
+}
+
+.form-item {
+    border-bottom: 2rpx solid #E1E1E1;
+}
+
+.btn {
+    height: 88rpx;
+    background: rgba(4, 167, 169, 1);
+    box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(4, 167, 169, 0.2);
+    border-radius: 50rpx;
+}
+
+.success-icon {
+    width: 192rpx;
+    height: 188rpx;
+    /*box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(4, 167, 169, 0.4);*/
+    margin: 200rpx auto 40rpx;
+    vertical-align: middle;
+}

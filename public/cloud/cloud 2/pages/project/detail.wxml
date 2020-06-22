@@ -1,0 +1,401 @@
+<!--pages/project/detail.wxml-->
+<view class="back-drop-block flex flex-column" wx:if="{{showPoster}}">
+
+    <view class="close-block p-t-10 p-b-30 p-l-10 p-r-40 align-self-end m-r-20" catchtap="hidePoster">
+        <image class="close-icon" src="/images/icons/quxiao-2@2x.png"></image>
+    </view>
+    <view class="canvas-block">
+        <image class="poster" mode="aspectFill" src="{{poster}}"></image>
+    </view>
+    <view class="back-drop-buttons flex justify-content-center">
+        <view class="forward-item flex-1 flex flex-column align-items-center justify-content-center" wx:for="{{forwards}}" wx:key="index" catchtap="keepPoster">
+            <image class="icon" src="{{item.icon}}" mode="widthFix" style="width:96rpx"></image>
+            <view class="text fs-24 color-fff m-t-20">{{item.label}}</view>
+        </view>
+    </view>
+</view>
+<canvas id="canvas" canvas-id="canvas"></canvas>
+<view class="detail-block flex flex-column" wx:if="{{data}}">
+
+    <view class="main flex-1">
+        <scroll disabledPullDown="true" needBttm="{{false}}" class="scroll-views">
+
+          <view class="tabs-wrapper fix-nav" wx:if="{{ showTabs }}">
+            <view wx:for="{{tabs}}" wx:key="index" data-index="{{index}}" bindtap="onTab" class="tab-item">
+            {{ item }}
+            <view class="active" wx:if="{{ currentTab==index ? true:false}}"></view>
+            </view>
+            
+          </view>
+
+          <scroll-view  bindscroll="toScroll"  style="height: 100%" scroll-y="true" scroll-into-view="{{toView}}" scroll-with-animation="true">
+            <view class="banner-block relative" wx:if="{{data.map.length}}">
+                <swiper class="swiper-banner" id="bannerIndex" circular autoplay bindchange="swiperChange">
+                    <swiper-item wx:for="{{data.map}}" wx:key="index">
+                        <image class="banner-img" mode="aspectFill" src="{{host + item.url}}"></image>
+                    </swiper-item>
+                </swiper>
+                <view class="indicator absolute fs-28 color-fff fw-5" wx:if="{{data.map.length}}">{{bannerIndex+1}}/{{data.map.length}}</view>
+            </view>
+            <view class="main-block bg-fff" id="view">
+                <block wx:if="{{data.type == 'init'}}">
+                    <view class="name-card p-l-40 p-r-40 p-t-30 p-b-10">
+                        <view class="title color-3E4144 fs-36">{{data.title}}</view>
+                        <view class="description fs-24 color-999 m-t-10">{{data.description}}</view>
+                        <view class="city-area-price-block m-t-40 p-t-30 p-b-30">
+                            <view class="city-area-price flex flex-align-items-center relative">
+                                <view class="flex-1 text-center">
+                                    <view class="value fs-32 color-04A7A9">{{data.city || '未填写'}}</view>
+                                    <view class="label m-t-10 fs-22 color-666">城市</view>
+                                </view>
+                                <view class="vertical-line absolute" style="left:calc(100% / 3)"></view>
+                                <view class="flex-1 text-center">
+                                    <view class="value fs-32 color-04A7A9">{{data.area || '未填写'}}</view>
+                                    <view class="label m-t-10 fs-22 color-666">项目面积</view>
+                                </view>
+                                <view class="vertical-line absolute" style="right:calc(100% / 3)"></view>
+                                <view class="flex-1 text-center">
+                                    <view class="value fs-32 color-04A7A9">{{data.price || '未填写'}}</view>
+                                    <view class="label m-t-10 fs-22 color-666">项目价格</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 项目资料 -->
+                    <view class="document-block m-t-30 p-l-40 p-r-40 p-b-30 xmzl" id="view0">
+                        <view class="title fs-36 color-3E4144 fw-6 relative">
+                            <view class="text">项目资料</view>
+                            <view class="squire-icon absolute"></view>
+                        </view>
+                        <view class="split-line m-t-30"></view>
+                        <view class="documents p-t-30 flex align-items-center">
+                            <view catchtap="tapDocument" class="document flex-1 flex flex-column align-items-center justify-content-center">
+                                <view class="icon-block">
+                                    <image class="icon" mode="widthFix" src="/images/icons/detail@2x.png"></image>
+                                </view>
+                                <view class="text fs-22 color-3E4144">图文详情</view>
+                            </view>
+                            <view catchtap="tapDocument" class="document flex-1 flex flex-column align-items-center justify-content-center">
+                                <view class="icon-block">
+                                    <image class="icon" mode="widthFix" src="/images/icons/tongjifenxi@2x.png"></image>
+                                </view>
+                                <view class="text fs-22 color-3E4144">投资分析</view>
+                            </view>
+                            <view catchtap="tapDocument" class="document flex-1 flex flex-column align-items-center justify-content-center">
+                                <view class="icon-block">
+                                    <image class="icon" mode="widthFix" src="/images/icons/liucheng@2x.png"></image>
+                                </view>
+                                <view class="text fs-22 color-3E4144">交易流程</view>
+                            </view>
+                            <view catchtap="tapDocument" class="document flex-1 flex flex-column align-items-center justify-content-center">
+                                <view class="icon-block">
+                                    <image class="icon" mode="widthFix" src="/images/icons/wentijieda@2x.png"></image>
+                                </view>
+                                <view class="text fs-22 color-3E4144">问题解答</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="split-line"></view>
+                    <view class="attentions flex align-items-center color-333">
+                        <view class="attention-count p-l-40 p-r-40 p-t-20 p-b-20 text-center">
+                            <view class="text fs-26 fw-5">{{data.attentions.attentions}}</view>
+                            <view class="text fs-24">人已关注</view>
+                        </view>
+                        <view class="vertical-split-line m-l-20 m-r-20"></view>
+                        <view class="avatars-share flex-1 flex align-items-center">
+                            <view class="attention-count p-l-40 p-r-40 p-t-20 p-b-20 text-center">
+                                <view class="text fs-26 fw-5">{{data.attentions.my_share}}</view>
+                                <view class="text fs-24">我的分享</view>
+                            </view>
+                            <view class="avatars relative flex-1">
+                                <image class="avatar absolute" style="left:{{index*30}}rpx;" src="{{item}}" mode="aspectFill" wx:for="{{data.attentions.avatars}}" wx:key="index" ></image>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 项目信息 -->
+                    <view class="info-block m-t-40 p-l-40 p-r-40 p-b-30" id="view1">
+                        <view class="title fs-36 color-3E4144 fw-6 relative">
+                            <view class="text">项目信息</view>
+                            <view class="squire-icon absolute"></view>
+                        </view>
+                        <view class="split-line m-t-30"></view>
+                        <view class="infos m-t-20 p-l-40 p-t-30 p-b-10 p-r-40 init flex flex-wrap space-between">
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">产权性质：</text>
+                                <text class="value">{{data.assets_type|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">土地年限：</text>
+                                <text class="value">{{data.land|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">项目现状：</text>
+                                <text class="value">{{data.description|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">交易方式：</text>
+                                <text class="value">{{data.trade_type|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">车位状况：</text>
+                                <text class="value">{{data.parking_lot|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">所在楼层：</text>
+                                <text class="value">{{data.floor|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">使用率：</text>
+                                <text class="value">{{data.plot_ratio|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">物业费：</text>
+                                <text class="value">{{data.property_fee|| '未填写'}}</text>
+                            </view>
+                        </view>
+                        <view class="infos infos-more p-l-40 p-r-40 m-t-30 p-t-30 p-b-10 init flex flex-wrap space-between" wx:if="{{showMore}}">
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label align-self-start color-999">项目地址：</text>
+                                <text class="value flex-1">{{data.address|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label align-self-start color-999">结构布局：</text>
+                                <text class="value flex-1">{{data.renovation|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label align-self-start color-999">电梯数量：</text>
+                                <text class="value flex-1">{{data.elevator|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label align-self-start color-999">标准层层高：</text>
+                                <text class="value flex-1">{{data.storey_height|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label align-self-start color-999">标准层面积：</text>
+                                <text class="value flex-1">{{data.floor_area|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label align-self-start color-999">其 他：</text>
+                                <text class="value flex-1">{{data.remarks|| '未填写'}}</text>
+                            </view>
+                        </view>
+                        
+                    </view>
+
+                    <view class="view-more flex align-items-center justify-content-center" catch:tap="showMoreFun" wx:if="{{!showMore}}">
+                            查看更多信息
+                    </view>
+                    <view class="split-line"></view>
+                    <!-- 项目介绍 -->
+                    <view class="info-block m-t-40 p-l-40 p-r-40 p-b-30" id="view2">
+                        <view class="title fs-36 color-3E4144 fw-6 relative">
+                            <view class="text">项目介绍</view>
+                            <view class="squire-icon absolute"></view>
+                        </view>
+                        <view class="split-line m-t-30"></view>
+                        <view class="infos infos-more p-l-40 p-r-40 m-t-30 p-t-30 p-b-10 init flex flex-wrap space-between" >
+                          <view class="intro-title">项目简介</view>
+                           <text class="intro">上海晋润海棠大厦是一栋地上16层，地下2层的独栋甲级写字楼，建成于2011年，总建面为29587㎡，地下车位240个。 上海晋润海棠大厦为中铁中环时代广场1号楼，位于上海市。</text>
+                        </view>
+                        
+                    </view>
+                    <!-- 项目亮点 -->
+                    <view class="info-block m-t-40 p-l-40 p-r-40 p-b-30" id="view3">
+                        <view class="title fs-36 color-3E4144 fw-6 relative">
+                            <view class="text">项目亮点</view>
+                            <view class="squire-icon absolute"></view>
+                        </view>
+                        <view class="split-line m-t-30"></view>
+                        <view class="infos infos-more p-l-40 p-r-40 m-t-30 p-t-30 p-b-10 init flex flex-wrap space-between" >
+                           <text class="intro">上海晋润海棠大厦是一栋地上16层，地下2层的独栋甲级写字楼，建成于2011 年，总建面为29587㎡，地下车位240个。</text>
+                        </view>
+                        
+                    </view>
+                </block>
+
+                <block wx:if="{{data.type == 'bad'}}">
+                    <view class="name-card p-l-40 p-r-40 p-t-30 p-b-10">
+                        <view class="title color-3E4144 fs-36">{{data.title}}</view>
+                        <view class="description fs-24 color-666 m-t-10">{{data.description}}</view>
+                    </view>
+                    <view class="attentions flex align-items-center color-333">
+                        <view class="attention-count p-l-40 p-r-40 p-t-20 p-b-20 text-center">
+                            <view class="text fs-26 fw-5">{{data.attentions.attentions}}</view>
+                            <view class="text fs-24">人已关注</view>
+                        </view>
+                        <view class="vertical-split-line m-l-20 m-r-20"></view>
+                        <view class="avatars-share flex-1 flex align-items-center">
+                            <view class="attention-count p-l-40 p-r-40 p-t-20 p-b-20 text-center">
+                                <view class="text fs-26 fw-5">{{data.attentions.my_share}}</view>
+                                <view class="text fs-24">我的分享</view>
+                            </view>
+                            <view class="avatars relative flex-1">
+                                <image class="avatar avatar22 absolute" style="left:{{index*30}}rpx" src="{{item}}" mode="aspectFill" wx:for="{{data.attentions.avatars}}" wx:key="index"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="split-line m-t-30"></view>
+
+                    <view class="info-block m-t-40 p-l-40 p-r-40 p-b-30" >
+                        <view class="title fs-36 color-3E4144 fw-6 relative">
+                            <view class="text">项目信息</view>
+                            <view class="squire-icon absolute"></view>
+                        </view>
+                        <view class="split-line m-t-30"></view>
+                        <view class="infos m-t-20 p-l-40 p-t-30 p-b-10 p-r-40 bad flex flex-wrap space-between">
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">抵押物类型：</text>
+                                <text class="value">{{data.collateral_type|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">拟转让资产包户数：</text>
+                                <text class="value">{{data.households|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">拟转让资产包贷款本金：</text>
+                                <text class="value">{{data.loan_principal|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">拟转让资产包贷款利息：</text>
+                                <text class="value">{{data.loan_interest|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">抵押物所属城市：</text>
+                                <text class="value">{{data.project_ownership|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">抵押物本金总计：</text>
+                                <text class="value">{{data.mortgage_principal|| '未填写'}}</text>
+                            </view>
+                            <view class="item m-b-20 fs-26 color-333">
+                                <text class="label">诉讼/执行情况：</text>
+                                <text class="value">{{data.litigation_execution|| '未填写'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="split-line"></view>
+                </block>
+                <block wx:if="{{data.type == 'merchant'}}">
+                    <view class="name-card p-l-40 p-r-40  p-t-30 p-b-10">
+                        <view class="title color-3E4144 fs-36">{{data.title}}</view>
+                        <view class="description fs-24 color-999 m-t-10">{{data.description}}</view>
+                    </view>
+                    <view class="attentions flex align-items-center color-333">
+                        <view class="attention-count p-l-40 p-r-40 p-t-20 p-b-20 text-center">
+                            <view class="text fs-26 fw-5">{{data.attentions.attentions}}</view>
+                            <view class="text fs-24">人已关注</view>
+                        </view>
+                        <view class="vertical-split-line m-l-20 m-r-20"></view>
+                        <view class="avatars-share flex-1 flex align-items-center">
+                            <view class="attention-count p-l-40 p-r-40 p-t-20 p-b-20 text-center">
+                                <view class="text fs-26 fw-5">{{data.attentions.my_share}}</view>
+                                <view class="text fs-24">我的分享</view>
+                            </view>
+                            <view class="avatars relative flex-1">
+                                <image class="avatar absolute" style="left:{{index*30}}rpx" src="{{item}}" mode="aspectFill" wx:for="{{data.attentions.avatars}}" wx:key="index"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="info-block m-t-40 p-l-40 p-r-40 p-b-30">
+                        <view class="title fs-36 color-3E4144 fw-6 relative">
+                            <view class="text">项目信息</view>
+                            <view class="squire-icon absolute"></view>
+                        </view>
+                        <view class="split-line m-t-30"></view>
+                        <view class="infos merchant m-t-20 p-l-40 p-t-30 p-b-10 p-r-40 bad flex flex-wrap space-between">
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label color-999 align-self-start">项目名称：</text>
+                                <text class="value flex-1">{{data.title|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label color-999 align-self-start">项目地址：</text>
+                                <text class="value flex-1">{{data.address|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label color-999 align-self-start">项目面积： </text>
+                                <text class="value flex-1">{{data.area|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label color-999 align-self-start">项目价格：</text>
+                                <text class="value flex-1">{{data.price|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label color-999 align-self-start">项目现状：</text>
+                                <text class="value flex-1">{{data.description|| '未填写'}}</text>
+                            </view>
+                            <view class="item flex align-items-center m-b-20 fs-26 color-333">
+                                <text class="label color-999 align-self-start">交易方式：</text>
+                                <text class="value flex-1">{{data.trade_type|| '未填写'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="split-line"></view>
+                </block>
+                
+                <view class="editor-block" wx:if="{{article}}" id="view4">
+                    <import src="/towxml/entry.wxml" />
+                    <template is="entry" data="{{...article}}" />
+                </view>
+            </view>
+            <view class="similar-block bg-f9f9f9 p-b-40" wx:if="{{data.likes}}">
+                <view class="tips fs-22 text-center p-t-20 m-b-30" style="color:#c1c1c1">注：其他项目详尽内容请联系jorco云资产平台</view>
+                <view class="title color-3E4144 p-l-30 p-r-30 fs-36 fw-6" id="view5"> 
+                    相似项目
+                </view>
+                <view class="similars p-t-20">
+                    <navigator hover-class="none" url="./detail?id={{project.id}}" class="list-item p-t-20 p-b-20 p-l-30 p-r-30 bg-fff flex m-t-20" wx:for="{{data.likes}}" wx:key="p_index" wx:for-item="project" wx:for-index="p_index">
+                        <image class="list-banner m-r-30" src="{{host + project.img.url}}" mode="aspectFill"></image>
+                        <view class="list-main">
+                            <view class="title fs-32 color-333 ellipsis">{{project.title}}</view>
+                            <view class="desc fs-22 color-666 ellipsis">{{project.description || ''}}</view>
+                            <view class="price-cate-location flex align-items-center space-between m-t-10">
+                                <text class="price-lable fs-24 color-999">总价¥ <text class="fs-28 price">{{project.price}}</text></text>
+                                <text class="fs-22 color-999">佣金<text class="color-04A7A9">:{{project.commission}}</text></text>
+                            </view>
+                            <view class="labels flex flex-wrap align-items-center m-t-10">
+                                <view class="similar-label m-r-10" wx:for="{{project.tags}}" wx:for-item="tag" wx:for-index="t_index" wx:key="t_index">{{tag.name}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view class="more-block p-t-10 p-b-20 fs-28 color-04A7A9">
+                        <navigator hover-class="none" url="/pages/demand/push" class="more p-t-20 p-b-20 text-center">不满意？快来需求定制</navigator>
+                    </view>
+                </view>
+            </view>
+          </scroll-view>
+        </scroll>
+    </view>
+    <view class="fixed-block bg-fff">
+        <view class="button flex align-items-center space-between p-l-20 p-t-20 p-b-20 p-r-20">
+            <view class="others flex align-items-center space-between flex-1 p-l-30 p-r-30 m-r-40">
+                <button class="collection-block" catchtap="collectIt">
+                    <view class="other-icon-block">
+                        <image class="icon" mode="widthFix" src="../../images/icons/xihuan{{data.collection?'2':''}}@2x.png" style="width:90%"></image>
+                    </view>
+                    <view class="text fs-20">收藏</view>
+                </button>
+                <button open-type="share" class="share-block">
+                    <view class="other-icon-block">
+                        <image class="icon" mode="widthFix" src="../../images/icons/fenxiang@2x.png"></image>
+                    </view>
+                    <view class="text fs-20">分享</view>
+                </button>
+                <button open-type="share" class="forward-block">
+                    <view class="other-icon-block">
+                        <image class="icon" mode="widthFix" src="../../images/icons/zhuanfa@2x.png"></image>
+                    </view>
+                    <view class="text fs-20">转发</view>
+                </button>
+            </view>
+            <button catchtap="canvasPoster" class="share flex align-items-center justify-content-center fs-28 color-fff">一键转发</button>
+            <view class="holder p-r-20"></view>
+            <button catchtap="makePhoneCall" class="reserve flex align-items-center justify-content-center fs-28 color-fff" wx:if="{{data.phone}}">
+                立即咨询
+            </button>
+            <button open-type="contact" class="reserve flex align-items-center justify-content-center fs-28 color-fff" wx:else>
+                立即咨询
+            </button>
+        </view>
+        <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+    </view>
+</view>

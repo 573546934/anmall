@@ -1,0 +1,53 @@
+<!--pages/mine/newProject.wxml-->
+<scroll-view scroll-y="{{true}}">
+    <view class="form-main p-l-30 p-t-30 p-b-40 bg-fff p-l-30">
+        <view class="title-area">
+            <view class="title fs-36 color-333 fw-6">项目标题</view>
+            <view class="title-input p-r-30 p-t-40 p-b-20">
+                <input type="text" placeholder="标题推荐用物业类型+简要卖点" placeholder-class="fs-28 color-999" />
+            </view>
+        </view>
+        <view class="upload-img-area flex flex-wrap space-between p-t-30 p-r-30">
+            <view class="upload-img border-box" wx:for="{{[1,2,3,4,5,6,7,8,9]}}"></view>
+        </view>
+        <view class="is-public flex align-items-center">
+            <view class="icon m-r-20 border-box"></view>
+            <view class="text fs-32 color-333">公开</view>
+        </view>
+    </view>
+    <view class="form-detail m-t-30 bg-fff p-l-30 p-r-30">
+        <view class="form-item p-t-40 p-b-40 fs-32 color-333 flex align-items-center border-box">
+            <view class="label-item">资产类别</view>
+            <view class="flex-1 value-item">
+                <picker mode="selector" value="{{categorySelect<0?0:categorySelect}}" range-key="name" range="{{category_id}}" data-type="categorySelect" bindchange="pickerChange">
+                    <view class="text-right {{categorySelect < 0?'color-999':''}}">{{category_id[categorySelect].name||'请填写资产类别'}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="form-item p-t-40 p-b-40 fs-32 color-333 flex align-items-center border-box" wx:if="{{category_id[categorySelect].id == 7 || category_id[categorySelect].id == 9}}">
+            <view class="label-item">选择城市</view>
+            <view class="flex-1 value-item">
+                <picker mode="selector" value="{{citySelect<0?0:citySelect}}" range="{{city}}" data-type="citySelect" bindchange="pickerChange">
+                    <view class="text-right {{citySelect < 0?'color-999':''}}">{{city[citySelect]||'请填写城市'}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="form-item p-t-40 p-b-40 fs-32 color-333 flex align-items-center border-box" wx:if="{{category_id[categorySelect].id == 8}}">
+            <view class="label-item">选择国家</view>
+            <view class="flex-1 value-item">
+                <picker mode="selector" value="{{countrySelect<0?0:countrySelect}}" range="{{country}}" data-type="countrySelect" bindchange="pickerChange">
+                    <view class="text-right {{countrySelect < 0?'color-999':''}}">{{country[countrySelect]||'请填写国家'}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="form-item p-t-40 p-b-40 fs-32 color-333 flex align-items-center border-box" wx:for="{{form}}" wx:key="index">
+            <view class="label-item">{{item.label}}</view>
+            <input type="{{item == 'phone'?'number':'text'}}" class="flex-1 value-item text-right" value="{{item.value}}" placeholder-class="color-999" placeholder="请填写{{item.label}}"/>
+        </view>
+    </view>
+    <view class="buttons fs-32 fw-6 flex align-items-center space-between">
+        <view class="btn btn-cancel">取消</view>
+        <view class="btn btn-publish">发布</view>
+    </view>
+    <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+</scroll-view>

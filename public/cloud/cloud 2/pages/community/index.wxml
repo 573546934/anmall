@@ -1,0 +1,152 @@
+<!--pages/community/index.wxml-->
+<view class="community-block">
+    <scroll id="scroll" bind:refresh="refreshData" needBttm="{{false}}">
+        <view class="community">
+            <view class="banner-block relative m-b-20" wx:if="{{banner.length}}">
+                <swiper class="swiper-banner" circular autoplay bindchange="swiperChange">
+                    <swiper-item catchtap="navigateIt" data-item="{{item}}" class="p-t-20 p-b-20 p-l-30 p-r-30 border-box" wx:for="{{banner}}" wx:key="index">
+                        <image class="banner-img" mode="aspectFill" src="{{host + item.img.url}}"></image>
+                    </swiper-item>
+                </swiper>
+                <view class="indicatros flex align-items-center absolute">
+                    <view class="indicator {{index == swiperIndex?'active':''}}" wx:for="{{banner}}" wx:key="index"></view>
+                </view>
+            </view>
+            <view class="share-block p-b-20 border-box" wx:for="{{share}}" wx:key="index">
+                <view class="title-block flex align-items-center space-between border-box p-l-30 p-r-30 p-t-30 p-b-30">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">{{item.title}}</view>
+                    <!-- <navigator hover-class="none" class="view-more flex align-items-center border-box color-999">
+                        <view class="text fs-32">更多</view>
+                        <view class="iconfont icon-right fs-30"></view>
+                    </navigator> -->
+                </view>
+                <view class="empty-block p-l-30 p-r-30">
+                    <view class="empty-content relative">
+                        <image class="empty-banner" mode="widthFix" src="{{host + item.img.url}}"></image>
+                        <view class="text absolute fs-32 color-fff" style="left:50%;top:50%;transform:translate(-50%,-50%)">{{item.description||''}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="share-block p-b-20 border-box" wx:for="{{live}}" wx:key="index">
+                <view class="title-block flex align-items-center space-between border-box p-l-30 p-r-30 p-t-30 p-b-30">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">{{item.title}}</view>
+                    <!-- <navigator hover-class="none" class="view-more flex align-items-center border-box color-999">
+                        <view class="text fs-32">更多</view>
+                        <view class="iconfont icon-right fs-30"></view>
+                    </navigator> -->
+                </view>
+                <view class="empty-block p-l-30 p-r-30">
+                    <view class="empty-content relative">
+                        <image class="empty-banner" mode="widthFix" src="{{host + item.img.url}}"></image>
+                        <view class="text absolute fs-32 color-fff" style="left:50%;top:50%;transform:translate(-50%,-50%)">{{item.description||''}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="share-block p-b-20 border-box" wx:if="{{false}}">
+                <view class="title-block flex align-items-center space-between border-box p-l-30 p-r-30 p-t-30 p-b-30">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">大咖分享</view>
+                    <navigator hover-class="none" url="./live?title=大咖分享" class="view-more flex align-items-center border-box color-999">
+                        <view class="text fs-32">更多</view>
+                        <view class="iconfont icon-right fs-30"></view>
+                    </navigator>
+                </view>
+                <view class="share-scroll-block p-l-10 border-box" wx:if="{{share.length}}">
+                    <scroll-view class="share-scroll p-l-20 border-box" scroll-x>
+                        <view class="share-item relative border-box m-t-10 {{index < share.length-1?'m-r-20':'m-r-30'}}" catchtap="navigateIt" data-item="{{item}}" wx:for="{{share}}" wx:key="index">
+                            <image class="banner-img" mode="aspectFill" src="{{host + item.img.url}}"></image>
+                            <!-- <view class="reservation absolute flex align-items-center justify-content-center">
+                        <view class="iconfont icon-weizhi fs-22"></view>
+                        <view class="text fs-22">预约中</view>
+                    </view>
+                    <image class="avatar absolute" mode="aspectFill" src="../../images/field1.png"></image>
+                    <view class="share-main absolute p-l-20">
+                        <view class="title ellipsis fs-24 color-333">集体经营性建设用地</view>
+                        <view class="reservation-split-line m-t-20 m-b-20"></view>
+                        <view class="auth fs-18 ellipsis color-333">讲师：林楚州</view>
+                        <view class="auth fs-14 ellipsis color-333">7/25 13:00 23人已预约</view>
+                    </view> -->
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+            <view class="live-block border-box p-l-30 p-r-30" wx:if="{{false}}">
+                <view class="title-block flex align-items-center space-between border-box p-t-30 p-b-40">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">线上直播</view>
+                    <navigator hover-class="none" url="./live?title=线上直播" class="view-more flex align-items-center border-box color-999">
+                        <view class="text fs-32">更多</view>
+                        <view class="iconfont icon-right fs-30"></view>
+                    </navigator>
+                </view>
+                <view class="live-list">
+                    <navigator hover-class="none" url="./liveDetail" class="live-item flex {{index < live.length-1?'m-b-40':'m-b-30'}}" wx:for="{{live}}" wx:key="index">
+                        <view class="live-banner m-r-20 relative">
+                            <image class="banner" mode="aspectFill" src="{{host + item.img.url}}"></image>
+                            <view class="living-block absolute flex align-items-center" wx:if="{{item.status == 1}}">
+                                <image class="live-icon" src="/images/icons/living-icon.png"></image>
+                                <view class="fs-20 color-fff live-text">正在直播</view>
+                            </view>
+                        </view>
+                        <view class="live-main flex flex-column">
+                            <view class="title ellipsis fs-32 color-333 fw-5">{{item.title}}</view>
+                            <view class="time ellipsis fs-22 color-666">{{item.subtitle}}</view>
+                            <view class="flex-1 flex">
+                                <view class="price-view-count flex align-self-end">
+                                    <view class="price fs-22 color-04A7A9 m-r-20">免费</view>
+                                    <view class="view-count fs-22 color-666">{{item.member_count}}次观看</view>
+                                </view>
+                                <view class="reserve bg-efefef">已预约</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="activity-offline-block p-l-30 p-r-30 p-b-30" wx:for="{{activity}}" wx:key="index">
+                <view class="title-block flex align-items-center space-between border-box p-t-30 p-b-30">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">{{item.title}}</view>
+                </view>
+                <view class="activity-list">
+                    <view class="activity-item relative p-t-40 p-l-30 p-r-30 p-b-30 content-box">
+                        <image class="activity-icon absolute" src="/images/icons/activity-icon.png"></image>
+                        <block wx:if="{{item.content}}">
+                            <import src="/towxml/entry.wxml" />
+                            <template is="entry" data="{{...item.article}}" />
+                        </block>
+                        <view class="button-block flex align-items-center justify-content-center">
+                            <view class="button bg-bbb flex align-items-center justify-content-center fs-28 color-fff">暂未开放</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="look-for-block p-l-30 p-r-30 p-b-30" wx:for="{{partner}}" wx:index="index" wx:key="index">
+                <view class="title-block flex align-items-center space-between border-box p-t-30 p-b-30">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">{{item.title}}</view>
+                </view>
+                <view class="lookfor-partner-list p-t-40 p-l-30 p-r-30 p-b-30 relative">
+                    <image class="lookfor-partner-icon absolute" src="/images/icons/lookfor-partner.png"></image>
+                    <block wx:if="{{item.content}}">
+                        <import src="/towxml/entry.wxml" />
+                        <template is="entry" data="{{...item.article}}" />
+                    </block>
+                    <view class="button-block flex align-items-center justify-content-center">
+                        <navigator hover-class="none" url="./partner" class="button bg-04A7A9 flex align-items-center justify-content-center fs-28 color-fff">成为合伙人</navigator>
+                    </view>
+                </view>
+            </view>
+            <view class="corporation-block p-l-30 p-r-30 p-b-30 m-b-40" wx:for="{{cooperation}}" wx:key="index">
+                <view class="title-block flex align-items-center space-between border-box p-t-30 p-b-30">
+                    <view class="title fs-36 color-3E4144 fw-6 border-box">{{item.title}}</view>
+                    <!-- <view class="view-more flex align-items-center border-box color-999">
+                        <view class="text fs-32">更多</view>
+                        <view class="iconfont icon-right fs-30"></view>
+                    </view> -->
+                </view>
+                <view class="list-block">
+                    <view class="corporation-content relative">
+                        <image class="corporation-banner" mode="widthFix" src="{{host + item.img.url}}"></image>
+                        <view class="text absolute color-fff fs-32" style="left:10rpx;bottom:10rpx">{{item.description||''}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll>
+</view>

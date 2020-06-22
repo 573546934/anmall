@@ -1,0 +1,44 @@
+/* pages/demand/form.wxss */
+.form-item {
+    border-bottom: 2rpx solid #E1E1E1;
+}
+
+.col-label {
+    width: 230rpx;
+}
+
+.require {
+    color: #ec0000;
+}
+
+.type-item {
+    width: 210rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3E4144;
+    font-size: 28rpx;
+    background: #F8F8F8;
+    border-radius: 2rpx;
+}
+
+.type-item.active {
+    background: #04A7A9;
+    color: #fff;
+}
+
+.textarea {
+	width: 100%;
+    height: 330rpx;
+    background: rgba(248, 248, 248, 1);
+    border-radius: 2rpx;
+    background: #F8F8F8;
+    margin-bottom: 120rpx;
+}
+.btn {
+    height: 88rpx;
+    background: rgba(4, 167, 169, 1);
+    box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(4, 167, 169, 0.2);
+    border-radius: 50rpx;
+}

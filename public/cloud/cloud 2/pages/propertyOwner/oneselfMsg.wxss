@@ -1,0 +1,91 @@
+/* pages/authen/propertyOwner/oneselfMsg.wxss */
+.wrap{
+    padding: 0 30rpx;
+}
+.wrap .title{
+    color: #333;
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-top: 40rpx;
+}
+.formGroup .itemInput{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 44rpx 0;
+    font-size: 30rpx;
+}
+.itemInput navigator{
+    color: #999;
+    font-size: 30rpx;
+}
+.itemInput label text{
+    color: #f00;
+}
+.itemInput input,.picker{
+    flex: 1;
+    text-align: right;
+    color: #999;
+    font-size: 30rpx;
+}
+
+.itemInput radio-group label{
+    margin-left: 40rpx;
+}
+
+.uploadT{
+    display: block;
+    font-size:30rpx;
+    font-weight: bold;
+    color: #333;
+    padding: 44rpx 0 30rpx 0;
+}
+.uploadTip{
+    display: block;
+    font-size:28rpx;
+    color: #999
+}
+.upImg{
+    background: #f8f8f8;
+    padding:40rpx 0;
+    margin: 32rpx 0 120rpx 0; 
+}
+.clickUpload image{
+    width: 60rpx;
+    height: 60rpx;
+    margin: 0 auto;
+}
+.clickUpload text{
+    text-align: center;
+    font-size:26rpx;
+    color: #04a7a9;
+    display: block;
+    margin-top: 24rpx;
+}
+.submit .btn{
+    width: 630rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 300rpx;
+    background: #04a7a9;
+    display: block;
+    padding: 0;
+    margin-bottom: 90rpx;
+}
+radio .wx-radio-input {
+  width: 30rpx;
+  height: 30rpx;
+  border: 2rpx solid #999;
+}
+radio .wx-radio-input.wx-radio-input-checked::before {
+    width: 30rpx;
+  height: 30rpx;
+  font-size: 28rpx;
+    transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

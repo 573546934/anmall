@@ -1,0 +1,8 @@
+<!--components/search/search.wxml-->
+<view class="search-box p-l-30 p-r-30">
+    <view class="search flex align-items-center" catchtap="tapSearch">
+        <view class="iconfont icon-sousuo m-l-40 m-r-30"></view>
+        <input value="{{value}}" placeholder="{{placeholder}}" focus="{{!disabled}}" bindconfirm="confrim" bindinput="inputSync" disabled="{{disabled}}" class="flex-1 fs-28" />
+        <icon wx:if="{{value}}" class="m-l-20 m-r-30" type="cancel" color="#777" size="20" catchtap="clear"></icon>
+    </view>
+</view>

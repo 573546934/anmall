@@ -1,0 +1,20 @@
+<!--pages/mine/action.wxml-->
+<view class="actions-block flex align-items-center flex-column p-t-40">
+	<image class="absolute" src="../../images/cert-bg.png" style="top:0;left:0" mode="widthFix"></image>
+	<view class="main-block relative m-t-40">
+		<view class="bg-one absolute"></view>
+		<view class="bg-two absolute"></view>
+		<view class="main relative">
+			<view class="title text-center fs-36 color-3E4144 fw-5">请选择申请类型</view>
+			<view class="actions">
+				<view class="action" wx:for="{{actions}}" wx:key="index">
+					<navigator hover-class="none" url="{{item.nav}}" class="row flex align-items-center space-between">
+						<view class="label color-3E4144 fs-32">{{item.label}}</view>
+						<view class="iconfont icon-right color-c7c7c7"></view>
+					</navigator>
+					<view class="split" wx:if="{{index < actions.length -1}}"></view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "disableScroll":true,
+  "navigationBarTitleText": "行业头条",
+  "usingComponents":{
+    "scroll":"/components/scroll/index",
+    "tab":"/components/tab/index",
+    "search":"/components/search/search"
+  }
+}

@@ -1,0 +1,53 @@
+/* pages/community/liveDetail.wxss */
+.live-banner {
+    width: 100%;
+    height: 390rpx;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(4, 6, 10, 0.15);
+    border-radius: 16rpx;
+}
+.banner-img{
+	width: calc(100%);
+	height: calc(100%);
+	border-radius: 16rpx;
+	vertical-align: middle;
+}
+.living-icon{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+	left: 20rpx;
+	top: 20rpx;
+}
+.reserving-block{
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.clock-icon{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+}
+.reserving-block .text{
+	text-shadow:0rpx 4rpx 10rpx rgba(0,0,0,0.5);
+}
+.viewed-collect-share{
+	width: 100%;
+	left: 0;
+	bottom: 20rpx;
+}
+.person-icon{
+	width: 22rpx;
+	height: 32rpx;
+	vertical-align: middle;
+}
+.collect-icon{
+	width: 34rpx;
+	height: 32rpx;
+	vertical-align: middle;
+}
+.share-icon{
+	width: 31rpx;
+	height: 31rpx;
+	vertical-align: middle;
+}

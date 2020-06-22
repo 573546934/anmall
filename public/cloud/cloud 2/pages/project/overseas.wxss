@@ -1,0 +1,164 @@
+/* pages/project/list.wxss */
+/*@import '../mine/project.wxss';*/
+
+.search-tabs {
+    z-index: 3;
+}
+
+.tabs-area {
+    box-shadow: none;
+    border: unset;
+}
+
+.filters-block {
+    height: 92rpx;
+    border-bottom: 2rpx solid #EDEDED;
+}
+
+.filter-item-block {
+    flex: 0 0 25%;
+    height: calc(100%);
+}
+.main.active{
+    color: #41BCBD;
+}
+.split-line {
+    width: 2rpx;
+    height: 36rpx;
+    background: #EDEDED;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.filter-block-backdrop {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .2);
+    padding: 200rpx 0 0;
+    box-sizing: border-box;
+}
+
+.filter-region {
+    height: 600rpx;
+}
+
+.region-label,
+.region-value {
+    height: calc(100%);
+}
+
+.region-value {
+    background: #F8F8F8;
+}
+
+.region-current-line {
+    height: 2rpx;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: #41BCBD;
+}
+
+.region-label-current {
+    width: 100rpx;
+}
+
+.region-value-current {
+    width: 80rpx;
+}
+
+.color-41BCBD {
+    color: #41BCBD;
+}
+
+.normal-filter {
+    max-height: 400rpx;
+    overflow: scroll;
+}
+
+.normal-filter-item {
+    width: 152rpx;
+    height: 60rpx;
+    border-radius: 2rpx;
+    background: #F8F8F8;
+    font-size: 24rpx;
+    color: #3E4144;
+}
+
+.normal-filter-item.active {
+    background: #41BCBD;
+    color: #fefefe;
+}
+
+.clear-confirm {
+    border-top: 2rpx solid #EDEDED;
+}
+
+.clear-btn {
+    width: 192rpx;
+    height: 88rpx;
+    border-radius: 12rpx;
+    background: rgba(252, 252, 252, 1);
+    border: 2rpx solid rgba(204, 204, 204, 1);
+    font-size: 32rpx;
+    color: #3E4144;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-btn {
+    width: 500rpx;
+    height: 88rpx;
+    background: rgba(4, 167, 169, 1);
+    border-radius: 12rpx;
+    font-size: 32rpx;
+    color: #fff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*------*/
+.scroll-block {
+    background: #f9f9f9;
+    height: calc(100vh - 204rpx) !important;
+}
+
+.list-banner {
+    width: 260rpx;
+    height: 168rpx;
+    border-radius: 8rpx;
+    vertical-align: middle;
+}
+
+.list-main {
+    width: calc(100% - 290rpx);
+}
+
+.price {
+    color: #D3AF01;
+}
+.label{
+    font-size: 22rpx;
+    padding: 5rpx 15rpx;
+    border-radius: 2rpx;
+    color: #A2A2B1;
+    background: #F5F9FA;
+}
+.filter-del{
+    box-shadow:0px 4rpx 8rpx 0px rgba(0,0,0,0.05);
+    padding: 5rpx 15rpx;
+    border-radius: 6rpx;
+    background: #fff;
+}
+.clear-icon{
+    width: 14rpx;
+    height: 14rpx;
+    vertical-align: middle;
+}

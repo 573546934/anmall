@@ -1,0 +1,34 @@
+<wxs src="../../utils/filter.wxs" module="filter" />
+<view class="bg-fff search-tabs">
+    <view class="tabs-area border-box relative">
+        <view class="mask absolute" wx:if="{{disabled}}"></view>
+        <tab id="tabs" tab-data="{{tabs}}" color="#04A7A9" scale=".6" tabCur="{{tab}}" size="92" bindchange="swiperChange" />
+    </view>
+</view>
+<swiper class="swiper" duration="200" bindchange="swiperChange" current="{{tab}}">
+    <swiper-item wx:for="{{tabs}}" wx:key="index">
+        <scroll class="scroll-view" id="scroll{{index}}" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!item.list.length && item.last_page}}" emptyText="暂无任何数据" needBttm="{{item.list.length >= 4}}">
+            <view class="publish-list p-t-30 p-l-20 p-r-20">
+                <view class="content-box p-t-40 p-l-40 p-b-40 p-r-40 {{d_index < item.list.length-1?'m-b-30':''}}" wx:for="{{item.list}}" wx:for-index="d_index" wx:key="d_index" wx:for-item="demand" data-item="{{demand}}" catchtap="editDemand">
+                    <!-- <view class="title-type fs-32 color-333 fw-5 m-b-20">交易类型：{{demand.type_name}}</view> -->
+                    <view class="infos color-3E4144 fs-22 flex flex-wrap p-b-10">
+                        <view class="info m-b-10">需求类型：{{demand.type_name || '未填写'}}</view>
+                        <view class="info m-b-10">发布时间：{{filter.dateFormat(demand.updated_at, 'yyyy/MM/dd')}}</view>
+                        <view class="info m-b-10">意向城市：{{demand.city || '未填写'}}</view>
+                        <view class="info m-b-10">物业类型：{{demand.assets_type || '未填写'}}</view>
+                        <view class="info m-b-10">面<text class="visibility-hide">面积</text>积：{{demand.area || '未填写'}}</view>
+                        <view class="info m-b-10">{{demand.type=='buy'||demand.type=='sell'?'价格':(demand.type_name)}}{{demand.type == 'rent'||demand.type=='sell'?'报价':'预算'}}：{{demand.price || '未填写'}}万</view>
+                    </view>
+                    <view class="other color-3E4144 fs-22 flex m-b-20">
+                        <view class="other-label">其他需求：</view>
+                        <view class="other-value flex-1">
+                            <text decode space="emsp">{{demand.other}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="holder p-t-40 p-b-40 m-t-40"></view>
+        </scroll>
+    </swiper-item>
+</swiper>
+<image catchtap="toService" class="to-service" style="bottom:{{isIPX?'90':'45'}}rpx" mode="aspectFill" src="/images/icons/icon_zixun@2x.png"></image>

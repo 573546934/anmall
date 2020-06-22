@@ -1,0 +1,185 @@
+<view class="index-block">
+    <scroll id="scroll" bind:refresh="refreshData" needBttm="{{false}}">
+        <view class="search-address-service-block p-l-30 p-r-30 p-t-5 p-b-5 bg-fff flex align-items-center">
+            <navigator url="/pages/index/city?current={{city}}" hover-class="none" class="address flex align-items-center">
+
+                <image class="address-icon" src="/images/icons/dingwei@2x.png"></image>
+                <view class="fs-24 color-0B0B0B">{{city||'北京市'}}</view>
+            </navigator>
+            <view class="search flex-1">
+                <search placeholder="搜索项目关键词" />
+            </view>
+            <navigator hover-class="none" url="/pages/mine/service" class="service">
+                <image class="service-icon" src="../../images/icons/dianhua.png"></image>
+            </navigator>
+        </view>
+        <view class="banner-block relative">
+            <swiper class="swiper-banner" id="swiperIndex" circular autoplay bindchange="swiperChange">
+                <swiper-item catchtap="bannerNavigate" data-item="{{item}}" class="p-t-30 p-b-30 p-l-30 p-r-30 border-box" wx:for="{{ads}}" wx:key="index">
+                    <image class="banner-img" src="{{host + item.img.url}}" mode="aspectFill"></image>
+                </swiper-item>
+            </swiper>
+            <view class="indicatros flex align-items-center absolute">
+                <view class="indicator {{index == swiperIndex?'active':''}}" wx:for="{{ads}}" wx:key="index"></view>
+            </view>
+        </view>
+        <view class="quick-nav-block p-l-30 p-r-30 flex flex-wrap m-t-30">
+            <navigator hover-class="none" url="{{item.link}}" open-type="{{item.description}}" class="quick-nav flex flex-column align-items-center justify-content-center" wx:for="{{navs}}" wx:key="index">
+                <view class="icon-block flex align-items-center justify-content-center">
+                    <image class="nav-icon" src="{{host + item.img.url}}" mode="scaleToFill" ></image>
+                </view>
+                <view class="text fs-24 color-686A6B m-t-10">{{item.title}}</view>
+            </navigator>
+        </view>
+        <view class="organization-block m-t-30" wx:if="{{brands.length}}">
+            <view class="title-block flex align-items-center space-between p-l-30 p-r-30">
+                <view class="title fs-32  color-000">品牌机构推荐</view>
+                <navigator url="/pages/index/brand" hover-class="none" class="flex align-items-center color-A9AAAC fs-20">
+                    <view class="text more">更多</view>
+                    <view class="iconfont icon-right fs-24"></view>
+                </navigator>
+            </view>
+            <view class="organization-banner-block">
+                <swiper class="organization-swiper" id="nowCurrent" bindchange="swiperChange" circular="true" previous-margin="20rpx" next-margin="20rpx" display-multiple-items="{{brands.length < 4?brands.length:4}}">
+                    <block wx:for="{{brands}}" wx:key="this">
+                        <swiper-item class="flex align-items-center justify-content-center">
+                            <navigator hover-class="none" url="./brandDetail?id={{item.id}}" class="bg-fff rganization-banner-item flex align-items-center justify-content-center  {{nowCurrent==index?'active':''}}">
+                                <image src="{{host + item.img.url}}" mode="widthFix"></image>
+                            </navigator>
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+        </view>
+        <view class="requirement-block m-t-40 p-b-40" wx:for="{{requires}}" wx:key="index">
+            <view class="title-block flex align-items-center space-between p-l-30 p-r-30">
+                <view class="title fs-32 color-000">{{item.title}}</view>
+                <navigator hover-class="none" url="/pages/demand/demands" class="flex align-items-center color-A9AAAC fs-20">
+                    <view class="text more">更多</view>
+                    <view class="iconfont icon-right fs-24"></view>
+                </navigator>
+            </view>
+            <navigator hover-class="none" url="/pages/demand/push" class="banner-block p-l-30 p-r-30 p-t-40">
+                <image src="{{host + item.img.url}}" mode="widthFix" class="requirement-banner"></image>
+            </navigator>
+        </view>
+        <view class="live-block m-t-40 p-b-40" wx:for="{{live}}" wx:key="index">
+            <view class="title-block flex align-items-center space-between p-l-30 p-r-30">
+                <view class="title fs-34 color-000">{{item.title}}</view>
+                <!-- <navigator hover-class="none" class="flex align-items-center color-AAABAB fs-20">
+                    <view class="text more">更多</view>
+                    <view class="iconfont icon-right fs-24"></view>
+                </navigator> -->
+            </view>
+            <view class="empty-block p-l-30 p-r-30 m-t-40">
+                <view class="empty-content relative">
+                    <image class="empty-banner requirement-banner" mode="widthFix" src="{{host + item.img.url}}"></image>
+                    <view class="text absolute fs-32 color-fff" style="left:50%;top:50%;transform:translate(-50%,-50%)">{{item.description||''}}</view>
+                </view>
+            </view>
+            <!-- <swiper class="live-swiper m-t-10" circular="true" previous-margin="-10rpx" next-margin="30rpx">
+                <swiper-item class="p-t-20 p-l-10 p-r-30 p-b-10 border-box" wx:for="{{[1,2,3,4]}}" wx:key="index">
+                    <view class="content-box relative flex flex-column live-block-item border-box">
+                        <view class="reservation-label absolute flex align-items-center justify-content-center">
+                            <image class="reservation-icon m-t-10" src="/images/icons/yuyue.png"></image>
+                            <view class="text">预约</view>
+                        </view>
+                        <image class="reservation-banner absolute" mode="aspectFill" src="/images/field1.png"></image>
+                        <view class="reservation-main-content border-box">
+                            <view class="fs-44  color-333 ellipsis2">大宗交易成交指数预判大宗交易成交指数预判</view>
+                            <view class="reservation-split-line m-t-20 m-b-20"></view>
+                            <view class="specher fs-36 color-333">讲师：林楚州</view>
+                            <view class="date fs-24">7/25 13:00 23人已预约</view>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper> -->
+        </view>
+        <view class="recommend-block m-t-40 p-b-40" wx:if="{{recommend_articles.length}}">
+            <view class="title-block flex align-items-center space-between p-l-30 p-r-30">
+                <view class="title fs-32 color-000">精选推荐</view>
+                <!-- <navigator url="/pages/project/list" open-type="switchTab" hover-class="none" class="flex align-items-center color-AAABAB fs-20">
+                    <view class="text more">更多</view>
+                    <view class="iconfont icon-right fs-24"></view>
+                </navigator> -->
+            </view>
+            <view class="recommend-swiper-block relative m-t-40">
+                <swiper id="nowCurrent1" bindchange="swiperChange" class="recommend-swiper" circular previous-margin="60rpx" next-margin="85rpx" display-multiple-items="2">
+                    <swiper-item style="overflow:visible;" wx:for="{{recommend_articles}}" wx:key="index">
+                        <navigator hover-class="none" url="/pages/project/detail?id={{item.id}}" class="recommend-item-block">
+                            <view class="recommend-item">
+                                <image class="recommend-img {{nowCurrent1==index?'active':''}}" mode="aspectFill" src="{{host + item.re_img.url}}"></image>
+                            </view>
+                            <view class="recommend-item-content m-t-30 p-l-30 {{nowCurrent1==index?'active':''}}" wx:if="{{nowCurrent1==index}}">
+                                <view class="title fs-28 ellipsis" style="color:#323334">{{item.title||''}}</view>
+                                <view class="desc fs-20 ellipsis" style="color:#9D9D9D">{{item.description||''}}</view>
+                            </view>
+                        </navigator>
+                    </swiper-item>
+                    <!-- <swiper-item style="overflow:visible" wx:for="{{recommend_articles}}" wx:key="index">
+                        <navigator hover-class="none" url="/pages/project/detail?id={{item.id}}" class="recommend-item-block">
+                            <view class="recommend-item m-t-40">
+                                <image class="recommend-img {{nowCurrent1==index?'active':''}}" mode="aspectFill" src="{{host + item.re_img.url}}"></image>
+                            </view>
+                            <view class="recommend-item-content p-l-30 absolute {{nowCurrent1==index?'active':''}}" wx:if="{{nowCurrent1==index}}">
+                                <view class="title fs-28 color-333 ellipsis fw-6">{{item.title||''}}</view>
+                                <view class="desc fs-20 color-909090 ellipsis">{{item.description||''}}</view>
+                            </view>
+                        </navigator>
+                    </swiper-item> -->
+                </swiper>
+            </view>
+        </view>
+        <block wx:for="{{articles}}" wx:key="index">
+            <view class="index_source m-t-40 p-b-20" wx:if="{{!!item.list.length}}">
+                <view class="title-block flex align-items-center space-between p-l-30 p-r-30 m-b-20">
+                    <view class="title fs-32 color-000">{{item.category_name}}</view>
+                    <view catchtap="toProjectList" data-id="{{item.category_id}}" hover-class="none" class="flex align-items-center color-A9AAAC fs-20">
+                        <view class="text more">更多</view>
+                        <view class="iconfont icon-right fs-24"></view>
+                    </view>
+                </view>
+                <view class="source_banner">
+                    <swiper circular="true" previous-margin="-30rpx" next-margin="60rpx" style="height:600rpx;">
+                        <block wx:for="{{item.list}}" wx:for-item="project" wx:for-index="p_index" wx:key="p_index">
+                            <swiper-item class="p-t-20 border-box" style="padding:20rpx  15rpx 0">
+                                <navigator hover-class="none" url="/pages/project/detail?id={{project.id}}" class="source_item relative">
+                                    <view class="source_img">
+                                        <image style="width:100%;height:100%;vertical-align: middle;" src="{{host + project.img.url}}" mode="aspectFill"></image>
+                                        <text class="isSift" wx:if="{{project.label}}">{{project.label}}</text>
+                                        <view class="total-price">
+                                            <view>
+                                            <text class="total-key">总价: ￥</text>
+                                            <text>{{project.price != 0 && project.price?project.price:'面议'}}</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="source_desc p-l-30 p-r-30 p-t-30 p-b-20">
+                                        <text class="name ellipsis">{{project.title}}</text>
+                                        <text class="desc ellipsis m-t-30">{{project.description||''}}</text>
+                                        <view class="income p-l-30 p-r-30 flex align-items-center space-between">
+                                            <view>
+                                                <view><text class="num">{{project.category_id == 7?(project.loan_principal||0):(project.city||'未填写')}}</text></view>
+                                                <text class="text">{{project.category_id == 7?'贷款本金':'城市'}}</text>
+                                            </view>
+                                            <view>
+                                                <view><text class="num">{{project.category_id == 7?(project.loan_interest||0):(project.area||'未填写')}}</text></view>
+                                                <text class="text">{{project.category_id == 7?'贷款利息':'面积/m²'}}</text>
+                                            </view>
+                                            <view>
+                                                <view><text class="num">{{project.category_id == 7?(project.collateral_type||'未填写'):(project.price!=0 && project.price?project.price:'面议')}}</text></view>
+                                                <text class="text">{{project.category_id == 7?'抵押物类型':'价格/万'}}</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </navigator>
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                </view>
+            </view>
+        </block>
+        <view class="holder p-t-40 p-b-40"></view>
+    </scroll>
+</view>
+<image class="fixed-btn" catchtap="toCert" src="/images/icons/fixed-cert-icon.png"></image>

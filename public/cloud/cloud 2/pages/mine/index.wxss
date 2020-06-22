@@ -1,0 +1,37 @@
+.split-line{
+    border-bottom: 1rpx solid #E1E1E1;
+}
+page{
+    background: #F9F9F9;
+}
+.avatar-block{
+    padding: 80rpx 40rpx;
+}
+.avatar{
+    width: 128rpx;
+    height: 128rpx;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 40rpx;
+}
+.auth-label{
+    border-radius: 30rpx;
+    padding: 5rpx 20rpx;
+    font-size: 20rpx;
+}
+.unauth{
+    background: #04A7A9;
+    color: #fff;
+}
+.authed{
+    color: #F0CE95;
+    background: rgba(62,65,68,1);
+}
+.right-icon-block{
+    width: 60rpx;
+    height: 60rpx;
+}
+.icon-block{
+    width: 40rpx;
+    height: 40rpx;
+}

@@ -1,0 +1,24 @@
+/* pages/mine/idcard.wxss */
+.upload-block {
+    padding: 60rpx 50rpx;
+}
+
+.upload {
+    width: 308rpx;
+    height: 212rpx;
+    vertical-align: middle;
+}
+
+.upload-block {
+	padding: 60rpx;
+}
+.btn{
+    height: 80rpx;
+    width: 100%;
+    background: #04A7A9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+}

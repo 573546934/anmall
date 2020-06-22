@@ -1,0 +1,29 @@
+<!--pages/authen/serviceProvider/mainBusiness.wxml-->
+<!--pages/authen/serviceProvider/blurb.wxml-->
+<view class="wrap">
+    <view class="title">主营业务<text>（最多可选4个）</text></view>
+    <form bindsubmit="formSubmit" class="formGroup">
+        <view class="checkboxList">
+            <block wx:for="{{ckeckedList}}" wx:key="index">
+                <view class="ckeckedItem">
+                    <view class="checkedClass">{{item.class}}<text>（选填）</text></view>
+                    <checkbox-group data-type="{{item.type}}" bindchange="checkboxChange" name="class{{index}}" >
+                        <block wx:for="{{item.tag}}" wx:key="index" wx:for-item="tag">
+                            <label>
+                                <checkbox value="{{tag.text}}"></checkbox>
+                                <text>{{tag.text}}</text>
+                            </label>
+                        </block>
+                        
+                    </checkbox-group>
+                </view>
+            </block>
+
+        </view>
+       <view class="submit">
+        <button class="btn" form-type="submit">保存</button>
+    </view>
+    </form>
+</view>
+
+

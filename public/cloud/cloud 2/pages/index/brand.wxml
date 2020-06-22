@@ -1,0 +1,17 @@
+<!--pages/index/brand.wxml-->
+<view class="brands-block">
+    <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!list.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{list.length >= 5}}">
+        <view class="brands p-l-30 p-r-30 p-t-30">
+            <navigator hover-class="none" url="./brandDetail?id={{item.id}}" class="brand-item flex align-items-center {{index < list.length-1?'m-b-30':''}}" wx:for="{{list}}" wx:key="index">
+                <image class="brand-img m-r-40" mode="aspectFill" src="{{host + item.img.url}}"></image>
+                <view class="main-block">
+                    <view class="title fs-32 color-333 fw-6 ellipsis">{{item.company_name}}</view>
+                    <view class="desc fs-24 color-666 m-t-10">{{item.city||''}} {{item.company_type || ''}}</view>
+                    <view class="tags flex align-items-center m-t-20">
+                        <view class="tag label label-other m-r-10">产权交易</view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </scroll>
+</view>

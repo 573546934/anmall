@@ -1,0 +1,14 @@
+<!--pages/mine/svip.wxml-->
+<view class="svip-block flex flex-column">
+    <view class="tabs-block">
+        <tab id="tabs" tab-data="{{tabs}}" color="#04A7A9" scale=".2" tabCur="{{tab}}" size="92" bindchange="tabChange" />
+    </view>
+    <swiper class="flex-1" duration="200" bindchange="tabChange" current="{{tab}}">
+        <swiper-item wx:for="{{tabs}}" wx:key="index">
+            <view class="editor-block" wx:if="{{item.article}}">
+                <import src="/towxml/entry.wxml" />
+                <template is="entry" data="{{...item.article}}" />
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

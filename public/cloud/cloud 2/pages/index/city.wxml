@@ -1,0 +1,30 @@
+<!--pages/index/city.wxml-->
+<view class="city-block flex flex-column">
+    <view class="search-block p-t-20 p-b-20 p-l-30 p-r-30">
+        <search placeholder="请输入城市名" />
+    </view>
+    <view class="main flex-1 border-box p-t-40 p-l-40 p-r-40 p-b-40">
+        <view class="current-block">
+            <view class="title fs-40 fw-5 color-3E4144 m-b-20">定位城市</view>
+            <view class="items flex align-items-center">
+                <view catchtap="navBack" class="current item m-r-20 flex align-items-center justify-content-center">
+                    <image class="location-icon m-r-10" src="../../images/icons/icon-dinwei.png"></image>
+                    <view class="city-text color-3E4144 fs-28">{{city}}</view>
+                </view>
+                <view class="refresh item flex align-items-center justify-content-center" catchtap="setLocation">
+                    <image class="refresh-icon m-r-10" src="/images/icons/refresh.png"></image>
+                    <view class="city-text color-3E4144 fs-28">重新定位</view>
+                </view>
+            </view>
+        </view>
+        <view class="recommendation-block">
+            <view class="title fs-40 fw-5 color-3E4144 m-b-20">热门城市</view>
+            <view class="items flex align-items-center flex-wrap">
+                <view class="{{(index + 1)%3 == 0?'':'m-r-20'}} m-b-20 current item flex align-items-center justify-content-center" wx:for="{{citys}}" wx:key="index" catchtap="tapCity" data-city="{{item}}">
+                    <view class="city-text color-999 fs-28">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+    </view>
+</view>

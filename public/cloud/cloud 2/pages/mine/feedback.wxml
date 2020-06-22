@@ -1,0 +1,19 @@
+<!--pages/mine/feedback.wxml-->
+<view class="feedback-block p-l-20 p-r-20">
+    <!-- <view class="rate-block p-b-30">
+        <view class="title m-t-40 m-b-20 fs-32">请您星级评价</view>
+        <view class="rates content-box flex align-items-center p-t-40 p-b-40 p-l-30 p-r-30">
+            <view class="stars flex align-items-center">
+                <image class="star m-r-20" data-index="{{item}}" catchtap="rateFun" src="/images/icons/rate{{index+1<=score?'-fill':''}}.png" wx:for="{{[1,2,3,4,5]}}" wx:key="index"></image>
+            </view>
+            <view class="text color-333 fs-28 m-l-10">满意</view>
+        </view>
+    </view> -->
+    <view class="content-block m-t-30">
+        <view class="title m-t-40 m-b-20 fs-32">请留下您对我们的意见或建议</view>
+        <textarea bindinput="syncInput" class="content-box full-block fs-28" placeholder="请填写您的问题和建议，感谢您的支持〜（必填）"></textarea>
+    </view>
+    <view class="submit p-l-30 p-r-30">
+        <view class="btn btn-publish btn-save fs-32 fw-6 color-fff" catchtap="submit">提交</view>
+    </view>
+</view>

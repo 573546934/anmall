@@ -1,0 +1,615 @@
+/* pages/index/index.wxss */
+
+/* ******头部搜索 start */
+.index_top {
+    padding: 0 29rpx;
+    display: flex;
+    align-items: center
+}
+
+.top_position {
+    display: flex;
+    align-items: center;
+    margin-right: 30rpx;
+}
+
+.top_position .icon-weizhi {
+    font-size: 36rpx;
+    color: #0b0b0b;
+    margin-right: 4rpx;
+}
+
+.top_position .city {
+    font-size: 24rpx;
+    color: #0b0b0b;
+}
+
+.top_search {
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+    border-radius: 300rpx;
+    padding: 0 18rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    flex: 1;
+}
+
+.top_search input {
+    padding-left: 10rpx;
+    color: #333;
+    font-size: 28rpx;
+}
+
+.index_top .icon-fuwuerji {
+    font-size: 36rpx;
+    color: #000;
+    margin-left: 30rpx;
+}
+
+/* ******头部搜索 end */
+
+
+/* ******banner start */
+.swiper-banner {
+    height: 400rpx;
+}
+
+.banner-img {
+    width: calc(100%);
+    height: calc(100%);
+    vertical-align: middle;
+    box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(10, 56, 111, 0.28);
+    border-radius: 20rpx;
+}
+
+.indicatros {
+    bottom: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.indicator {
+    width: 31rpx;
+    height: 4rpx;
+    background: rgba(175, 175, 175, 0.8);
+    border-radius: 8rpx;
+    margin-right: 8rpx;
+    transition: width .25s
+}
+
+.indicator:last-child {
+    margin-right: none;
+}
+
+.indicator.active {
+    background: #fff;
+    transition: width .25s;
+}
+
+/* ******banner end */
+
+
+/* ******subnav start */
+
+.subnav view {
+    width: 25%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60rpx;
+}
+
+.subnav view image {
+    width: 70rpx;
+    height: 60rpx;
+    margin-bottom: 20rpx;
+}
+
+.subnav view text {
+    font-size: 24rpx;
+    color: #333;
+}
+
+/* ******subnav end */
+
+
+/* ******news start */
+.index_news {
+    margin-top: 60rpx;
+    padding: 0 20rpx;
+}
+
+.index_Ncom {
+    width: 343rpx;
+    position: relative;
+    border-radius: 10rpx;
+    float: left;
+    overflow: hidden;
+    height: 223rpx;
+    margin-bottom: 25rpx;
+    padding-left: 28rpx;
+    padding-top: 28rpx;
+}
+
+.index_Ncom image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 343rpx;
+    height: 223rpx;
+}
+
+.index_Ncom .absolute {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+
+}
+
+.index_Nspecial {
+    height: 474rpx;
+    margin-right: 25rpx;
+
+}
+
+.index_Nspecial image {
+    height: 474rpx;
+
+}
+
+.three .index_Ncom:nth-of-type(2) {
+    margin-top: 5rpx;
+}
+
+.four .index_Ncom:nth-of-type(2n-1) {
+    margin-right: 25rpx;
+}
+
+.index_news .noready {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.index_news .title {
+    display: block;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #3e3d50;
+    margin-bottom: 10rpx;
+}
+
+.index_news .introduce {
+    display: block;
+    font-size: 20rpx;
+    font-weight: bold;
+    color: #3e3d50;
+}
+
+.index_Nspecial .title,
+.index_Nspecial .introduce {
+    text-align: center;
+}
+
+.index_Nspecial .title {
+    padding-top: 60rpx;
+}
+
+.index_Ncom .enter {
+    font-size: 22rpx;
+    width: 83rpx;
+    height: 40rpx;
+    line-height: 32rpx;
+    text-align: center;
+    border-radius: 300rpx;
+    position: absolute;
+    right: 25rpx;
+    bottom: 30rpx;
+}
+
+.index_Ncom .noready {
+    font-size: 16rpx;
+    color: #fff;
+    padding: 3rpx 12rpx;
+    border-bottom-left-radius: 20rpx;
+}
+
+.three .index_Ncom:nth-child(1) .enter {
+    width: 147rpx;
+    height: 55rpx;
+    left: 50%;
+    margin-left: -73.5rpx;
+    bottom: 40rpx;
+    line-height: 55rpx;
+    color: #fff;
+    background: linear-gradient(to right, #ffad71, #ff8764);
+}
+
+.three .index_Ncom:nth-child(3) .enter,
+.four .index_Ncom:nth-child(1) .enter {
+    border: 1px solid #7d84f7;
+    color: #7d84f7;
+}
+
+.four .index_Ncom:nth-child(2) .enter {
+    border: 1px solid #08c398;
+    color: #08c398;
+}
+
+.four .index_Ncom:nth-child(3) .enter,
+.four .index_Ncom:nth-child(4) .enter,
+.three .index_Ncom:nth-child(2) .enter {
+    border: 1px solid #ef8a80;
+    color: #ef8a80;
+}
+
+
+.three .index_Ncom:nth-child(1) .noready {
+    background: #ff8c8c;
+}
+
+.three .index_Ncom:nth-child(3) .noready,
+.four .index_Ncom:nth-child(1) .noready {
+    background: #7d84f7;
+}
+
+.four .index_Ncom:nth-child(2) .noready {
+    background: #08c398;
+}
+
+.four .index_Ncom:nth-child(3) .noready,
+.four .index_Ncom:nth-child(4) .noready,
+.three .index_Ncom:nth-child(2) .noready {
+    background: #ff9f70;
+}
+
+
+/* ******news end */
+
+
+/* ******机构专场 start */
+.index_field {
+    margin-top: 70rpx;
+}
+
+.com_title {
+    padding: 0 29rpx;
+    display: flex;
+    align-items: center;
+}
+
+.com_title .title {
+    font-size: 30rpx;
+    color: #333;
+    flex: 1;
+}
+
+.com_title navigator {
+    font-size: 20rpx;
+    color: #aaabab;
+}
+
+.com_title navigator text {
+    font-size: 24rpx;
+}
+
+.field_banner {
+    margin-top: 24rpx;
+}
+
+.field_banner swiper-item {
+    overflow: visible;
+}
+
+.field_banner .field_banner_item {
+    width: 142rpx;
+    box-shadow: 0 5rpx 10rpx #ccc;
+    height: 142rpx;
+    border-radius: 10rpx;
+}
+
+.field_banner .field_banner_item.active {
+    transform: scale(1.2, 1.2);
+    transition: all 0.3s;
+}
+
+.field_banner_item>image {
+    width: 85%;
+    vertical-align: middle;
+}
+
+/* ******机构专场 end */
+
+
+/* ******资产需求 start */
+.index_want {
+    padding: 0 29rpx;
+    margin-top: 52rpx;
+
+}
+
+.index_want .com_title {
+    padding: 0;
+    margin-bottom: 34rpx;
+}
+
+.index_want .want_con {
+    height: 340rpx;
+    box-shadow: 0 5rpx 20rpx #999;
+
+}
+
+/* ******资产需求 end */
+
+
+/* ******房源 start */
+.index_source {
+    /* margin-top: 50rpx; */
+}
+
+.index_source .com_title {
+    /* margin-bottom: 34rpx; */
+}
+
+.source_item {
+    position: relative;
+    width: 720rpx;
+}
+
+.source_img {
+    width: 720rpx;
+    height: 384rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+    box-shadow: 0 5rpx 15rpx #999;
+    position: relative
+}
+
+.isSift {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20rpx;
+    color: #333;
+    background: #ecc301;
+    padding: 4rpx 12rpx 4rpx 32rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.totalP {
+    position: absolute;
+    top: 22rpx;
+    right: -38rpx;
+    background: #ecc301;
+    color: #333;
+    padding: 10rpx 60rpx 10rpx 30rpx;
+    transform: skewX(30deg)
+}
+
+.totalP view {
+    transform: skewX(-30deg);
+    font-size: 20rpx;
+    color: #333;
+}
+
+.totalP view text {
+    font-size: 38rpx;
+    font-weight: bold
+}
+
+.source_desc {
+    width: 582rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 310rpx;
+    background: #fff;
+    border-radius: 15rpx;
+    overflow: visible;
+    box-shadow: 0 5rpx 30rpx #999;
+    padding: 40rpx 54rpx;
+
+}
+
+.source_desc .name {
+    display: block;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8rpx;
+}
+
+.source_desc .desc {
+    display: -webkit-box;
+    min-height: 50rpx;
+    font-size: 20rpx;
+    color: #919191;
+}
+
+.source_desc .income {
+    margin-top: 14rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.source_desc .income .num {
+    font-size: 35rpx;
+    font-weight: bold;
+    color: #d4af00;
+    margin-bottom: 8rpx;
+}
+
+.source_desc .income .text {
+    display: block;
+    font-size: 20rpx;
+    color: #333333;
+}
+
+.source_desc .income .symbol {
+    font-size: 24rpx;
+    color: #d4af00;
+
+}
+
+.abrond_banner swiper-item.active .project_text {
+    opacity: 1;
+    transition: all 1s;
+}
+
+.abrond_banner .project_text {
+    top: 600rpx;
+    left: 80rpx;
+}
+
+.select_source {
+    display: flex;
+    align-items: center;
+    padding: 0 29rpx;
+}
+
+.select_source text {
+    flex: 1;
+    display: block;
+    text-align: center;
+    font-size: 26rpx;
+    background: #f6f1eb;
+    color: #988d71;
+    height: 70rpx;
+    line-height: 70rpx;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+}
+
+.select_source text:last-of-type {
+    margin-right: 0;
+}
+
+/* ******房源 end */
+
+
+/* ****** start */
+.index_project {
+    margin-top: 70rpx;
+    margin-bottom: 50rpx;
+}
+
+.index_project .com_title {
+    margin-bottom: 24rpx;
+}
+
+.project_banner {
+    position: relative;
+}
+
+.project_banner swiper-item {
+    padding-top: 40rpx;
+    overflow: visible;
+}
+
+.project_banner swiper-item image {
+    width: 245rpx;
+    margin: 0 auto;
+    box-shadow: 0 5rpx 10rpx #ccc;
+
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+.project_banner swiper-item.active image {
+    transform: scale(1.2, 1.2);
+    transition: all 0.3s;
+}
+
+.project_text {
+    position: absolute;
+    border-left: 2rpx solid #ecc301;
+    padding-left: 30rpx;
+    opacity: 0;
+    transition: all 0.5s;
+
+    top: 428rpx;
+    left: 0;
+    right: 0;
+    width: 650rpx;
+}
+
+.project_banner swiper-item.active .project_text {
+    opacity: 1;
+    transition: all 1s;
+}
+
+.project_text .lage {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10rpx;
+    white-space: nowrap;
+
+}
+
+.project_text .small {
+    display: block;
+    font-size: 20rpx;
+    color: #909090;
+    white-space: nowrap;
+
+}
+
+.live-block-item {
+    width: calc(100%);
+    height: calc(100%);
+    box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.2);
+    border-radius: 12rpx;
+}
+
+.reservation-label {
+    width: 196rpx;
+    height: 74rpx;
+    background: rgba(236, 194, 2, 1);
+    box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.2);
+    border-radius:0  37rpx 37rpx 0;
+    font-size: 42rpx;
+    left: 0;
+    top: 20rpx;
+    color: #EBF3FE;
+}
+.reservation-icon{
+  width: 56rpx;
+  height: 58rpx;
+  vertical-align: middle;
+}
+.reservation-banner{
+  width: 350rpx;
+  height: 350rpx;
+  vertical-align: middle;
+  right: 0;
+  bottom: 0;
+  border-radius: 0 0 12rpx 0;
+  z-index: 0;
+}
+.reservation-main-content {
+  width: calc(100% - 280rpx);
+  padding: 120rpx 0 40rpx 40rpx; 
+  position: relative;
+  z-index: 2;
+}
+.reservation-split-line{
+  width: 112rpx;
+  height: 2rpx;
+  background: #333;
+}
+.fixed-btn{
+  width: 154rpx;
+  height: 154rpx;
+  vertical-align: middle;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}

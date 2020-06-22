@@ -1,0 +1,61 @@
+<!--pages/index/service.wxml-->
+<view class="service-block flex flex-column">
+    <view class="flex-1 overflow-scroll main-block">
+        <view class="info-block p-l-40 p-r-40 p-t-40 p-b-40">
+            <view class="logo-name flex">
+                <view class="name flex-1">{{data.company_name}}</view>
+                <image class="logo m-l-40" src="{{host + data.logoimg.url}}"></image>
+            </view>
+            <view class="labels flex flex-wrap m-t-20">
+                <view class="label m-r-20 m-b-20">投资管理</view>
+                <view class="label m-r-20 m-b-20">酒店类投资</view>
+                <view class="label m-r-20 m-b-20">项目市场尽调</view>
+            </view>
+            <view class="info m-t-20 fs-28 color-333">
+                <view class="city">公司城市：{{data.company_city || '未填写'}}</view>
+                <view class="city">公司类别：{{data.type || '未填写'}}</view>
+                <view class="city">注册资本：{{data.reg_capital || '未填写'}}</view>
+            </view>
+            <view class="manager flex align-items-center m-t-40 p-b-20">
+                <image class="avatar m-r-20" src="{{host + data.cardimg.url}}" mode="aspectFill"></image>
+                <view class="name-job fs-28 color-333 m-r-40">
+                    <view class="name fw-5">{{data.name}}</view>
+                    <view class="job">{{data.job}}</view>
+                </view>
+                <view class="phone-call fs-26" catchtap="makePhoneCall">
+                    <image class="tel-icon m-r-10" src="/images/icons/tel-icon.png"></image>
+                    咨询
+                </view>
+            </view>
+        </view>
+        <view class="split"></view>
+        <view class="company-block p-t-20 p-l-40 p-r-40">
+            <view class="company-block-title fs-32 color-3E4144 fw-5 p-b-20">公司概况</view>
+            <image class="company-banner m-t-30" mode="widthFix" src="{{host + data.bgmimg.url}}"></image>
+            <view class="labels flex flex-wrap m-t-30">
+                <view class="label m-r-20 m-b-20">投资管理</view>
+                <view class="label m-r-20 m-b-20">酒店类投资</view>
+                <view class="label m-r-20 m-b-20">项目市场尽调</view>
+            </view>
+            <view class="info p-t-20 p-b-40">
+                <text decode space="nbsp"> {{data.introduction}}</text>
+            </view>
+            <view class="tips m-t-20 p-b-40" wx:if="{{data.description}}">
+                <view class="tips-title fs-28">郑重声明</view>
+                <view class="fs-24 m-t-10 p-b-40">
+                    <text decode space="nbsp"> {{data.description}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="button-block">
+        <view class="buttons flex align-items-center p-t-20 p-b-20 p-r-30">
+            <button open-type="share" class="share flex-1 flex flex-column align-items-center justify-content-center">
+                <image class="share-icon" src="/images/icons/share-circle.png"></image>
+                <view class="text fs-20 color-666">分享</view>
+            </button>
+            <navigator hover-class="none" url="/pages/serviceProvider/index" class="button">申请成为服务商</navigator>
+        </view>
+        <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+    </view>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/mine/idcard.wxml-->
+<view class="idcard-block">
+    <view class="upload-block flex align-items-center space-between">
+        <view class="top-side" data-flag="top" catchtap="selectImg">
+            <image class="upload" src="{{top||'/images/icons/id-top.png'}}"></image>
+            <view class="text text-center fs-28 m-t-20 color-666">点击上传带头像一面</view>
+        </view>
+        <view class="bttm-side" data-flag="bttm" catchtap="selectImg">
+            <image class="upload" src="{{bttm||'/images/icons/id-bttm.png'}}"></image>
+            <view class="text text-center fs-28 m-t-20 color-666">点击上传带国徽的一面</view>
+        </view>
+    </view>
+    <view class="upload-block">
+        <view class="btn fs-32 fw-6 color-fff" catchtap="submit">提交</view>
+    </view>
+</view>

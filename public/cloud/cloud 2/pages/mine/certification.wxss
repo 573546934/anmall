@@ -1,0 +1,44 @@
+.col-label.text,
+.col-label.radio,
+.col-label.nav {
+    width: 230rpx;
+}
+
+.require {
+    color: #EC0202;
+}
+
+.split {
+    width: 100%;
+    height: 2rpx;
+    background: #e1e1e1;
+}
+
+.radio-icon {
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}
+
+.col-upload >image {
+    /*height: 200rpx;*/
+    border-radius: 2rpx;
+    vertical-align: middle;
+}
+.add-icon{
+    width: 60rpx;
+    height: 60rpx;
+}
+.color-126FDD{
+    color: #126FDD
+}
+.btn{
+    height: 80rpx;
+    width: 100%;
+    background: #04A7A9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 40rpx;
+}

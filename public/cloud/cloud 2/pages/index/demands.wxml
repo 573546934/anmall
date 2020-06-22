@@ -1,0 +1,13 @@
+<!--pages/index/demands.wxml-->
+<view class="demands-block flex flex-column">
+    <view class="search-filter-block bg-fff">
+        <view class="search-block p-t-20 p-b-20 p-l-30 p-r-30">
+            <search />
+        </view>
+    </view>
+    <view class="flex-1 main-block">
+        <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!data.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{data.length >= 4}}">
+           123
+        </scroll>
+    </view>
+</view>

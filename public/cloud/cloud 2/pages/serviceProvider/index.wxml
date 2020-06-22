@@ -1,0 +1,22 @@
+<!--pages/authen/serviceProvider/index.wxml-->
+ <view class="wrap">
+    <text class="title">按照以下步骤完成信息</text>
+    <view class="msgList">
+        <block wx:for="{{msgList}}"  wx:key="index">
+            <view hover-class="none" class="msgItem" bindtap="jumpPage"  data-nav="{{item.nav}}" data-num="{{item.msgNum}}">
+                <view ><text class="num">{{item.msgNum}}：</text><text class="text">{{item.msgText}}</text></view>
+                <text class="right iconfont icon-right"></text>
+            </view>
+           
+        </block>
+        
+    </view>
+    <view class="agreement">
+        <label class="radio">
+            <radio color="#04a7a9" value="agreement" bindtap="radioClick" checked="{{isChecked}}"/><text>阅读并同意《XXX协议》</text>
+        </label>
+    </view>
+    <view class="submit">
+        <button class="btn" bindtap="onSubmit">提交</button>
+    </view>
+ </view>

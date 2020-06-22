@@ -1,0 +1,16 @@
+.demands-block{
+	width: 100vw;
+	height: 100vh;
+	background: #F3F4F4;
+}
+.search-filter-block{
+	z-index: 1;
+}
+.banner{
+	width: 160rpx;
+	height: 160rpx;
+	vertical-align: middle;
+}
+.main-block{
+	width: calc(100% - 200rpx);
+}

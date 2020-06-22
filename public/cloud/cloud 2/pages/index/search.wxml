@@ -1,0 +1,66 @@
+<!--pages/index/search.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter" />
+<view class="serach flex flex-column">
+    <view class="search-block p-l-30 p-t-20 p-b-20 p-r-30">
+        <search bindclear="clearSearch" bindconfirm="search" disabled="{{false}}" params="params=newsList" placeholder="搜索关键词" />
+    </view>
+    <view class="main flex-1" style="background:{{params == 'articles' || params == 'services'?'#f9f9f9':''}}">
+        <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" disabledPullDown noData="{{!list.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{list.length >= 4}}">
+            <block wx:if="{{params == 'newsList'}}">
+                <view class="list p-l-30 p-r-30 p-t-30">
+                    <navigator hover-class="none" url="/pages/news/detail?id={{item.id}}" wx:for="{{list}}" wx:key="index">
+                        <view class="item flex {{index < list.length-1?'m-b-40':''}}" wx:if="{{item.img && item.img.url}}">
+                            <image class="item-banner m-r-20" src="{{host + item.img.url}}" mode="aspectFill"></image>
+                            <view class="item-main flex flex-column p-t-10 p-b-10">
+                                <view class="title fs-32 fw-5 color-333 ellipsis2">{{item.title}}</view>
+                                <view class="flex-1 flex">
+                                    <view class="price-view-count space-between flex color-666 fs-24 align-self-end full-block">
+                                        <view class="auth">{{item.author}}</view>
+                                        <view class="time">{{item.created_at}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="item {{index < list.length-1?'m-b-40':''}}" wx:else>
+                            <view class="title fs-32 fw-5 color-333 ellipsis2 m-b-20">{{item.title}}</view>
+                            <view class="auth-time align-self-end flex align-items-center space-between color-666 fs-24">
+                                <view class="auth">{{item.author}}</view>
+                                <view class="time">{{item.created_at}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </block>
+            <block wx:if="{{params == 'articles'}}">
+                <view class="list-block p-t-20" wx:for="{{list}}" wx:key="p_index" wx:for-item="project" wx:for-index="p_index">
+                    <navigator hover-class="none" url="/pages/project/detail?id={{project.id}}" class="list-item p-t-20 p-b-20 p-l-30 p-r-30 bg-fff flex">
+                        <image class="list-banner m-r-30" src="{{host + project.img.url}}" mode="aspectFill"></image>
+                        <view class="list-main">
+                            <view class="title fs-32 color-333 ellipsis">{{project.title}}</view>
+                            <view class="desc fs-22 color-666 ellipsis">{{project.description || ''}}</view>
+                            <view class="price-cate-location flex align-items-center space-between m-t-10">
+                                <text class="price-lable fs-24 color-999">总价¥ <text class="fs-28 price">{{project.price}}</text></text>
+                                <text class="fs-22 color-999">佣金<text class="color-04A7A9">:{{project.commission}}</text></text>
+                            </view>
+                            <view class="labels flex flex-wrap align-items-center m-t-10">
+                                <view class="label m-r-10" wx:for="{{project.tags}}" wx:for-item="tag" wx:for-index="t_index" wx:key="t_index">{{tag.name}}</view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </block>
+            <block wx:if="{{params == 'services'}}">
+                <view class="list-block p-t-20 p-l-30 p-r-30">
+                    <navigator hover-class="none" url="/pages/index/service?id={{item.id}}" class="item content-box p-t-40 p-b-40 p-l-40 p-r-40 {{index < list.length-1?'m-b-30':''}} flex" wx:for="{{list}}" wx:key="index">
+                        <image class="banner m-r-40" src="{{host + item.logoimg.url}}" mode="aspectFill"></image>
+                        <view class="main-block">
+                            <view class="name fs-32 fw-6 color-333 ellipsis">{{item.company_name}}</view>
+                            <view class="city fs-24 color-666">{{item.company_city}}</view>
+                            <view class="business fs-24 color-04A7A9 m-t-20">{{item.business}}</view>
+                        </view>
+                    </navigator>
+                </view>
+            </block>
+        </scroll>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+<!--pages/authen/serviceProvider/blurb.wxml-->
+<view class="wrap">
+    <view class="title">公司简介（选填）</view>
+    <form catchsubmit="formSubmit" class="formGroup">
+      <textarea  placeholder="请描述项目的债务情况，包括但不限于借款金额、借款期限、还款情况~" bindinput='onInput' value='{{intro}}'/>
+        
+       <view class="submit">
+        <button class="btn" bindtap="onSave">保存</button>
+    </view>
+    </form>
+</view>
+

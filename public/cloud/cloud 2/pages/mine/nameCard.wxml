@@ -1,0 +1,17 @@
+<!--pages/mine/nameCard.wxml-->
+<view class="canvas-block">
+    <canvas id="canvas{{index}}" class="canvas" canvas-id="canvas{{index}}" wx:for="{{items}}" wx:key="index"></canvas>
+</view>
+<view class="back-drop-block flex flex-column align-items-center justify-content-center" wx:if="{{poster}}">
+    <swiper current="{{current}}" bindchange="swiperChange" class='swiper' previous-margin="55rpx" next-margin="55rpx">
+        <swiper-item class="flex align-item-center justify-content-center" wx:for="{{items}}" wx:key="index">
+            <image class="banner" src="{{item}}" mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
+    <view class="back-drop-buttons flex justify-content-center">
+        <view class="forward-item flex-1 flex flex-column align-items-center justify-content-center" wx:for="{{forwards}}" wx:key="index" catchtap="keepPoster">
+            <image class="icon" src="{{item.icon}}" mode="widthFix" style="width:96rpx"></image>
+            <view class="text fs-24 color-333 m-t-20">{{item.label}}</view>
+        </view>
+    </view>
+</view>

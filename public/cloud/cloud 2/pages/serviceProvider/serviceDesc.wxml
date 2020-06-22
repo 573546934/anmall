@@ -1,0 +1,25 @@
+<!--pages/authen/serviceProvider/serviceDesc.wxml-->
+<view class="wrap">
+    <view class="title">业务描述（选填）</view>
+    <form bindsubmit="formSubmit" class="formGroup">
+        <block wx:for="{{addDesc}}"  wx:key="this">
+            <view class="inputitem">
+                <input name="input{{index}}" bindinput="oninput" data-index="{{index}}" value="{{item.text}}" placeholder="请输入......"></input>
+            </view>
+           
+            
+        </block>
+        
+
+        <view class="addDesc" bindtap="addDesc">+新增案例</view>
+
+        <text class="caseDesc">不多于6个汉字，如:税务筹划，项目市场竞调，不良业务催收... (最多可添加6个)</text>
+
+       <view class="submit">
+        <button class="btn" form-type="submit" bindtap="onSave">保存</button>
+    </view>
+    </form>
+</view>
+
+
+

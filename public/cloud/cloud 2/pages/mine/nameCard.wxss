@@ -1,0 +1,27 @@
+.back-drop-block {
+    width: 100vw;
+    height: 100vh;
+    background: #F3F4F4;
+}
+.canvas{
+    width: 600rpx;
+    height: 900rpx;
+    position: absolute;
+    left: -100vw;
+    height: -100vh;
+    visibility: hidden;
+}
+.swiper{
+    width: 100vw;
+    height: 920rpx;
+}
+.banner{
+    width: 600rpx;
+    height: 900rpx;
+    border-radius: 12rpx;
+    box-shadow:8rpx 8rpx 12rpx 0px rgba(226,225,224,1);
+}
+.back-drop-buttons {
+    padding: 40rpx 60rpx 20rpx;
+    width: 100%;
+}

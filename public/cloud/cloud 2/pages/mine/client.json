@@ -1,0 +1,5 @@
+{
+  "usingComponents": {"scroll":"/components/scroll/index"},
+  "navigationBarTitleText": "我的客户",
+  "disableScroll":true
+}

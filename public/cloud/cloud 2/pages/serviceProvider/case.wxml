@@ -1,0 +1,30 @@
+<!--pages/authen/serviceProvider/case.wxml-->
+<view class="wrap">
+    <view class="title">服务案例（选填）</view>
+    <text class="caseDesc">此处可填写：项目收并购案例、合作企业等</text>
+    <form catchsubmit="formSubmit" class="formGroup">
+        <view class="inputitem">
+            <label>标题</label>
+            <input></input>
+        </view>
+        <view class="uploadImg">
+            <view class="upImg">
+                <view class="addimg" hidden="{{isAdd}}"><image src="{{imgSrc}}"></image></view>
+                <view class="clickUpload" hidden="{{!isAdd}}" bindtap="uploadImg">
+                    <image src="/images/icons/addImg.png"></image>
+                    <text>上传图片</text>
+                </view>
+            </view>
+        </view>
+
+      <textarea  placeholder="请添加项目描述~" />
+        
+
+        <view class="addCase">+新增案例</view>
+       <view class="submit">
+        <button class="btn" bindtap="onSave">保存</button>
+    </view>
+    </form>
+</view>
+
+

@@ -1,0 +1,127 @@
+.bg-banner{
+	width: calc(100%);
+	height: 196rpx;
+	vertical-align: middle;
+	border-radius: 20rpx;
+}
+.bg-banner.buy{
+	box-shadow:0rpx 8rpx 12rpx 0rpx rgba(49,129,216,0.4);
+}
+.bg-banner.rent{
+	box-shadow:0rpx 8rpx 12rpx 0rpx rgba(19,175,211,0.4);
+}
+.contetn{
+	width: calc(100%);
+	height: calc(100%);
+	left: 0;
+	top: 0;
+	padding: 0 40rpx 0 60rpx;
+}
+.cn{
+	font-size: 56rpx;
+}
+.m-t-60{
+	margin-top: 60rpx;
+}
+
+
+
+page{
+  width: 100%;
+  height: 100%;
+}
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.header-img{
+  width: 100%;
+  height: 466rpx;
+}
+.item-wrap{
+  display: flex;
+  align-items: center;
+  width:690rpx;
+  height:302rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 2rpx 28rpx 0rpx rgba(179,179,179,0.7);
+  border-radius:4rpx;
+  box-sizing: border-box;
+  margin-bottom: 22rpx;
+}
+.item-left{
+  display: flex;
+  /* align-items: center; */
+}
+.item-content{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 36rpx 0 70rpx;
+}
+.item-img{
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 48rpx;
+}
+.item-mes{
+
+}
+.item-name{
+  font-size:32rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.item-en{
+  font-size:20rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:28rpx;
+  letter-spacing:2rpx;
+  margin-top: 10rpx;
+}
+.item-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:46rpx;
+  height:46rpx;
+  border-radius: 50%;
+  background:linear-gradient(180deg,rgba(71,239,194,1) 0%,rgba(1,186,187,1) 100%);
+}
+.arrow{
+  width: 28rpx;
+  height: 28rpx;
+}
+.btn-wrap{
+  display: flex;
+  margin-top: 20rpx;
+}
+.btn-common{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:124rpx;
+  height:50rpx;
+  
+  border-radius:39px;
+}
+.btn1{
+  background:rgba(4,167,169,0.09);
+  font-family:PingFangSC-Light,PingFang SC;
+  font-weight:300;
+  color:rgba(4,167,169,1);
+  margin-right: 54rpx;
+}
+.btn2{
+  background:#01BABB;
+  font-family:PingFangSC-Light,PingFang SC;
+  font-weight:300;
+  color:rgba(255,255,255,1);
+}

@@ -1,0 +1,33 @@
+/* pages/index/city.wxss */
+.city-block{
+	width: 100vw;
+	height: 100vh;
+}
+.search-block{
+	border-bottom: 2rpx solid #ededed;
+}
+.color-03A8AA{
+	color: #03A8AA;
+}
+.location-icon{
+	width: 16rpx;
+	height: 24rpx;
+	vertical-align: middle;
+}
+.refresh-icon{
+	width: 20rpx;
+	height: 18rpx;
+	vertical-align: middle;
+}
+.item{
+	width: 210rpx;
+	height: 60rpx;
+	border-radius: 2rpx;
+	background: #F8F8F8;
+}
+.refresh.item{
+	background: transparent;
+}
+.recommendation-block{
+	margin-top: 140rpx;
+}

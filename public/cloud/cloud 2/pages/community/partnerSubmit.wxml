@@ -1,0 +1,20 @@
+<!--pages/community/partnerSubmit.wxml-->
+<view class="submit-block p-l-30 p-t-20 p-r-30">
+    <block wx:if="{{!submitFlag}}">
+        <view class="form">
+            <view class="form-item border-box p-t-40 p-b-40 flex align-items-center fs-32 color-333" wx:for="{{form}}" wx:key="index">
+                <view class="label m-r-20">{{item.label}}<text class="require" wx:if="{{item.require}}">*</text></view>
+                <input type="{{item.flag == 'phone'?'number':'text'}}" class="flex-1 text-right" placeholder="请输入" placeholder-class="color-999" data-index="{{index}}" bindinput="syncInput" />
+            </view>
+        </view>
+        <view class="submit-btn m-t-20 p-t-40 p-l-40 p-r-40">
+            <view class="btn flex align-items-center justify-content-center color-fff" catchtap="submit">确定</view>
+        </view>
+    </block>
+    <block wx:else>
+    	<view class="success-block text-center">
+    		<image class="success-icon" mode="aspectFill" src="/images/icons/success-icon.png"></image>
+    		<view class="success-text fs-40 color-999">提交成功！</view>
+    	</view>
+    </block>
+</view>

@@ -1,0 +1,45 @@
+<!--pages/authen/propertyOwner/companyMsg.wxml-->
+<view class="wrap">
+    <view class="title fs-32 color-333 fw-5">公司信息</view>
+    <view class="form-block">
+        <block wx:for="{{form}}" wx:key="index">
+            <!-- <picker mode="selector" range="{{item.flag == 'id'?projects:null}}" data-index="{{index}}" bindchange="pickChange" range-key="{{item.flag == 'id'?'title':null}}" class="full-block" wx:if="{{item.flag == 'company_city'}}"> -->
+            <miniprogram-picker subsetFieldName="children" initColumnSelectedIndex defaultIndex="{{departureIndex}}" shownFieldName="label" steps="2" sourceData="{{data}}" data-index="{{index}}" bindchange="bindRegionChange" wx:if="{{item.flag == 'company_city'}}">
+                <view class="form-item flex align-items-center p-t-40 p-b-40">
+                    <view class="col-label fs-32 color-333">
+                        {{item.label}} <text class="require" wx:if="{{item.require}}">*</text>
+                    </view>
+                    <view class="col-value flex-1 flex align-items-center fs-32 {{item.value?'color-333':'color-999'}}">
+                        <input disabled value="{{ item.value || '请选择'}}" class="flex-1 text-right ellipsis"></input>
+                        <view class="iconfont icon-right color-c7c7c7 m-l-10 fs-28"></view>
+                    </view>
+                </view>
+            </miniprogram-picker>
+            <!-- </picker> -->
+            <view data-index="{{index}}" catchtap="focusIt" class="form-item flex align-items-center p-t-40 p-b-40" wx:if="{{item.flag != 'company_city' && item.flag != 'company_license'}}">
+                <view class="col-label fs-32 color-333">
+                    {{item.label}} <text class="require" wx:if="{{item.require}}">*</text>
+                </view>
+                <view class="col-value flex-1 flex align-items-center fs-32 color-333">
+                    <input value="{{item.value}}" type="{{item.flag == 'reg_capital'?'digit':''}}" data-index="{{index}}" bindinput="syncInput" focus="{{item.focus}}" class="full-block text-right" placeholder-class="color-999" placeholder="请输入" />
+                </view>
+            </view>
+            <view class="uploadImg" wx:if="{{item.flag == 'company_license'}}">
+                <text class="uploadT">{{item.label}}</text>
+                <text class="uploadTip">{{item.tips}}</text>
+                <view class="upImg" data-index="{{index}}" bindtap="uploadFun">
+                    <view class="addimg" hidden="{{!item.value}}">
+                        <image src="{{item.value}}" mode="widthFix"></image>
+                    </view>
+                    <view class="clickUpload" hidden="{{item.value}}">
+                        <image src="/images/icons/addImg.png"></image>
+                        <text>点击{{item.label}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="submit">
+        <button class="btn" catchtap="submit">提交</button>
+    </view>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/mine/client.wxml-->
+<view class="client-block">
+    <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!list.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{list.length >= 10}}">
+        <view class="clients bg-fff p-l-40">
+            <view class="client" wx:for="{{list}}" wx:key="index">
+                <view class="client-item p-t-40 p-b-30 flex align-items-center">
+                    <image class="avatar m-r-20" mode="aspectFill" src="{{item.avatar||'/images/icons/default-avatar.png'}}"></image>
+                    <view class="flex-1 flex align-items-center p-r-30">
+                        <view class="name-type flex flex-column">
+                            <view class="name type flex align-items-center">
+                                <view class="name fs-28 color-333 fw-5 m-r-30">{{item.name||'匿名用户'}}</view>
+                            </view>
+                            <view class="phone color-333 fs-28">电话：{{item.phone||'未填写'}}</view>
+                        </view>
+                        <view class="phone-call m-l-20" data-item="{{item}}" catchtap="makePhoneCall">拨打电话</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll>
+</view>

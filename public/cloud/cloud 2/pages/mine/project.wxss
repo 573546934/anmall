@@ -1,0 +1,32 @@
+/* pages/mine/project.wxss */
+.project-block{
+    width: 100vw;
+    height: 100vh;
+    background: #f9f9f9;
+}
+.list-banner {
+    width: 292rpx;
+    height: 198rpx;
+    border-radius: 8rpx;
+    vertical-align: middle;
+}
+
+.list-main {
+    width: calc(100% - 292rpx - 30rpx);
+}
+
+.price {
+    color: #D3AF01;
+}
+.labels{
+    padding: 5rpx 0;
+}
+.label{
+    font-size: 22rpx;
+    padding: 5rpx 15rpx;
+    border-radius: 50rpx;
+}
+.label-apartment{
+    background: #E6F6F6;
+    color: #21ACAF;
+}

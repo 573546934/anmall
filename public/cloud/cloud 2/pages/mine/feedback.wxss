@@ -1,0 +1,29 @@
+/* pages/mine/feedback.wxss */
+page{
+	background: #F3F4F4;
+}
+.title{
+	color: #74777B
+}
+textarea.content-box{
+	height: 310rpx;
+	padding: 30rpx 40rpx;
+}
+.submit{
+	margin-top: 300rpx;
+}
+.star{
+	width: 56rpx;
+	height: 54rpx;
+	vertical-align: middle;
+}
+.btn{
+    height: 88rpx;
+    width: 100%;
+    background: #04A7A9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50rpx;
+    box-sizing: border-box;
+}

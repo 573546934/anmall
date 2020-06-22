@@ -1,0 +1,110 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/index",
+    "pages/mine/project",
+    "pages/mine/publish",
+    "pages/mine/newProject",
+    "pages/mine/profile",
+    "pages/mine/certification",
+    "pages/mine/nameCard",
+    "pages/project/list",
+    "pages/project/bulk",
+    "pages/project/overseas",
+    "pages/community/index",
+    "pages/news/index",
+    "pages/news/detail",
+    "pages/community/partner",
+    "pages/community/live",
+    "pages/community/partnerSubmit",
+    "pages/community/liveDetail",
+    "pages/project/detail",
+    "pages/index/city",
+    "pages/index/brand",
+    "pages/index/demands",
+    "pages/demand/push",
+    "pages/demand/type",
+    "pages/demand/form",
+    "pages/demand/list",
+    "pages/demand/edit",
+    "pages/demand/demands",
+    "pages/mine/action",
+    "pages/mine/type",
+    "pages/mine/idcard",
+    "pages/mine/step",
+    "pages/mine/client",
+    "pages/index/brandDetail",
+    "pages/mine/feedback",
+    "pages/index/search",
+    "pages/mine/svip",
+    "pages/mine/protocol",
+    "pages/management/companyMsg",
+    "pages/management/contactMsg",
+    "pages/management/index",
+    "pages/propertyOwner/oneselfMsg",
+    "pages/serviceProvider/index",
+    "pages/serviceProvider/mainBusiness",
+    "pages/serviceProvider/serviceDesc",
+    "pages/serviceProvider/case",
+    "pages/serviceProvider/blurb",
+    "pages/serviceProvider/companyMsg",
+    "pages/serviceProvider/contactMsg",
+    "pages/propertyOwner/index",
+    "pages/propertyOwner/companyMsg",
+    "pages/propertyOwner/contactMsg",
+    "pages/mine/service",
+    "pages/index/services",
+    "pages/index/service",
+    "pages/mine/login"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "小程序请求获取您的位置信息"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#555555",
+    "selectedColor": "#04A7A9",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "/images/tabs/shouye2.png",
+        "iconPath": "/images/tabs/shouye1.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "/images/tabs/xiangmu2.png",
+        "iconPath": "/images/tabs/xiangmu1.png",
+        "pagePath": "pages/project/list",
+        "text": "项目"
+      },
+      {
+        "selectedIconPath": "/images/tabs/community2.png",
+        "iconPath": "/images/tabs/community1.png",
+        "pagePath": "pages/community/index",
+        "text": "云社区"
+      },
+      {
+        "selectedIconPath": "/images/tabs/toutiao2.png",
+        "iconPath": "/images/tabs/toutiao1.png",
+        "pagePath": "pages/news/index",
+        "text": "头条"
+      },
+      {
+        "selectedIconPath": "/images/tabs/wode2.png",
+        "iconPath": "/images/tabs/wode1.png",
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

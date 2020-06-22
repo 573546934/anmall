@@ -1,0 +1,29 @@
+<!--pages/index/brandDetail.wxml-->
+<view class="detail-block">
+    <image class="banner full-block" mode="widthFix" src="{{host + data.bgms.url}}"></image>
+    <view class="project-block" wx:if="{{data.articles.length}}">
+        <view class="title-block flex align-items-center justify-content-center p-l-30 p-r-30 p-t-30 p-b-10">
+            <view class="line"></view>
+            <view class="text fs-32 color-333 m-l-10 m-r-10">精品项目</view>
+            <view class="line"></view>
+        </view>
+        <view class="list-block p-t-20" wx:for="{{data.articles}}" wx:key="p_index" wx:for-item="project" wx:for-index="p_index">
+            <navigator hover-class="none" url="/pages/project/detail?id={{project.id}}" class="list-item p-t-20 p-b-20 p-l-30 p-r-30 bg-fff flex">
+                <image class="list-banner m-r-30" src="{{host + project.img.url}}" mode="aspectFill"></image>
+                <view class="list-main">
+                    <view class="title fs-32 color-333 ellipsis">{{project.title}}</view>
+                    <view class="desc fs-22 color-666 ellipsis">{{project.description || ''}}</view>
+                    <view class="price-cate-location flex align-items-center space-between m-t-10">
+                        <text class="price-lable fs-24 color-999">总价¥ <text class="fs-28 price">{{project.price}}</text></text>
+                        <text class="fs-22 color-999">佣金<text class="color-04A7A9">:{{project.commission}}</text></text>
+                    </view>
+                    <view class="labels flex flex-wrap align-items-center m-t-10">
+                        <view class="label m-r-10" wx:for="{{project.tags}}" wx:for-item="tag" wx:for-index="t_index" wx:key="t_index">{{tag.name}}</view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <view class="holder p-t-30 p-b-30"></view>
+        <view class="ipx-holder" wx:if="{{isIPX}}"></view>
+    </view>
+</view>

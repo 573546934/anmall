@@ -1,0 +1,35 @@
+<!--pages/community/liveDetail.wxml-->
+<view class="live-detail">
+    <view class="live-banner-block p-t-30 p-l-30 p-r-30">
+        <view class="live-banner relative">
+            <image class="banner-img" mode="aspectFill" src="/images/banner1.jpg"></image>
+            <image class="living-icon absolute" src="/images/icons/living-icon.png"></image>
+            <!-- <view class="reserving-block absolute flex align-items-center">
+                <image class="clock-icon" src="/images/icons/clock-icon.png"></image>
+                <view class="text color-fff fs-42"></view>
+            </view> -->
+            <view class="viewed-collect-share absolute flex align-items-center space-between p-l-20 p-r-20">
+                <view class="viewed flex align-items-center">
+                    <image class="person-icon" src="/images/icons/person-icon.png"></image>
+                    <view class="text fs-32 color-fff">230人已预约 </view>
+                </view>
+                <view class="collect-share flex align-items-center">
+                    <image class="collect-icon m-r-40" src="/images/icons/collection-icon.png"></image>
+                    <image class="share-icon" src="/images/icons/share-icon.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="desc-block p-t-20 m-t-40 p-l-30 p-r-30">
+        <view class="title fs-40 color-333 fw-5 m-b-20">大宗交易成交指数预判</view>
+        <view class="desc fs-28 color-333">
+        	如果大家在北京有卖房的打算,就要提前了解一下当下北京市的卖房新政策,根据条例来具体处理房产,当然想要在北京买房的朋友,也要根据自身的情况结合现在...
+        </view>
+    </view>
+    <view class="detail-block p-t-20 m-t-40 p-l-30 p-r-30">
+        <view class="title fs-40 color-333 fw-5 m-b-20">推荐详情</view>
+        <view class="detail fs-28 color-333">
+        	如果大家在北京有卖房的打算，就要提前了解一下当下北京市的卖房新政策，根据条例来具体处理房产，当然想要在北京买房的朋友，也要根据自身的情况结合现在出台的政策合理的计划买房的事情，今天小编就来说一说北京卖房新政策是什么？北京购房政策有哪些？
+        </view>
+    </view>
+</view>

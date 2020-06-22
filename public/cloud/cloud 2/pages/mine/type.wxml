@@ -1,0 +1,43 @@
+<!--pages/community/partner.wxml-->
+<!-- <view class="partner-block p-t-40 p-l-30 p-r-30">
+	<view class="title color-333 fs-40">选择申请类型</view>
+	<view id="enterprise" catchtap="toSubmitForm" class="is-institution m-t-60 relative">
+		<image class="bg-banner institution" src="../../images/institution.png"></image>
+		<view class="contetn flex align-items-center absolute">
+			<view class="type flex-1 color-fff">
+				<view class="cn">企业</view>
+				<view class="en fs-40">Enterprise</view>
+			</view>
+		</view>
+	</view>
+	<view id="personal" catchtap="toSubmitForm" class="is-person m-t-60 relative">
+		<image class="bg-banner person" src="../../images/person.png"></image>
+		<view class="contetn flex align-items-center absolute">
+			<view class="type flex-1 color-fff">
+				<view class="cn">个人</view>
+				<view class="en fs-40">Personal</view>
+			</view>
+		</view>
+	</view>
+</view> -->
+
+<view class="wrapper">
+  <image class="header-img" src="https://zhaogu.arnny.net/uploads/ueditor/php/upload/image/20200614/1592125015974677.png"></image>
+  <view style="margin-top:-40rpx">
+  
+    <view class="item-wrap" wx:for="{{message}}" wx:key="" catchtap="toSubmitForm" id="{{item.id}}">
+      <view class="item-content">
+        <view class="item-left">
+          <image class="item-img" src="{{ item.icon }}"></image>
+          <view class="item-mes">
+            <view class="item-name">{{ item.name }}</view>
+            <view class="item-en">{{ item.enName }}</view>
+          </view>
+        </view>
+        <view class="item-right">
+          <image class="arrow" src="../../images/icons/arrow-right.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

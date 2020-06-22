@@ -1,0 +1,21 @@
+<view class="demands-block flex flex-column">
+    <view class="search-filter-block relative bg-fff">
+        <view class="search-block p-t-20 p-b-20 p-l-30 p-r-30">
+            <search params="services" placeholder="查找服务商" />
+        </view>
+    </view>
+    <view class="flex-1">
+        <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!list.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{list.length >= 4}}">
+            <view class="list-block p-t-20 p-l-30 p-r-30">
+            	<navigator hover-class="none" url="./service?id={{item.id}}" class="item content-box p-t-40 p-b-40 p-l-40 p-r-40 {{index < list.length-1?'m-b-30':''}} flex" wx:for="{{list}}" wx:key="index">
+            		<image class="banner m-r-40" src="{{host + item.logoimg.url}}" mode="aspectFill"></image>
+            		<view class="main-block">
+            			<view class="name fs-32 fw-6 color-333 ellipsis">{{item.company_name}}</view>
+            			<view class="city fs-24 color-666">{{item.company_city}}</view>
+            			<view class="business fs-24 color-04A7A9 m-t-20">{{item.business}}</view>
+            		</view>
+            	</navigator>
+            </view>
+        </scroll>
+    </view>
+</view>

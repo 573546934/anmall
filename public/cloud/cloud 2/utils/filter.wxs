@@ -1,0 +1,151 @@
+var isActive = function(items, key, filtersMap) {
+    var flag = 0;
+    if (key == 'all') {
+        for (var k = 0; k < filtersMap.length; k++) {
+            for (var i = 0; i < items[filtersMap[k]].length; i++) {
+                if (items[filtersMap[k]][i].selceted) {
+                    flag++;
+                    break;
+                }
+            }
+        }
+    } else {
+        for (var i = 0; i < items[key].length; i++) {
+            if (!!items[key][i].selceted) {
+                flag++;
+                break;
+            }
+        }
+
+    }
+    return !!flag;
+}
+var filter = function(items, key, is_city) {
+    if (key != 'all') {
+        var filter = {}
+        filter[key] = items[key]
+        return filter
+    } else {
+        if (is_city == 0) {
+            delete items['country']
+        } else {
+            delete items['city']
+        };
+        return items;
+    }
+}
+var hasFilter = function(item) {
+    if (item) {
+        var temp = [];
+        for (var j = 0; j < item.length; j++) {
+            if (item[j].flag && !!item[j].current) {
+                var obj = {
+                    f_index: j,
+                    flag: item[j].flag,
+                    current: item[j].current,
+                    value: item[j].value[(item[j].current * 1)]['name']
+                }
+                temp.push(obj)
+            } else if (!!item[j].value_current && !item[j].flag) {
+                var label_current = item[j].label_current * 1;
+                var value_current = item[j].value_current * 1;
+                var obj = {
+                    f_index: j,
+                    label_current: item[j].label_current,
+                    value_current: item[j].value_current,
+                    value: item[j]['value'][label_current]['value'][value_current]['name']
+                }
+                temp.push(obj)
+            } else {
+                for (var k = 0; k < item[j].value.length; k++) {
+                    if (item[j].value[k].flag && item[j].value[k].current) {
+                        var current = item[j].value[k].current * 1
+                        var obj = {
+                            f_index: j,
+                            flag: item[j].value[k].flag,
+                            c_index: k.toString(),
+                            current: current,
+                            value: item[j].value[k]['value'][current]['name']
+                        }
+                        temp.push(obj)
+                    }
+                }
+            }
+        }
+        return temp;
+        // var flag = 0;
+        // for (var j = 0; j < item.length; j++) {
+        //     if (item[j].flag && !!item[j].current) {
+        //         flag++;
+        //         break
+        //     } else if (!!item[j].label_current && !item[j].flag) {
+        //         flag++;
+        //         break
+        //     } else {
+        //         for (var k = 0; k < item[j].value.length; k++) {
+        //             if (item[j].value[k].flag && item[j].value[k].current) {
+        //                 flag++;
+        //                 break
+        //             }
+        //         }
+        //     }
+        // }
+        // return !!flag;
+    }
+}
+var formatNumber = function(n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+
+var regYear = getRegExp("(y+)", "i");
+
+var dateFormat = function(timestamp, format, is_second) {
+    if (!timestamp) return;
+    if (!format) {
+        format = "yyyy-MM-dd hh:mm:ss";
+    }
+    if (isNaN(timestamp)) {
+        timestamp = timestamp.replace(getRegExp('-', 'g'), '/')
+        timestamp = getDate(timestamp).getTime();
+    };
+    if (is_second) {
+        timestamp = timestamp * 1000;
+    }
+    var realDate = getDate(timestamp);
+
+    function timeFormat(num) {
+        return num < 10 ? '0' + num : num;
+    }
+    var date = [
+        ["M+", timeFormat(realDate.getMonth() + 1)],
+        ["d+", timeFormat(realDate.getDate())],
+        ["h+", timeFormat(realDate.getHours())],
+        ["m+", timeFormat(realDate.getMinutes())],
+        ["s+", timeFormat(realDate.getSeconds())],
+        ["q+", Math.floor((realDate.getMonth() + 3) / 3)],
+        ["S+", realDate.getMilliseconds()],
+    ];
+    var reg1 = regYear.exec(format);
+    if (reg1) {
+
+        format = format.replace(reg1[1], (realDate.getFullYear() + '').substring(4 - reg1[1].length));
+    }
+    for (var i = 0; i < date.length; i++) {
+        var k = date[i][0];
+        var v = date[i][1];
+
+        var reg2 = getRegExp("(" + k + ")").exec(format);
+        if (reg2) {
+            format = format.replace(reg2[1], reg2[1].length == 1 ?
+                v : ("00" + v).substring(("" + v).length));
+        }
+    }
+    return format;
+}
+module.exports = {
+    isActive: isActive,
+    filter: filter,
+    hasFilter: hasFilter,
+    dateFormat: dateFormat
+}

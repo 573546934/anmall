@@ -1,0 +1,21 @@
+<!--pages/authen/propertyOwner/index.wxml-->
+<view class="wrap">
+    <text class="title">按照以下步骤完成信息</text>
+    <view class="msgList">
+        <block wx:for="{{msgList}}" wx:key="index">
+            <navigator hover-class="none" class="msgItem" url="{{item.nav}}">
+                <view><text class="num">{{item.msgNum}}：</text><text class="text">{{item.msgText}}</text></view>
+                <text class="right iconfont icon-right"></text>
+            </navigator>
+        </block>
+    </view>
+    <view class="agreement">
+        <view class="p-l-30 p-t-30 p-b-30 p-r-10" catchtap="radioClick">
+            <image class="radio-icon" src="/images/icons/{{isChecked?'selected':'unselected'}}.png"></image>
+        </view>
+        <navigator hover-class="none" url="/pages/mine/protocol?title=隐私政策" class="fs-28 color-126FDD">阅读并同意《XXX协议》</navigator>
+    </view>
+    <view class="submit">
+        <button class="btn" catchtap="submit">提交</button>
+    </view>
+</view>

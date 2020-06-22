@@ -1,0 +1,125 @@
+/*scroll-view {
+  width: 100%;
+}
+
+.tabs {
+  position: relative;
+  height: 80rpx;
+  color: #999999;
+  display: flex;
+  font-size: 28rpx;
+}
+.tabs--scroll {
+  white-space: nowrap !important;
+  display: block !important;
+}
+.tabs--scroll .tabs__item {
+  flex: initial !important;
+  text-align: initial !important;
+  display: inline-block !important;
+}
+.tabs--scroll .tabs__item-child {
+  text-align: center;
+  display: block !important;
+}
+.tabs__item {
+  flex: 1;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  min-width: 130rpx;
+  box-sizing: border-box;
+  transition: color 0.3s ease-in-out;
+}
+.tabs__item--cur {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.tabs__item-child {
+  display: inline-block;
+}
+.tabs__line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #111;
+  height: 6rpx;
+  border-radius: 6rpx;
+  width: 0rpx;
+  display: inline-block;
+}
+.tabs__line.transition {
+  transition: width 0.3s, transform 0.3s;
+}
+*/
+.scroll-view {
+    width: 100%;
+    height: 90rpx;
+    overflow: hidden;
+}
+
+.tabs-wrap {
+    padding-bottom: 20rpx;
+}
+
+.tabs {
+    position: relative;
+    height: 90rpx;
+    color: #999999;
+    display: flex;
+}
+
+.tabs--scroll {
+    white-space: nowrap !important;
+    display: block !important;
+}
+
+.tabs--scroll .tabs__item {
+    flex: initial !important;
+    text-align: initial !important;
+    display: inline-block !important;
+    padding: 0 30rpx;
+}
+
+.tabs--scroll .tabs__item-child {
+    display: block !important;
+}
+
+.tabs__item {
+    flex: 1;
+    text-align: center;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    transition: color 0.3s ease-in-out;
+    color: #999999;
+
+}
+
+.tabs__item--cur .tabs__item-child{
+    transform: scale(1);
+    font-size: 32rpx;
+    font-weight: 500;
+}
+
+.tabs__item-child {
+    font-size: 32rpx;
+    transform: scale(.875);
+    display: inline-block;
+}
+
+.tabs__line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #111;
+    height: 6rpx;
+    border-radius: 6rpx;
+    width: 0rpx;
+    display: inline-block;
+}
+
+.tabs__line.transition {
+    transition: width 0.3s, transform 0.3s;
+}

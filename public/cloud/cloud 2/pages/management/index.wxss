@@ -1,0 +1,63 @@
+/* pages/authen/management/index.wxss */
+page{
+  background: #f3f4f4;
+}
+.wrap{
+    padding: 0 20rpx;
+}
+.title{
+    display: block;
+    color: #333;
+    font-size: 34rpx;
+    height: 112rpx;
+    line-height: 112rpx;
+    font-weight: bold;
+}
+.msgItem{
+    background: #fff;
+    border-radius:30rpx;
+    display: flex;
+    align-items: center;
+    padding: 32rpx 40rpx;
+    margin-bottom: 20rpx;
+    color: #333;
+    justify-content: space-between;
+    font-size: 30rpx;
+}
+.msgItem .num{
+    font-weight: bold;
+
+}
+.msgItem .icon-right{
+    color: #c7c7cc;
+    font-weight: bold;
+    font-size: 28rpx;
+}
+.agreement{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:480rpx;
+}
+.agreement text{
+    color: #126fdd;
+    font-size: 26rpx;
+}
+.agreement radio{
+    color: #04a7a9;
+}
+.submit{
+    margin-top: 120rpx;
+}
+.submit .btn{
+    width: 630rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 300rpx;
+    background: #04a7a9;
+    display: block;
+    padding: 0;
+}

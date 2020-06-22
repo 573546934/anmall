@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "需求列表",
+    "disableScroll": true,
+    "usingComponents":
+    {
+    	"search":"/components/search/search",
+    	"scroll":"/components/scroll/index"
+    }
+}

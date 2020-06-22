@@ -1,0 +1,76 @@
+/* pages/news/detail.wxss */
+@import '/towxml/style/main.wxss';
+
+.prev-next {
+    border-top: 2rpx solid rgba(237, 237, 237);
+    border-bottom: 2rpx solid rgba(237, 237, 237);
+}
+
+.list-item {
+    border-bottom: 4rpx solid #f9f9f9;
+}
+
+image.list-banner {
+    width: 260rpx;
+    height: 168rpx;
+    border-radius: 8rpx;
+    vertical-align: middle;
+    margin: 0 30rpx 0 0;
+}
+
+.list-main {
+    width: calc(100% - 290rpx);
+}
+
+.price {
+    color: #D3AF01;
+}
+
+.label {
+    font-size: 22rpx;
+    padding: 5rpx 15rpx;
+    border-radius: 2rpx;
+    color: #A2A2B1;
+    background: #F5F9FA;
+}
+
+button.share-btn {
+    width: 204rpx !important;
+    height: 64rpx !important;
+    background: #04A7A9 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12rpx;
+    padding: 0 !important;
+    margin: 0 0 10rpx 0 !important;
+    line-height: unset !important;
+}
+
+/*.recommend-item{
+	padding: 50rpx 30rpx;
+	box-shadow:0rpx 4rpx 12rpx 0rpx rgba(0,0,0,0.08);
+}
+image.banner{
+	width: 210rpx;
+	height: 170rpx;
+	vertical-align: middle;
+	border-radius: 20rpx;
+	margin: 0 50rpx 0 0;
+}
+.recommend-main{
+	width: calc(100% - 260rpx);
+}
+.recommend-main .tag{
+	margin-top: 5rpx;
+	font-size: 20rpx;
+	padding: 5rpx 15rpx;
+	border-radius: 20rpx;
+}
+.recommend-main .tag.tag-apartment{
+	background:rgba(230,246,246,1);
+	color: #21ACAF;
+}
+.price {
+    color: #D3AF01;
+}*/

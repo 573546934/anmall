@@ -1,0 +1,32 @@
+/* pages/mine/client.wxss */
+.client-block {
+    background: #F3F4F4;
+    width: 100vw;
+    height: 100vh;
+}
+
+.client-item {
+    border-bottom: 2rpx solid #EFEFEF;
+}
+
+.avatar {
+    width: 84rpx;
+    height: 84rpx;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.phone-call {
+    width: 226rpx;
+    height: 64rpx;
+    background: rgba(4, 167, 169, 1);
+    border-radius: 32rpx;
+    font-size:28rpx;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.name-type{
+	width: calc(100% - 246rpx)
+}

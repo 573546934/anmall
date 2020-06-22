@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "城市定位",
+  "disableScroll":true,
+  "usingComponents":{
+    "search":"/components/search/search"
+  }
+}

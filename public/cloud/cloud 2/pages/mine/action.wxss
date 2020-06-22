@@ -1,0 +1,54 @@
+/* pages/mine/action.wxss */
+.actions-block {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main-block {
+    width: 690rpx;
+}
+
+.main {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0rpx 4rpx 14rpx 0rpx rgba(7, 75, 75, 0.1), 0rpx 4rpx 12rpx 0rpx rgba(195, 195, 195, 0.2);
+    border-radius: 20rpx;
+    z-index: 3;
+}
+
+.title {
+    padding: 60rpx;
+    border-bottom: 2rpx solid #EFEFEF;
+}
+
+.row {
+    padding: 50rpx 40rpx;
+}
+
+.split {
+    height: 10rpx;
+    background: #FAFAFA;
+}
+
+.bg-two {
+    width: 95%;
+    height: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20rpx;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0rpx 4rpx 14rpx 0rpx rgba(7, 75, 75, 0.1), 0rpx 4rpx 8rpx 0rpx rgba(38, 143, 144, 0.3);
+    border-radius: 20rpx;
+    z-index: 2;
+}
+
+.bg-one {
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40rpx;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0rpx 4rpx 14rpx 0rpx rgba(7, 75, 75, 0.1), 0rpx 4rpx 8rpx 0rpx rgba(0, 114, 116, 0.2);
+    border-radius: 20rpx;
+    z-index: 1;
+}

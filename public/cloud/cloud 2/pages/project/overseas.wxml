@@ -1,0 +1,97 @@
+<!--pages/project/list.wxml-->
+<wxs src="../../utils/filter.wxs" module="utils" />
+<block wx:if="{{lastPage}}">
+    <view class="bg-fff search-tabs relative">
+        <view class="search-block p-l-30 p-t-20 p-b-20 p-r-30">
+            <search params="articles" placeholder="搜索项目关键词" />
+        </view>
+        <view class="tabs-filter-area border-box">
+            <view class="filters-block p-l-40 p-r-40 flex align-items-center">
+                <view class="filter-item-block flex align-items-center justify-content-center color-666 fs-24 relative" data-index="{{index}}" catchtap="tapFilter" wx:for="{{filters}}" wx:key="index">
+                    <view class="main flex align-items-center {{(index == filterIndex && filterFlag)?'active':''}}">
+                        <view>{{item.label}}</view>
+                        <image class="m-l-10" src="/images/icons/{{(index == filterIndex && filterFlag)?'up':'down'}}.png" style="width:22rpx;height:14rpx;"></image>
+                    </view>
+                    <view class="split-line absolute" wx:if="{{index < filters.length-1}}"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="scroll-block flex-1">
+        <scroll class="scroll-view" id="scroll" bind:loadmore="loadMore" bind:refresh="refreshData" noData="{{!list.length && lastPage}}" emptyText="暂无任何数据" needBttm="{{list.length >= 4}}">
+            <view class="filter-del-area flex flex-wrap p-l-30 p-r-30" wx:if="{{utils.hasFilter(filters).length}}">
+                <view class="filter-del flex align-items-center m-r-20 m-t-20" wx:for="{{utils.hasFilter(filters)}}" wx:for-item="fd_item" wx:for-index="fd_index" wx:key="fd_index" data-item="{{fd_item}}" catchtap="delFilter">
+                    <view class="text fs-20 color-3E4144">{{fd_item.value}}</view>
+                    <image class="clear-icon m-l-30" src="/images/icons/icon_guanbi@2x.png"></image>
+                </view>
+            </view>
+            <view class="list-block p-t-20" wx:for="{{list}}" wx:key="p_index" wx:for-item="project" wx:for-index="p_index">
+                <navigator hover-class="none" url="./detail?id={{project.id}}" class="list-item p-t-20 p-b-20 p-l-30 p-r-30 bg-fff flex">
+                    <image class="list-banner m-r-30" src="{{host + project.img.url}}" mode="aspectFill"></image>
+                    <view class="list-main">
+                        <view class="title fs-32 color-333 ellipsis">{{project.title}}</view>
+                        <view class="desc fs-22 color-666 ellipsis">{{project.description || ''}}</view>
+                        <view class="price-cate-location flex align-items-center space-between m-t-10">
+                            <text class="price-lable fs-24 color-999">总价¥ <text class="fs-28 price">{{project.price}}</text></text>
+                            <text class="fs-22 color-999">佣金<text class="color-04A7A9">:{{project.commission}}</text></text>
+                        </view>
+                        <view class="labels flex flex-wrap align-items-center m-t-10">
+                            <view class="label m-r-10" wx:for="{{project.tags}}" wx:for-item="tag" wx:for-index="t_index" wx:key="t_index">{{tag.name}}</view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </scroll>
+    </view>
+    <view class="filter-block-backdrop flex flex-column" wx:if="{{filterFlag}}">
+        <view class="filter-main bg-fff">
+            <block wx:for="{{filters}}" wx:key="index">
+                <view class="filter-region flex align-items-center" wx:if="{{index == filterIndex && !index}}">
+                    <view class="region-label p-t-20 p-b-20 flex-1 overflow-scroll">
+                        <view class="region-label-item relative flex align-items-center flex-column p-t-20 p-b-20" wx:for-item="r_label" wx:for="{{item.value}}" wx:for-index="r_l_index" wx:key="r_l_index" catchtap="selectRegion" data-type="label" data-index="{{r_l_index}}">
+                            <view class="text fs-40 {{r_l_index == item.label_current?'color-41BCBD fw-5':'color-666'}}">{{r_label.label}}</view>
+                            <view class="region-label-current region-current-line absolute" wx:if="{{r_l_index == item.label_current}}"></view>
+                        </view>
+                    </view>
+                    <view class="region-value p-t-20 p-b-20 flex-1 {{item.value[item.label_current||0].value.length  &&  item.label_current?'overflow-scroll':'flex flex-column align-items-center justify-content-center'}}">
+                        <block wx:if="{{item.value[item.label_current||0].value.length && item.label_current}}">
+                            <view class="region-value-item flex flex-column align-items-center p-t-20 p-b-20 relative" wx:for-item="r_value" wx:for="{{item.value[item.label_current].value}}" wx:for-index="r_v_index" wx:key="r_v_index" catchtap="selectRegion" data-type="value" data-index="{{r_v_index}}">
+                                <view class="text fs-28 {{(r_v_index == (item.value_current?item.value_current:(item.label_current?0:null)))?'color-41BCBD':'color-666'}}">{{r_value.name}}</view>
+                                <view class="region-value-current region-current-line absolute" wx:if="{{(r_v_index == (item.value_current?item.value_current:(item.label_current?0:null)))}}"></view>
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="empty color-3E4144 fs-28">暂无</view>
+                        </block>
+                    </view>
+                </view>
+                <view class="normal-filter p-t-40 p-b-40 p-l-40 p-r-40" wx:if="{{index == filterIndex && !!index && index != 3}}">
+                    <view class="title m-b-20">{{item.label}}</view>
+                    <view class="filters flex flex-wrap">
+                        <view class="normal-filter-item m-b-20 flex justify-content-center align-items-center {{item.current == n_index?'active':''}} {{(n_index+1) % 4==0 && !!n_index?'':'m-r-20'}}" wx:for-item="normal" wx:for="{{item.value}}" wx:for-index="n_index" wx:key="n_index" data-index="{{n_index}}" catchtap="tapNormal">
+                            {{normal.name}}
+                        </view>
+                    </view>
+                </view>
+                <view class="more-filter" wx:if="{{index == filterIndex && !!index && index == 3}}">
+                    <view class="more-filter normal-filter p-t-40 p-b-40 p-l-40 p-r-40">
+                        <view class="{{m_index < item.value.length -1?'m-b-40':''}}" wx:for="{{item.value}}" wx:for-item="more" wx:for-index="m_index" wx:key="m_index">
+                            <view class="title m-b-20">{{more.label}}</view>
+                            <view class="filters flex flex-wrap">
+                                <view class="normal-filter-item m-b-20 flex justify-content-center align-items-center {{s_index == more.current?'active':''}} {{(s_index+1) % 4==0 && !!s_index?'':'m-r-20'}}" wx:for-item="s_value" wx:for="{{more.value}}" wx:for-index="s_index" wx:key="s_index" data-index="{{m_index}}" data-sindex="{{s_index}}" catchtap="tapNormal">
+                                    {{s_value.name}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="clear-confirm flex space-between align-items-center p-t-20 p-b-20 p-l-20 p-r-20">
+                        <view class="clear-btn" catchtap="clearFilter">清空筛选</view>
+                        <view class="confirm-btn" catchtap="hideModal">确定</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="blank flex-1" catchtap="hideModal" wx:if="{{filterIndex != 3}}"></view>
+        <view class="blank flex-1" wx:else></view>
+    </view>
+</block>

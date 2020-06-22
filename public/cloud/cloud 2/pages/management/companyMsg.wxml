@@ -1,0 +1,43 @@
+<!--pages/authen/management/companyMsg.wxml-->
+<view class="wrap">
+    <view class="title">公司信息</view>
+    <form catchsubmit="formSubmit" class="formGroup">
+        <view class="itemInput">
+            <label>公司全称<text>*</text></label>
+            <input placeholder="请输入"></input>
+        </view>
+       
+        <view class="itemInput">
+            <label>公司所在城市</label>
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                <view class="picker">
+                {{default}}<text class="iconfont icon-right"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="itemInput">
+            <label>注册资本<text>*</text></label>
+            <input placeholder="请输入"></input>
+        </view>
+        <view class="itemInput">
+            <label>公司网址</label>
+            <input placeholder="请输入"></input>
+        </view>
+        <view class="uploadImg">
+            <text class="uploadT">上传营业执照</text>
+            <text class="uploadTip">仅限jpg,png,jpeg,gif格式，文件大小不超过2M</text>
+            <view class="upImg">
+                <view class="addimg" hidden="{{isAdd}}"><image src="{{imgSrc}}"></image></view>
+                <view class="clickUpload" hidden="{{!isAdd}}" bindtap="uploadImg">
+                    <image src="/images/icons/addImg.png"></image>
+                    <text>点击上传图片</text>
+                </view>
+            </view>
+        </view>
+        
+       <view class="submit">
+        <button class="btn">提交</button>
+    </view>
+    </form>
+</view>
+

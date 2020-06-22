@@ -1,0 +1,53 @@
+/* pages/mine/login.wxss */
+.auth-bg {
+    width: calc(100%);
+    vertical-align: middle;
+    margin-bottom: 70rpx;
+}
+
+.title {
+    font-size: 44rpx;
+    color: #030303;
+    margin-bottom: 10rpx;
+}
+
+.tips {
+    font-size: 28rpx;
+    color: #5F5F5F;
+    margin-bottom: 50rpx;
+}
+
+button:not([size='mini']).auth,
+button:not([size='mini']).cancel {
+	display: inline-block;
+	box-sizing: border-box;
+    width: 630rpx !important;
+    height: 80rpx !important;
+    line-height: 80rpx !important;
+    border-radius:50rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+button:not([size='mini']).auth{
+	background:rgba(4,167,169,1);
+	color: #fff;
+}
+button:not([size='mini']).cancel{
+	margin: 50rpx 0 0 !important;
+	background:rgba(248,248,248,1);
+	color: #707070;
+	border:2rpx solid rgba(236,236,236,1);
+}
+.assigment-text{
+	color: #5F5F5F;
+}
+.protocol{
+	color: #1564EE;
+}
+.slected-icon{
+	width: 40rpx;
+	height: 40rpx;
+	vertical-align: middle;
+}
