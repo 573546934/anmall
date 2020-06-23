@@ -29,7 +29,9 @@ class ArticleLikes extends Model
     public static function getAttentions($aid,$fid)
     {
         //总关注数
-        $data['attentions'] = static :: where('article_id',$aid)->sum('num');
+        // $data['attentions'] = static :: where('article_id',$aid)->sum('num');
+        //总关注人数
+        $data['attentions'] = static :: where('article_id',$aid)->count();
         //我的分享数
         $data['my_share'] = static :: where('article_id',$aid)->where('fid',$fid)->sum('num');
         //头像
