@@ -33,7 +33,11 @@ class ArticleLikes extends Model
         //我的分享数
         $data['my_share'] = static :: where('article_id',$aid)->where('fid',$fid)->sum('num');
         //头像
-        $data['avatars'] = Member::getAvatars($fid);
+        // $data['avatars'] = Member::getAvatars($fid);
+        //获取关注人员头像
+        $mids = static :: where('article_id',$aid)->groupBy('mid')->pluck('mid')->toArray();
+        $data['avatars'] = Member::whereIn('id',$mids)->whereNotNull('avatar')->inRandomOrder()->orderBy('id','desc')->limit(10)->pluck('avatar')->toArray();
+
         return $data;
     }
 

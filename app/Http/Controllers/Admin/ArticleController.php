@@ -64,7 +64,7 @@ class ArticleController extends Controller
         $assets_type = Article::assets_type();
         $investment_type = Article::investment_type();
         //产权方
-        $propertyowners = PropertyOwner::where('status',1)->pluck('company_name','id');
+        $propertyowners = PropertyOwner::where('status',1)->select('company_name','id')->get()->toArray();
         return view('admin.article.create',compact('tags','categorys','assets_type','investment_type','propertyowners'));
     }
 
