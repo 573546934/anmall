@@ -51,7 +51,7 @@
 <div class="layui-form-item" id="title">
     <label for="" class="layui-form-label">总价</label>
     <div class="layui-input-block">
-        <input type="number" name="price" value="{{$article->price??old('price')}}" placeholder="单位:元" class="layui-input" >
+        <input type="number" name="price" value="{{$article->price??0}}" lay-verify="required" placeholder="单位:元" class="layui-input" >
     </div>
 </div>
 <div id = "init">

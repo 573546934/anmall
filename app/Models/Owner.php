@@ -63,6 +63,20 @@ class Owner extends Model
     {
         return $this->hasOne('App\Models\Attachment','id','id_img_rev')->select('id','url');
     }
-
+     /*团队图片*/
+     public function teamimg()
+     {
+         return $this->hasOne('App\Models\Attachment','id','team_img')->select('id','url');
+     }
+     /*特色图片*/
+     public function featuresimg()
+     {
+         return $this->hasOne('App\Models\Attachment','id','features_img')->select('id','url');
+     }
+     /*奖项图片*/
+     public function awardsimg()
+     {
+         return $this->hasOne('App\Models\Attachment','id','awards_img')->select('id','url');
+     }
 
 }

@@ -79,8 +79,8 @@ class IdentityController extends Controller
      * */
     public function addOwner(Request $request)
     {
-
-        $data = $request->only('type','company_name','company_city','reg_capital','company_web','company_license','name','sex','phone','city','company_nickname','email','job','card');
+        $data = $request->only('type','company_name','company_city','reg_capital','company_web','company_license','name','sex','phone','city','company_nickname','email','job','card'
+            ,'team_name',' team_detail','team_img','features','features_img','awards','awards_img','logo');
         $mid = $request->get('mid_params');
         //身份证
         if ($request->get('id_img')){
@@ -88,12 +88,26 @@ class IdentityController extends Controller
             $data['id_img_pos'] = isset($id_img[0]) ? $id_img[0] : null;
             $data['id_img_rev'] = isset($id_img[1]) ? $id_img[1] : null;
         }
-        /*if (Owner::where(['mid'=>$mid])->first()){
+        /*if (PropertyOwner::where(['mid'=>$mid])->first()){
             return response(['message'=>'资料已提交，平台审核中'],400);
         }*/
         $data['mid'] = $mid;
         $res = Owner::addOne($data);
         return apiResult($res,'申请资方');
+       /*  $data = $request->only('type','company_name','company_city','reg_capital','company_web','company_license','name','sex','phone','city','company_nickname','email','job','card');
+        $mid = $request->get('mid_params');
+        //身份证
+        if ($request->get('id_img')){
+            $id_img = $request->get('id_img');
+            $data['id_img_pos'] = isset($id_img[0]) ? $id_img[0] : null;
+            $data['id_img_rev'] = isset($id_img[1]) ? $id_img[1] : null;
+        }
+        if (Owner::where(['mid'=>$mid])->first()){
+            return response(['message'=>'资料已提交，平台审核中'],400);
+        }
+        $data['mid'] = $mid;
+        $res = Owner::addOne($data);
+        return apiResult($res,'申请资方'); */
 
     }
     /**
@@ -145,13 +159,13 @@ class IdentityController extends Controller
         $data['mid'] = $mid;
         $res = Service::addOne($data);
         //保存案例
-        /*if ($res && $request->has('case')){
+        if ($res && $request->has('case')){
             $cases = $request->get('case');
             foreach ($cases as $case){
                 $case['service_id'] = $res;
                 ServiceCase::addOne($case);
             }
-        }*/
+        }
         return apiResult($res,'申请服务商请求');
     }
 
@@ -188,7 +202,7 @@ class IdentityController extends Controller
     public function getService(Request $request)
     {
         $id = $request->get('id');
-        $model = Service::with('logoimg','bgmimg','cardimg');
+        $model = Service::with('logoimg','bgmimg','cardimg','');
         $data = $model
             ->where('id',$id)
             ->first();

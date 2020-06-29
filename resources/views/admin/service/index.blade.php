@@ -27,6 +27,7 @@
             <div class="layui-btn-group ">
                 <button class="layui-btn layui-btn-sm  layui-btn-normal" id="listBy">批量审核</button>
                 <button class="layui-btn layui-btn-sm layui-btn-danger" id="listDelete">删 除</button>
+                <a class="layui-btn layui-btn-sm" href="{{ route('admin.service.create') }}">添加</a>
             </div>
             <table id="dataTable" lay-filter="dataTable"></table>
             <script type="text/html" id="options">
@@ -40,7 +41,7 @@
                     @{{# } }}
                 </div>
                 <div class="layui-btn-group">
-
+                        <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
                         <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
                 </div>
 
@@ -73,7 +74,7 @@
                 @{{# } }}
             </script>
             <script type="text/html" id="card">
-                @{{# if( d.img == null ) { }}
+                @{{# if( d.cardimg == null ) { }}
                 无图片
                 @{{#  } else { }}
                 <a href="@{{d.cardimg.url}}" target="_blank" title="点击查看"><img src="@{{d.cardimg.url}}" alt=""  height="45"></a>
@@ -123,12 +124,12 @@
                         ,{field: 'sex', title: '性别',width:80}
                         ,{field: 'phone', title: '联系方式',width:80}
                         ,{field: 'job', title: '职位',width:80}
-                        ,{field: 'id_img_pos', title: '身份证正',toolbar:'#id_pos',width:80}
-                        ,{field: 'id_img_rev', title: '身份证反',toolbar:'#id_rev',width:80}
+                /*         ,{field: 'id_img_pos', title: '身份证正',toolbar:'#id_pos',width:80}
+                        ,{field: 'id_img_rev', title: '身份证反',toolbar:'#id_rev',width:80} */
                         ,{field: 'card', title: '名片',toolbar:'#card',width:80}
                         ,{field: 'created_at', title: '申请时间',width:100}
                         //,{field: 'right', title: '审核状态',align:'center',toolbar:'#s', width: 90}
-                        ,{fixed: 'right',title:'操作', width: 150, align:'center', toolbar: '#options'}
+                        ,{fixed: 'right',title:'操作', width: 180, align:'center', toolbar: '#options'}
                     ]]
                 });
 

@@ -32,6 +32,73 @@ class PropertyOwnerController extends Controller
         ];
         return response()->json($data);
     }
+
+/**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.property.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->only('type','company_name','company_city','reg_capital','company_web','company_license','name','sex','phone','city','company_nickname','email','job','card'
+             ,'team_name',' team_detail','team_img','features','features_img','awards','awards_img','logo','id_img_pos','id_img_rev');
+        $res = PropertyOwner::addOne($data);
+        return redirect(route('admin.property'))->with(['status'=>'添加完成']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $property = PropertyOwner::with('license','teamimg','featuresimg','awardsimg','logoimg','id_pos','id_rev')->findOrFail($id);
+        return view('admin.property.edit',compact('property'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $data = $request->only('type','company_name','company_city','reg_capital','company_web','company_license','name','sex','phone','city','company_nickname','email','job','card'
+        ,'team_name',' team_detail','team_img','features','features_img','awards','awards_img','logo','id_img_pos','id_img_rev');  
+        $property = PropertyOwner::find($id);
+        if ($property->update($data)){
+            return redirect(route('admin.property'))->with(['status'=>'更新成功']);
+        }
+        return redirect(route('admin.property'))->withErrors(['status'=>'系统错误']);
+    }
+
+
     //审核通过
     public function by(Request $request)
     {

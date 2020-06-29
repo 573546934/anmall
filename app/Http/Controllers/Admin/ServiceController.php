@@ -32,6 +32,117 @@ class ServiceController extends Controller
         ];
         return response()->json($data);
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $business = Service::$business;
+        return view('admin.service.create',compact('business'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request,[
+            'company_name'  => 'required|string',
+        ]);
+        $data = $request->only('company_name','scale','company_city','reg_capital','company_web','type','company_license',
+            'description','introduction', 'name','sex','phone','city','company_nickname','job','card','logo','bgm');
+        $business = $request->get('business');   
+        $str = ''; 
+        if(!empty($business)){
+            foreach ($business as $key => $value) {
+                if($key == 0){
+                    $str .= $value;
+                }else{
+                    $str .= ','.$value;
+                }
+            }
+        }
+        $data['business'] = $str;    
+        //身份证
+        if ($request->get('id_img')){
+            $id_img = $request->get('id_img');
+            $data['id_img_pos'] = isset($id_img[0]) ? $id_img[0] : null;
+            $data['id_img_rev'] = isset($id_img[1]) ? $id_img[1] : null;
+        }
+        $res = Service::addOne($data);
+        return redirect(route('admin.service'))->with(['status'=>'添加完成']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $business = Service::$business;
+        $service = Service::with('cardimg','license')->findOrFail($id);
+        $service->business = explode(',',$service->business);
+        return view('admin.service.edit',compact('service','business'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,[
+            'company_name'  => 'required|string',
+        ]);
+        $data = $request->only('company_name','scale','company_city','reg_capital','company_web','type','company_license',
+        'description','introduction', 'name','sex','phone','city','company_nickname','job','card','logo','bgm');
+        $business = $request->get('business');   
+        $str = ''; 
+        if(!empty($business)){
+            foreach ($business as $key => $value) {
+                if($key == 0){
+                    $str .= $value;
+                }else{
+                    $str .= ','.$value;
+                }
+            }
+        }
+        $data['business'] = $str;    
+        //身份证
+        if ($request->get('id_img')){
+            $id_img = $request->get('id_img');
+            $data['id_img_pos'] = isset($id_img[0]) ? $id_img[0] : null;
+            $data['id_img_rev'] = isset($id_img[1]) ? $id_img[1] : null;
+        }
+        $service = Service::find($id);
+        if ($service->update($data)){
+            return redirect(route('admin.service'))->with(['status'=>'更新成功']);
+        }
+        return redirect(route('admin.service'))->withErrors(['status'=>'系统错误']);
+    }
+
+
     //审核通过
     public function by(Request $request)
     {

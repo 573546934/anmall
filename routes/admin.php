@@ -315,7 +315,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['middleware' => 'permission:member.service'], function () {
         Route::get('service/data', 'ServiceController@data')->name('admin.service.data');
         Route::get('service', 'ServiceController@index')->name('admin.service');
+        //添加
+        Route::get('service/create', 'ServiceController@create')->name('admin.service.create');
+        Route::post('service/store', 'ServiceController@store')->name('admin.service.store');
         //编辑
+        Route::get('service/{id}/edit', 'ServiceController@edit')->name('admin.service.update');
         Route::put('service/{id}/update', 'ServiceController@update')->name('admin.service.update');
         Route::put('service/by', 'ServiceController@by')->name('admin.service.by');
         Route::put('service/refuse', 'ServiceController@refuse')->name('admin.service.refuse');
@@ -326,6 +330,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['middleware' => 'permission:member.owner'], function () {
         Route::get('owner/data', 'OwnerController@data')->name('admin.owner.data');
         Route::get('owner', 'OwnerController@index')->name('admin.owner');
+         //添加
+         Route::get('owner/create', 'OwnerController@create')->name('admin.owner.create');
+         Route::post('owner/store', 'OwnerController@store')->name('admin.owner.store');
+         //编辑
+         Route::get('owner/{id}/edit', 'OwnerController@edit')->name('admin.owner.update');
+         Route::put('owner/{id}/update', 'OwnerController@update')->name('admin.owner.update');
         //编辑
         Route::put('owner/{id}/update', 'OwnerController@update')->name('admin.owner.update');
         Route::put('owner/by', 'OwnerController@by')->name('admin.owner.by');
@@ -337,6 +347,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['middleware' => 'permission:member.property'], function () {
         Route::get('property/data', 'PropertyOwnerController@data')->name('admin.property.data');
         Route::get('property', 'PropertyOwnerController@index')->name('admin.property');
+         //添加
+         Route::get('property/create', 'PropertyOwnerController@create')->name('admin.property.create');
+         Route::post('property/store', 'PropertyOwnerController@store')->name('admin.property.store');
+         //编辑
+         Route::get('property/{id}/edit', 'PropertyOwnerController@edit')->name('admin.property.update');
+         Route::put('property/{id}/update', 'PropertyOwnerController@update')->name('admin.property.update');
         //编辑
         Route::put('property/{id}/update', 'PropertyOwnerController@update')->name('admin.property.update');
         Route::put('property/by', 'PropertyOwnerController@by')->name('admin.property.by');

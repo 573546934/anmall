@@ -27,6 +27,7 @@
             <div class="layui-btn-group ">
                 <button class="layui-btn layui-btn-sm  layui-btn-normal" id="listBy">批量审核</button>
                 <button class="layui-btn layui-btn-sm layui-btn-danger" id="listDelete">删 除</button>
+                <a class="layui-btn layui-btn-sm" href="{{ route('admin.owner.create') }}">添加</a>
             </div>
             <table id="dataTable" lay-filter="dataTable"></table>
             <script type="text/html" id="options">
@@ -40,8 +41,8 @@
                     @{{# } }}
                 </div>
                 <div class="layui-btn-group">
-
-                        <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+                    <a class="layui-btn layui-btn-sm" lay-event="edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
                 </div>
 
             </script>
@@ -79,6 +80,34 @@
                 <a href="@{{d.cardimg.url}}" target="_blank" title="点击查看"><img src="@{{d.cardimg.url}}" alt=""  height="45"></a>
                 @{{# } }}
             </script>
+            <script type="text/html" id="teamimg">
+                @{{# if( d.teamimg == null ) { }}
+                无图片
+                @{{#  } else { }}
+                <a href="@{{d.teamimg.url}}" target="_blank" title="点击查看"><img src="@{{d.teamimg.url}}" alt=""  height="45"></a>
+                @{{# } }}
+            </script>
+            <script type="text/html" id="featuresimg">
+                @{{# if( d.featuresimg == null ) { }}
+                无图片
+                @{{#  } else { }}
+                <a href="@{{d.featuresimg.url}}" target="_blank" title="点击查看"><img src="@{{d.featuresimg.url}}" alt=""  height="45"></a>
+                @{{# } }}
+            </script>
+            <script type="text/html" id="awardsimg">
+                @{{# if( d.awardsimg == null ) { }}
+                无图片
+                @{{#  } else { }}
+                <a href="@{{d.awardsimg.url}}" target="_blank" title="点击查看"><img src="@{{d.awardsimg.url}}" alt=""  height="45"></a>
+                @{{# } }}
+            </script>
+            <script type="text/html" id="logo">
+                @{{# if( d.logoimg == null ) { }}
+                无图片
+                @{{#  } else { }}
+                <a href="@{{d.logoimg.url}}" target="_blank" title="点击查看"><img src="@{{d.logoimg.url}}" alt=""  height="45"></a>
+                @{{# } }}
+            </script>
             <script type="text/html" id="type">
                 @{{# if(d.type == 'enterprise'){ }}
                     机构
@@ -104,26 +133,33 @@
                     ,page: true //开启分页
                     ,cols: [[ //表头
                         {checkbox: true,fixed: true}
-                        ,{field: 'avatar', title: '头像',toolbar:'#avatar',width:80}
+                        ,{field: 'logo', title: 'logo',toolbar:'#logo',width:80}
                         ,{field: 'id', title: 'ID', sort: true,width:80}
                         ,{field: 'mid', title: '用户ID', sort: true,width:80}
-                       // ,{field: 'name', title: '用户姓名',toolbar:'#name'}
-                        ,{field: 'type', title: '类型',toolbar:'#type',width:80}
+                        // ,{field: 'name', title: '用户姓名',toolbar:'#name'}
                         ,{field: 'company_name', title: '公司名称',width:100}
+                        //,{field: 'type', title: '类型',toolbar:'#type',width:80}
                         ,{field: 'company_city', title: '城市',width:80}
-                        ,{field: 'reg_capital', title: '注册资本',width:80}
-                        ,{field: 'company_web', title: '公司网站',width:120}
-                        ,{field: 'company_license', title: '营业执照',toolbar:'#license',width:80}
-                        ,{field: 'name', title: '真实姓名',width:80}
-                        ,{field: 'sex', title: '性别',width:80}
+                        // ,{field: 'reg_capital', title: '注册资本',width:80}
+                        // ,{field: 'company_web', title: '公司网站',width:120}
+                        // ,{field: 'company_license', title: '营业执照',toolbar:'#license',width:80}
+                        // ,{field: 'name', title: '真实姓名',width:80}
+                        // ,{field: 'sex', title: '性别',width:80}
                         ,{field: 'phone', title: '联系方式',width:80}
                         ,{field: 'job', title: '职位',width:80}
-                        ,{field: 'id_img_pos', title: '身份证正',toolbar:'#id_pos',width:80}
-                        ,{field: 'id_img_rev', title: '身份证反',toolbar:'#id_rev',width:80}
-                        ,{field: 'card', title: '名片',toolbar:'#card',width:80}
+                        // ,{field: 'id_img_pos', title: '身份证正',toolbar:'#id_pos',width:80}
+                        // ,{field: 'id_img_rev', title: '身份证反',toolbar:'#id_rev',width:80}
+                        // ,{field: 'card', title: '名片',toolbar:'#card',width:80}
+                        ,{field: 'teamimg', title: '团队图片',toolbar:'#teamimg',width:80}
+                        ,{field: 'team_name', title: '团队名称',width:100}
+                        ,{field: 'team', title: '团队介绍',width:120}
+                        ,{field: 'featuresimg', title: '特色图片',toolbar:'#teamimg',width:80}
+                        ,{field: 'features', title: '特色',width:120}
+                        ,{field: 'awardsimg', title: '奖项图片',toolbar:'#teamimg',width:80}
+                        ,{field: 'awards', title: '所得奖项',width:120}
                         ,{field: 'created_at', title: '申请时间',width:150}
                         //,{field: 'right', title: '审核状态',align:'center',toolbar:'#s', width: 90}
-                        ,{fixed: 'right',title:'操作', width: 150, align:'center', toolbar: '#options'}
+                        ,{fixed: 'right',title:'操作', width: 180, align:'center', toolbar: '#options'}
                     ]]
                 });
 
