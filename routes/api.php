@@ -33,7 +33,7 @@ Route::group(['namespace'=>'Api','middleware'=>'api'],function (){
         Route::get('member', 'MemberController@member');    //获取用户信息
         Route::get('myUsers', 'MemberController@myUsers');    //获取我的用户
 
-        Route::get('isIdentity', 'IdentityController@isIdentity');    //验证提交
+        Route::get('isIdentity', 'IdentityController@isIdentity');    //验证认证提交
         Route::post('manager', 'IdentityController@addManager');    //申请成为经纪人
         Route::post('propertyowner', 'IdentityController@addPropertyOwner');    //申请成为产权方
         Route::post('owner', 'IdentityController@addOwner');    //申请成为资方
