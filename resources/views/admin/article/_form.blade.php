@@ -51,7 +51,7 @@
 <div class="layui-form-item" id="title">
     <label for="" class="layui-form-label">总价</label>
     <div class="layui-input-block">
-        <input type="number" name="price" value="{{$article->price??0}}" lay-verify="required" placeholder="单位:元" class="layui-input" >
+        <input type="number" step="0.01" name="price" value="{{$article->price??0}}" lay-verify="required" placeholder="单位:万元(租赁价格单位为:元)" class="layui-input" >
     </div>
 </div>
 <div id = "init">
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label for="" class="layui-form-label">投资方类型</label>
+        <label for="" class="layui-form-label">资产方类型</label>
         <div class="layui-input-inline">
             <select name="investment_type" >
                 <option value=""></option>
@@ -78,11 +78,11 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label for="" class="layui-form-label">产权方</label>
+        <label for="" class="layui-form-label">资产方名称</label>
         <div class="layui-input-block">
 {{--            <input type="number" name="propertyowners_id" value="{{$article->propertyowners_id??0}}"  placeholder="请输入产权方id" class="layui-input" >--}}
             <select name="propertyowners_id" lay-search >
-                <option value="0">选择产权方</option>
+                <option value="0">选择资产方</option>
                 @if(!empty($propertyowners))
                 @foreach($propertyowners as $item)
                     <option value="{{ $item['id'] }}" @if(isset($article->propertyowners_id)&&$article->propertyowners_id==$item['id'])selected @endif >{{ $item['company_name'] }}</option>
@@ -105,16 +105,16 @@
     </div>
 
     <div class="layui-form-item">
-        <label for="" class="layui-form-label">项目面积</label>
+        <label for="" class="layui-form-label">在售面积/在租面积</label>
         <div class="layui-input-inline">
-            <input type="number"  name="area" step="0.01" value="{{$article->area??old('area')}}"  placeholder="请输入面积/平米" class="layui-input" >
+            <input type="number"  name="area" step="0.01" value="{{$article->area??old('area')}}"  placeholder="请输入面积" class="layui-input" >
         </div>
         <span class="input-group-addon">㎡</span>
     </div>
     <div class="layui-form-item">
         <label for="" class="layui-form-label">项目佣金</label>
         <div class="layui-input-inline">
-            <input type="number"  name="commission" value="{{$article->commission??0}}"  placeholder="请输入佣金%" class="layui-input" >
+            <input type="number" step="0.01" name="commission" value="{{$article->commission??0}}"  placeholder="请输入佣金%" class="layui-input" >
         </div>
         <span class="input-group-addon">%</span>
     </div>
@@ -187,7 +187,7 @@
     <div class="layui-form-item">
         <label for="" class="layui-form-label">标准层面积</label>
         <div class="layui-input-block">
-            <input type="text" name="floor_area" value="{{$article->floor_area??old('floor_area')}}"  placeholder="请输入标准层面积" class="layui-input" >
+            <input type="number" step="0.01" name="floor_area" value="{{$article->floor_area??old('floor_area')}}"  placeholder="请输入标准层面积" class="layui-input" >
         </div>
     </div>
     <div class="layui-form-item" id="storey_height">
@@ -208,13 +208,19 @@
         <div class="layui-form-item">
             <label for="" class="layui-form-label">项目总建面</label>
             <div class="layui-input-block">
-                <input type="text" name="total_area" value="{{$article->total_area??old('total_area')}}"  placeholder="请输入项目总面积" class="layui-input" >
+                <input type="number" step="0.01" name="total_area" value="{{$article->total_area??old('total_area')}}"  placeholder="请输入项目总面积" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="" class="layui-form-label">容积率/使用率</label>
+            <label for="" class="layui-form-label">使用率</label>
             <div class="layui-input-block">
-                <input type="text" name="plot_ratio" value="{{$article->plot_ratio??old('plot_ratio')}}"  placeholder="请输入容积率/使用率" class="layui-input" >
+                <input type="text" name="plot_ratio" value="{{$article->plot_ratio??old('plot_ratio')}}"  placeholder="请输入使用率" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label">容积率</label>
+            <div class="layui-input-block">
+                <input type="text" name="volume_rate" value="{{$article->volume_rate??old('volume_rate')}}"  placeholder="请输入容积率" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">

@@ -79,7 +79,7 @@ class ArticleController extends Controller
 
         $data = $request->only('category_id','country','city','title','price','assets_type','investment_type','address',
             'area','format','description','renovation','trade_type','elevator','parking_lot','floor','floor_area',
-            'storey_height','remarks','explanation','total_area','plot_ratio','orientations','property_fee','payment_method','district',
+            'storey_height','remarks','explanation','total_area','plot_ratio','volume_rate','orientations','property_fee','payment_method','district',
             'sort','content','click','thumb','recommend_img','created_at','updated_at', 'phone',
             'accounting_date','loan_principal','loan_interest','mortgage_principal','households','project_ownership','included_date'
             ,'principal','collateral_type','litigation_execution','assets_detail','land','commission'
@@ -157,7 +157,7 @@ class ArticleController extends Controller
         $article = Article::with('tags')->findOrFail($id);
         $data = $request->only('category_id','country','city','title','price','assets_type','investment_type','address',
             'area','format','description','renovation','trade_type','elevator','parking_lot','floor','floor_area',
-            'storey_height','remarks','explanation','total_area','plot_ratio','orientations','property_fee','payment_method','district',
+            'storey_height','remarks','explanation','total_area','plot_ratio','volume_rate','orientations','property_fee','payment_method','district',
             'sort','content','click','thumb','recommend_img','created_at','updated_at', 'phone',
             'accounting_date','loan_principal','loan_interest','mortgage_principal','households','project_ownership','included_date'
             ,'principal','collateral_type','litigation_execution','examine_status','assets_detail','land','commission'

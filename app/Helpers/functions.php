@@ -305,16 +305,16 @@ function formatList($data){
         //默认电话
         $ad = \App\Models\Advert::getList('商务合作');
         foreach ($data as $k => $v){
-            $data[$k]->area = $v->area . '㎡';
-            if (isset($v->price) && $v->price == 0) {
-                $data[$k]->price = '面议';
-            }
-            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name != '大宗租赁') {
-                $data[$k]->price = $v->price / 10000 .'万';
-            }
-            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name == '大宗租赁'){
-                $data[$k]->price = $v->price .'元/平米·天';
-            }
+            // $data[$k]->area = $v->area . '㎡';
+            // if (isset($v->price) && $v->price == 0) {
+            //     $data[$k]->price = '面议';
+            // }
+            // if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category_id != 6) {
+            //     $data[$k]->price = $v->price /* / 10000 */ .'万';
+            // }
+            // if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category_id == 6){
+            //     $data[$k]->price = $v->price .'元/平米·天';
+            // }
             if (isset($v->collateral_type) && !empty($v->collateral_type)){
                 $s = mb_strlen($v->collateral_type,'utf8') > 3 ? '..' : '';
                 $data[$k]->collateral_type = mb_substr($v->collateral_type , 0 , 3) . $s;
@@ -348,15 +348,15 @@ function formatHome($data){
         $ad = \App\Models\Advert::getList('商务合作');
         foreach ($data as $k => $v){
             $data[$k]->area = $v->area /*. '㎡'*/;
-            if (isset($v->price) && $v->price == 0) {
-                $data[$k]->price = '面议';
-            }
-            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name != '大宗租赁') {
-                $data[$k]->price = $v->price / 10000 /*.'万'*/;
-            }
-            if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category->name == '大宗租赁'){
-                $data[$k]->price = $v->price .'元/平米·天';
-            }
+            // if (isset($v->price) && $v->price == 0) {
+            //     $data[$k]->price = '面议';
+            // }
+            // if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category_id != 6) {
+            //     $data[$k]->price = $v->price /* / 10000 */ /*.'万'*/;
+            // }
+            // if (isset($v->price) && $v->price > 0 && isset($v->category) && $v->category_id == 6){
+            //     $data[$k]->price = $v->price .'元/平米·天';
+            // }
             if (isset($v->collateral_type) && !empty($v->collateral_type)){
                 $s = mb_strlen($v->collateral_type,'utf8') > 3 ? '..' : '';
                 $data[$k]->collateral_type = mb_substr($v->collateral_type , 0 , 3) . $s;
@@ -386,12 +386,12 @@ function formatOne($data){
         //项目默认主图
         $imgid = \App\Models\Advert::where('title','like','%项目默认%')->value('thumb');
         $img = \App\Models\Attachment::where('id',$imgid)->select('id','url')->first();
-        if (isset($data->price) && $data->price > 0 && isset($data->category) && $data->category->name != '大宗租赁'){
-            $data->price = $data->price / 10000 .'万';
-        }
-        if (isset($data->price) && $data->price > 0 && isset($data->category) && $data->category->name == '大宗租赁'){
-            $data->price = $data->price.'元/平米·天';
-        }
+        // if (isset($data->price) && $data->price > 0 && isset($data->category) && $data->category_id != 6){
+        //     $data->price = $data->price /* / 10000 */ .'万';
+        // }
+        // if (isset($data->price) && $data->price > 0 && isset($data->category) && $data->category_id == 6){
+        //     $data->price = $data->price.'元/平米·天';
+        // }
         if (!$data->thumb > 0){
             unset($data->img);
             $data->img = $img;
@@ -400,9 +400,12 @@ function formatOne($data){
         if (isset($data->commission) && $data->price == 0) {
             $data->commission = '面议';
         }
-        if (isset($data->price) && $data->price == 0) {
+       /*  if (isset($data->price) && $data->price == 0) {
             $data->price = '面议';
         }
+        //单位
+        $data->floor_area = $data->floor_area.'㎡';
+        $data->total_area = $data->total_area.'㎡'; */
     }
     return $data;
 }
